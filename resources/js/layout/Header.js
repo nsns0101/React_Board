@@ -20,7 +20,7 @@ export default () => {
 								<div className="collapse navbar-collapse navbar-responsive-collapse">
                                     <ul className="nav navbar-nav">
                                         <Link to="/">
-                                            <img src="/icon/title2.png" style={{width:"200px", marginBottom:"3px", marginRight:"80px"}}/>
+                                            <img src="/icon/title2.png" style={{width:"180px", marginBottom:"3px", marginRight:"80px"}}/>
                                         </Link>
                                         <li><Link style={{fontSize:"18px", padding:"12px"}} to="/">Home</Link></li>
                                         <li><Link style={{fontSize:"18px", padding:"12px"}} to="/board">Board</Link></li>

@@ -20,6 +20,11 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
+    # 메일 발송에 관련
+    protected $subscribe = [
+        \App\Listeners\UsersEventListener::class,
+    ];
+    
     /**
      * Register any events for your application.
      *

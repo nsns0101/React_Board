@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//홈페이지
 Route::get('/', function () {
     return view('welcome');
 });
+
+//회원가입, 로그인 페이지
+Route::resource('/auth/register', 'UsersController');
+Route::resource('/auth/login', 'LoginController');
+Route::resource('/confirm', 'ConfirmController');
+//보드 페이지
+Route::resource('/board', 'BoardController');

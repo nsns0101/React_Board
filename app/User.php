@@ -16,7 +16,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 
+        'password', 
+        'name', 
+        'birth', 
+        'gender', 
+        'phone', 
+        'confirm_code',
+        'remember_token', 
     ];
 
     /**
@@ -25,7 +32,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'confirm_code', 'remember_token',
     ];
 
     /**
@@ -36,4 +43,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // 한 유저는 여러개의 게시판을 가질 수 있음
+    public function boards()
+    {
+        return $this->hasMany(Board::class);
+    }
+    // 한 유저는 여러개의 댓글을 쓸 수 있음
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    // 한 유저는 여러개의 좋아요
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
 }
