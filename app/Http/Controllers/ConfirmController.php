@@ -43,38 +43,14 @@ class ConfirmController extends Controller
                 $user->update([
                     'confirm_code' => null
                 ]);
-                $user->login();
-                $response = ['status' => true];        
+                $response = [
+                    'status' => true,
+                    'value' => $user,
+                ];        
 
             }
-            return $response;
-            // return response()->json([
-            //     'access_token' => $token,
-            //     'token_type' => 'bearer',
-            //     'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
-            // ]);
+            return response()->json($response);
         }
     }
-
-    //토큰 생성
-    // private function getToken($email, $password){
-    //     $token = null;
-        
-    //     try {
-    //         if (!$token = JWTAuth::attempt(['email'=>$email, 'password'=>$password])) {
-    //             return response()->json([
-    //                 'response' => 'error',
-    //                 'message' => 'Password or email is invalid',
-    //                 'token'=>$token
-    //             ]);
-    //         }
-    //     } catch (JWTAuthException $e) {
-    //         return response()->json([
-    //             'response' => 'error',
-    //             'message' => 'Token creation failed',
-    //         ]);
-    //     }
-    //     return $token;
-    // }
 }
 

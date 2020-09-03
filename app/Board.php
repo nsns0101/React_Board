@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Board extends Model
 {
     protected $fillable = ['title', 'content'];
 
     protected $with = ['user'];
+
     //여러게시판은 한 유저를 가질 수 있음
     public function user()
     {
@@ -19,6 +20,7 @@ class Article extends Model
     public function tags() {
         return $this->belongsToMany(Tag::class);
     }
+
     //한 게시판은 여러 첨부파일을 가질 수 있음
     public function attachments()
     {

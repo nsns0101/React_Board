@@ -34,9 +34,29 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $user = \App\User::whereConfirmCode($request->confirm_code)->first();
 
+        if (!$user) {
+            // flash('입력하신 코드가 올바르지 않습니다. 다시 입력해 주세요.');
+            $response = ['status'=> 'confirm'];        
+        }
+        else{
+            if (!auth()->attempt($request->only('email', 'password'), $request->has('remember'))) {
+                $response = ['error'=> "로그인 정보 오류"];        
+            }
+            else {
+                $user->update([
+                    'confirm_code' => null
+                ]);
+                $response = [
+                    'status' => true,
+                    'value' => $user,
+                ];        
+
+            }
+        }
+        return response()->json($response);    
+    }
     /**
      * Display the specified resource.
      *
@@ -77,8 +97,9 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        \Auth::logout();
+        return redirect('/');
     }
 }

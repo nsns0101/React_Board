@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect, createContext} from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter } from "react-router-dom";
 
@@ -8,18 +8,32 @@ import Home from "../router/Home/HomeContainer";
 import Board from "../router/Board/BoardContainer";
 import Auth from "../router/Auth/AuthContainer";
 
-function App() {
+export const AppContext = createContext();
+
+export default function App() {
+
+    // const [user, setUser] = useState(false);
+
+    // useEffect( () => {
+    //     if(localStorage.getItem('userValue')){
+    //         console.log(JSON.parse(localStorage.getItem('userValue')));
+    //         setUser(JSON.parse(localStorage.getItem('userValue')));
+    //     }
+    // },[])    
+    // console.log(user);
+
     return (
-        <BrowserRouter>
-            <Header/>
-            <Route path="/" exact={true} component={Home}/>
-            <Route path="/board" component={Board}/>
-            <Route path="/auth" component={Auth}/>
-        </BrowserRouter>
+        <AppContext.Provider value={{}}>
+            <BrowserRouter>
+                <Header/>
+                <Route path="/" exact={true} component={Home}/>
+                <Route path="/board" component={Board}/>
+                <Route path="/auth" component={Auth}/>
+            </BrowserRouter>
+        </AppContext.Provider>
     );
 }
 
-export default App;
 
 if (document.getElementById('app')) {
     ReactDOM.render(<App />, document.getElementById('app'));

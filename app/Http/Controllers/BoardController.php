@@ -6,33 +6,29 @@ use Illuminate\Http\Request;
 
 class BoardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        \Log::info(\Auth::user());
         return view('welcome');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //게시판 얻기
+    public function get_boards($category = null){
+        \Log::info($category);
+        $query = $category ? \App\Category::whereCategory($category)->first()->boards() : new \App\Board;
+        $boards = $query->orderBy('id', 'desc')->paginate(10);
+        
+        return response()->json([
+            'status' => true,
+            'boards' => $boards,
+        ]);
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //

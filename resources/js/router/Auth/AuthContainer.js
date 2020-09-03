@@ -1,11 +1,13 @@
-import React, { useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import AuthView from "./AuthView";
 import Axios from "axios";
+import { AppContext } from "../../components/App";
 
 export default ({ location, history }) => {
-  // console.log(isLoggedIn);  
+  // const { setUser } = useContext(AppContext);
 
-//현재 로그인인지 회원가입인지 등의 상태
+
+  //현재 로그인인지 회원가입인지 등의 상태
   let [action, setAction] = useState(
     location.pathname === "/auth/login" ? "login": location.pathname === "/auth/register" ? "register" : "logout"
   );      
@@ -67,19 +69,18 @@ export default ({ location, history }) => {
         'Content-Type' : 'application/json'
       }
     }
-    
-    // const defaults = {headers: headers};
-    // const options = Object.assign({}, defaults, url, body);
 
     return Axios.post(url, body, config)
       .then(res => {
         console.log(res);
 
-        if(res.data.token){
-          localStorage.setItem('userToken', res.data.token);
-
+        if(res.data.value){
+          // localStorage.setItem('userValue', JSON.stringify(res.data.value));
           history.push('/');
-          setIsLoggedIn(true);
+          // setIsLoggedIn(true);
+        }
+        else if(res.data.status == "confirm"){
+          setAction('confirm');
         }
         else{
           setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
@@ -105,23 +106,11 @@ export default ({ location, history }) => {
     return Axios.post(url, body, config)
     .then(res => {
       console.log(res);
-      // console.log(res);
-      if(res.data.status){
-        // let userData = {
-        //   // name: res.data.name,
-        //   // id: res.data.id,
-        //   // isLoggedIn: res.data.isLoggedIn,
-        //   token: res.data.token,
-        //   // timestamp: new Date().toString()
-        // };
 
-        // localStorage["userToken"] = JSON.stringify(userData);
-        // localStorage.setItem('userToken', res.data.token);
-        // console.log(User);
-        // setAction("");
+      if(res.data.status){
+        // localStorage.setItem('userValue', JSON.stringify(res.data.value));
+
         history.push('/');
-        // setIsLoggedIn(true);
-        // console.log(isLoggedIn);
       }
       else{
         setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
