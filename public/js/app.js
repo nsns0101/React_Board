@@ -7198,7 +7198,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".board_image {\r\n    width: 100%;\r\n    height: 25vh;\r\n    background: url(\"/img/board_main.jpg\") center center no-repeat;\r\n    text-align: center;\r\n    /* background: linear-gradient(45deg, #002ef0 0%, rgba(116, 15, 214, 0.9) 100%), url(/images/hero-bg.jpg) center center no-repeat; */\r\n    background-size: cover;\r\n    /* filter: blur(1px); */\r\n  /* -webkit-filter: blur(8px) */\r\n    margin-bottom : 50px;\r\n\r\n}\r\n\r\n.board_total_p {\r\n  font-size: 30px;\r\n}\r\n\r\n.board_category {\r\n  margin-top: 10px;\r\n  border-radius: 10px;\r\n  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .2);\r\n}\r\n\r\n.home_icon {\r\n  width: 30px;\r\n  padding: 10px 0;\r\n}\r\n.menu_box {\r\n  margin-top: 4px;\r\n  text-align: right;\r\n}\r\n.menu_icon_1 {\r\n  border : 1px solid black;\r\n  /* border-right : 1px solid white; */\r\n  border-radius: 5px 0px 0px 5px;\r\n  width: 40px;\r\n  padding: 5px;\r\n}\r\n.menu_icon_2 {\r\n  border : 1px solid black;\r\n  width: 40px;\r\n  padding: 5px;\r\n}\r\n.menu_icon_3 {\r\n  border : 1px solid black;\r\n  border-radius: 0px 5px 5px 0px;\r\n  width: 40px;\r\n  padding: 5px;\r\n}\r\n\r\n\r\n.category_p {\r\n  text-align: center;\r\n  padding-top: 13px;\r\n  font-size: 18px;\r\n}\r\n.new {\r\n    font-size : 18px;\r\n    -webkit-animation-name: blink;\r\n            animation-name: blink;\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n    -webkit-animation-timing-function: ease;\r\n            animation-timing-function: ease;\r\n    -webkit-animation-iteration-count: infinite;\r\n            animation-iteration-count: infinite;\r\n    /* 위 속성들을 한 줄로 표기하기 */\r\n    /* -webkit-animation: blink 1.5s ease infinite; */\r\n  }\r\n\r\n  @-webkit-keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n  @keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }", ""]);
 
 // exports
 
@@ -75854,6 +75854,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router_Home_HomeContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../router/Home/HomeContainer */ "./resources/js/router/Home/HomeContainer.js");
 /* harmony import */ var _router_Board_BoardContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../router/Board/BoardContainer */ "./resources/js/router/Board/BoardContainer.js");
 /* harmony import */ var _router_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../router/Auth/AuthContainer */ "./resources/js/router/Auth/AuthContainer.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -75862,18 +75876,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var AppContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
 function App() {
-  // const [user, setUser] = useState(false);
-  // useEffect( () => {
-  //     if(localStorage.getItem('userValue')){
-  //         console.log(JSON.parse(localStorage.getItem('userValue')));
-  //         setUser(JSON.parse(localStorage.getItem('userValue')));
-  //     }
-  // },[])    
-  // console.log(user);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppContext.Provider, {
-    value: {}
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isLoggedIn = _useState2[0],
+      setIsLoggedIn = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("/get_user").then(function (res) {
+      if (res.data.id) {
+        setIsLoggedIn("login");
+      } else {
+        setIsLoggedIn("logout");
+      }
+    });
+  }, []);
+  return isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppContext.Provider, {
+    value: {
+      isLoggedIn: isLoggedIn,
+      setIsLoggedIn: setIsLoggedIn
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/",
     exact: true,
@@ -75884,7 +75908,7 @@ function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/auth",
     component: _router_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_6__["default"]
-  })));
+  }))) : null;
 }
 
 if (document.getElementById('app')) {
@@ -75937,10 +75961,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _Header_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header.css */ "./resources/js/layout/Header.css");
 /* harmony import */ var _Header_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Header_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/App */ "./resources/js/components/App.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_3__["AppContext"]),
+      isLoggedIn = _useContext.isLoggedIn;
+
+  console.log(isLoggedIn);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "body-inner"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
@@ -75992,7 +76022,19 @@ __webpack_require__.r(__webpack_exports__);
       padding: "12px"
     },
     to: "/board"
-  }, "Board"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, "Board"))), isLoggedIn == "login" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "nav navbar-nav",
+    style: {
+      listStyle: "none",
+      "float": "right"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    style: {
+      fontSize: "20px",
+      padding: "12px"
+    },
+    to: "/auth/logout"
+  }, "Logout"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "nav navbar-nav",
     style: {
       listStyle: "none",
@@ -76086,8 +76128,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   var location = _ref.location,
       history = _ref.history;
 
-  // const { setUser } = useContext(AppContext);
-  //현재 로그인인지 회원가입인지 등의 상태
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_4__["AppContext"]),
+      setIsLoggedIn = _useContext.setIsLoggedIn; //현재 로그인인지 회원가입인지 등의 상태
+
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(location.pathname === "/auth/login" ? "login" : location.pathname === "/auth/register" ? "register" : "logout"),
       _useState2 = _slicedToArray(_useState, 2),
       action = _useState2[0],
@@ -76223,7 +76267,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
                 if (res.data.value) {
                   // localStorage.setItem('userValue', JSON.stringify(res.data.value));
-                  history.push('/'); // setIsLoggedIn(true);
+                  history.push('/');
+                  setIsLoggedIn("login");
                 } else if (res.data.status == "confirm") {
                   setAction('confirm');
                 } else {
@@ -76268,7 +76313,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
                 if (res.data.status) {
                   // localStorage.setItem('userValue', JSON.stringify(res.data.value));
-                  history.push('/');
+                  setIsLoggedIn("login");
+                  history.push("/");
                 } else {
                   setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
                 }
@@ -76290,9 +76336,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
   if (action === "logout") {
     console.log("good");
-    localStorage.removeItem("userToken");
-    history.push("/"); // setUser(false);
-    // setIsLoggedIn(false);
+    console.log("kkk"); // localStorage.removeItem("userToken");
+
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/auth/logout').then(function (res) {
+      console.log(res);
+      history.push("/");
+      setIsLoggedIn("logout");
+    }); // location.reload("/");
   } //회원가입이나 로그인 버튼 클릭시
 
 
@@ -76428,7 +76478,7 @@ function _templateObject8() {
 }
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  color: blue;\n  cursor: pointer;\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: blue;\n  cursor: pointer;\n  font-size: 20px;\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -76488,7 +76538,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 94vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  background-image: url(/img/login.jpg);\n  background-size: cover;\n\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 95vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  background-image: url(/img/login.jpg);\n  background-size: cover;\n\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -76548,7 +76598,8 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
   var input_form = {
     width: "100%",
     border: '1px solid #d1d3e2',
-    paddingLeft: "5px"
+    paddingLeft: "5px",
+    fontSize: "16px"
   };
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
@@ -76654,7 +76705,8 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-center",
     style: {
-      color: "black"
+      color: "black",
+      fontSize: "20px"
     }
   }, "\uB85C\uADF8\uC778 \uC815\uBCF4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
@@ -76716,7 +76768,8 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
   }, errors.password_confirmation && errors.password_confirmation.type === "validate" ? "비밀번호가 맞지않습니다" : "", errors.password_confirmation && errors.password_confirmation.message)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-center",
     style: {
-      color: "black"
+      color: "black",
+      fontSize: "20px"
     }
   }, "\uC720\uC800 \uC815\uBCF4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
@@ -76839,7 +76892,8 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
     className: "btn btn-primary btn-lg btn-block"
   }, "\uD655\uC778"))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\uB85C\uADF8\uC778 \uC911\uC785\uB2C8\uB2E4...."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StateChanger, null, action === "login" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     style: {
-      color: "white"
+      color: "white",
+      fontSize: "24px"
     }
   }, "\uACC4\uC815\uC774 \uC5C6\uC2B5\uB2C8\uAE4C?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
     to: "/auth/register"
@@ -76849,7 +76903,8 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
     }
   }, "\uD68C\uC6D0\uAC00\uC785"))) : action === 'register' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     style: {
-      color: "white"
+      color: "white",
+      fontSize: "24px"
     }
   }, "\uB85C\uADF8\uC778 \uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
     to: "/auth/login"
@@ -76958,11 +77013,117 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Board_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Board.css */ "./resources/js/router/Board/Board.css");
 /* harmony import */ var _Board_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Board_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _BoardContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BoardContainer */ "./resources/js/router/Board/BoardContainer.js");
+/* harmony import */ var _partial_Board_home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partial/Board_home */ "./resources/js/router/Board/partial/Board_home.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+  return (
+    /*#__PURE__*/
+    // <span class="hit">New</span>
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Board_home__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+  );
+});
+
+/***/ }),
+
+/***/ "./resources/js/router/Board/partial/Board_home.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/router/Board/partial/Board_home.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var category = [{
+    value: "공지",
+    count: 4
+  }, {
+    value: "자유",
+    count: 219
+  }, {
+    value: "문의",
+    count: 7
+  }, {
+    value: "팁",
+    count: 12
+  }, {
+    value: "구매",
+    count: 55
+  }, {
+    value: "판매",
+    count: 97
+  }];
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "board_image"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    style: {
+      color: "white",
+      textShadow: "black 12px 0px 3px",
+      fontSize: "80px",
+      paddingTop: "120px",
+      fontWeight: "bold"
+    }
+  }, "Board")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-8"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "board_total_p"
+  }, "Total ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      color: "red",
+      fontWeight: "bold"
+    }
+  }, "0\uAC74"), "\uC758 \uAC8C\uC2DC\uBB3C"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "board_category col-xl-8 col-lg-8 col-md-8"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row card-body",
+    style: {
+      padding: 0
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-1 text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "home_icon",
+    src: "icon/home.png"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row col-md-8",
+    style: {
+      borderRadius: "5px",
+      borderLeft: "1px solid #8E9799"
+    }
+  }, category.map(function (value, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index,
+      className: "col-md-2"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "category_p"
+    }, category[index].value, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "(", category[index].count, ")")));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-1"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "menu_box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "menu_icon_1",
+    src: "icon/menu1.png"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "menu_icon_2",
+    src: "icon/menu2.png"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "menu_icon_3",
+    src: "icon/menu3.png"
+  })))))));
 });
 
 /***/ }),

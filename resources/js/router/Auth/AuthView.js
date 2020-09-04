@@ -7,7 +7,7 @@ import "./Auth.css";
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 94vh;
+  height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,6 +63,7 @@ const StateChanger = styled.div`
 const Link_qwe = styled.span`
   color: blue;
   cursor: pointer;
+  font-size: 20px;
 `;
 //로그인 폼
 const LoginForm = styled(LoginBox)`
@@ -110,6 +111,7 @@ export default ({
     width: "100%",
     border: '1px solid #d1d3e2',
     paddingLeft:"5px",
+    fontSize: "16px"
   }
   const [sub_status, setSub_status] = useState(false);
   return (
@@ -202,7 +204,7 @@ export default ({
           <h2 style={{fontWeight:"bold", color:"black"}}>{action === "login" ? "SignIn" : "SignUp"}</h2>
           {/* 제출 폼 */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            <h5 className="text-center" style={{color:"black"}}>로그인 정보</h5>
+            <h5 className="text-center" style={{color:"black", fontSize: "20px"}}>로그인 정보</h5>
             
             {/* 이메일 */}
             <div className="form-group">
@@ -280,7 +282,7 @@ export default ({
               </p>
             </div>
             <hr />
-            <h5 className="text-center" style={{color:"black"}}>유저 정보</h5>
+            <h5 className="text-center" style={{color:"black", fontSize: "20px"}}>유저 정보</h5>
             {/* 이름 */}
             <div className="form-group">
               <input 
@@ -431,14 +433,14 @@ export default ({
       <StateChanger>
         {action === "login" ? (
           <>
-            <span style={{color:"white"}}>계정이 없습니까?</span>
+            <span style={{color:"white", fontSize:"24px"}}>계정이 없습니까?</span>
             <Link to="/auth/register">
               <Link_qwe onClick={() => setAction('register')}>회원가입</Link_qwe>
             </Link>
           </>
         ) : action === 'register' ? (
           <>
-            <span style={{color:"white"}}>로그인 하시겠습니까?</span>
+            <span style={{color:"white", fontSize:"24px"}}>로그인 하시겠습니까?</span>
             <Link to="/auth/login">
               <Link_qwe onClick={() => setAction("login")}>로그인</Link_qwe>
             </Link>

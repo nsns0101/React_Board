@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { AppContext } from "../components/App";
 
 export default () => {
+    const { isLoggedIn } = useContext(AppContext);
+    console.log(isLoggedIn);
     return (
         <div className="body-inner">
 		    <header id="header" className="header-one">
@@ -27,9 +30,15 @@ export default () => {
 
                                         {/*  */}
                                     </ul>
-                                    <ul className="nav navbar-nav" style={{listStyle:"none", float:"right"}}>
-                                        <li><Link style={{fontSize:"20px", padding:"12px"}} to="/auth/login">Login</Link></li>
-                                    </ul>
+                                    { isLoggedIn == "login" ? (
+                                        <ul className="nav navbar-nav" style={{listStyle:"none", float:"right"}}>
+                                            <li><Link style={{fontSize:"20px", padding:"12px"}} to="/auth/logout">Logout</Link></li>
+                                        </ul>
+                                    ) : (
+                                        <ul className="nav navbar-nav" style={{listStyle:"none", float:"right"}}>
+                                            <li><Link style={{fontSize:"20px", padding:"12px"}} to="/auth/login">Login</Link></li>
+                                        </ul>
+                                    )}
 								</div>
 
 							</div>

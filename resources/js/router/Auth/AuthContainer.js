@@ -4,7 +4,7 @@ import Axios from "axios";
 import { AppContext } from "../../components/App";
 
 export default ({ location, history }) => {
-  // const { setUser } = useContext(AppContext);
+  const { setIsLoggedIn } = useContext(AppContext);
 
 
   //현재 로그인인지 회원가입인지 등의 상태
@@ -77,7 +77,7 @@ export default ({ location, history }) => {
         if(res.data.value){
           // localStorage.setItem('userValue', JSON.stringify(res.data.value));
           history.push('/');
-          // setIsLoggedIn(true);
+          setIsLoggedIn("login")
         }
         else if(res.data.status == "confirm"){
           setAction('confirm');
@@ -106,11 +106,10 @@ export default ({ location, history }) => {
     return Axios.post(url, body, config)
     .then(res => {
       console.log(res);
-
       if(res.data.status){
         // localStorage.setItem('userValue', JSON.stringify(res.data.value));
-
-        history.push('/');
+        setIsLoggedIn("login");
+        history.push("/");
       }
       else{
         setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
@@ -122,10 +121,15 @@ export default ({ location, history }) => {
   //로그아웃일 때
   if(action === "logout"){
     console.log("good");
-    localStorage.removeItem("userToken");
-    history.push("/");
-    // setUser(false);
-    // setIsLoggedIn(false);
+    console.log("kkk");
+    // localStorage.removeItem("userToken");
+    Axios.get('/auth/logout').then(res => {
+      console.log(res);
+      history.push("/");
+      setIsLoggedIn("logout");
+
+    })
+    // location.reload("/");
   }
 
   //회원가입이나 로그인 버튼 클릭시

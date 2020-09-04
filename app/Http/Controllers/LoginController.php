@@ -8,9 +8,13 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'destroy']);
-    }
+        $this->middleware('guest', ['except' => ['destroy', 'is_login'] ]);
 
+    }
+    public function is_login(){
+        return \Auth::user();
+    }
+    
     public function index()
     {
         return view('welcome');
