@@ -1,37 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import Board_1 from "./Board_1.js";
 import Board_2 from "./Board_2.js";
 import Board_3 from "./Board_3.js";
-
+import {BoardContext} from "../BoardContainer";
 
 export default () => {
-    const category = 
-    [
-        {
-            value : "공지",
-            count : 4
-        },
-        {
-            value : "자유",
-            count : 219
-        },
-        {
-            value : "문의",
-            count : 7
-        },
-        {
-            value : "팁",
-            count : 12
-        },
-        {
-            value : "구매",
-            count : 55
-        },
-        {
-            value : "판매",
-            count : 97
-        },
-    ];
+    //공지 자유 문의 팁 구매 판매
+    const {
+        categories
+    } = useContext(BoardContext);
     return (
         <div>
             {/* 백그라운드 이미지 */}
@@ -57,13 +34,13 @@ export default () => {
                             <img className="home_icon" src="icon/home.png"/>
                         </div>
                         <div className="row col-md-8" style={{borderRadius:"5px", borderLeft: "1px solid #8E9799"}}>
-                            {category.map( (value, index) => {
+                            {categories ? categories.map( (value, index) => {
                                 return (
                                     <div key={index} className="col-md-2">
-                                        <p className="category_p">{category[index].value}<span>({category[index].count})</span></p>
+                                        <p className="category_p">{categories[index]}<span>()</span></p>
                                     </div>
                                 )
-                            })}
+                            }) : null}
                             
                         </div>
                         <div className="col-md-1"/>

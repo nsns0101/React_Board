@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { BoardContext } from "../BoardContainer";
+import moment  from "moment";
 
 export default () => {
     const {
-        boards
+        boards,
+        board_categories,
+        board_users
     } = useContext(BoardContext);
-    console.log(boards);
     return (
         <div className="row justify-content-center">
             <div className="col-md-8">
@@ -22,15 +24,15 @@ export default () => {
                         </tr>
                     </thead>
                     <tbody className="col-12 board_tbody text-center">
-                            {boards ? boards.map( (value, index) => {
+                            {boards && board_categories && board_users ? boards.map( (value, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{boards[index].id}</td>
-                                        <td>자유</td>
-                                        <td style={{textAlign:"left"}}>안녕하세여 반갑습니다 저는 제목입니다.</td>
-                                        <td>이재영</td>
-                                        <td>2020-07-31</td>
-                                        <td>4625</td>
+                                        <td>{board_categories[index]}</td>
+                                        <td style={{textAlign:"left"}}>{boards[index].title}</td>
+                                        <td>{board_users[index].name}</td>
+                                        <td>{moment(boards[index].created_at).format("YYYY-MM-DD")}</td>
+                                        <td>{boards[index].view_count}</td>
                                     </tr>
                                 )
                             }) : null}
