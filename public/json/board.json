@@ -1,75 +1,75 @@
 {
-    "1": {
+    "0": {
         "user_id": 1,
         "category_id": 1,
         "title": "리액트 보드 공지사항입니다",
         "content": "공지사항 글",
         "view_count": 4791
     },
-    "2": {
+    "1": {
         "user_id": 2,
         "category_id": 2,
         "title": "게시글 편리하고 좋네여",
         "content": "게시글 편리하고 좋습니다. 계속 이용할게요",
         "view_count": 11
     },
-    "3": {
+    "2": {
         "user_id": 3,
         "category_id": 6,
         "title": "クルマモリ１１9제품 팔아요",
         "content": "요즘 핫한 운전 서포트 기능을 가진 쿠루마모리 제품 팔아요 완전 새거입니다.",
         "view_count": 327
     },
-    "4": {
+    "3": {
         "user_id": 4,
         "category_id": 4,
         "title": "게시판 팁 드릴게요",
         "content": "카테고리 오른쪽에 있는 메뉴 누르면 여러 방식으로 게시판을 볼 수 있어요~",
         "view_count": 10
     },
-    "5": {
+    "4": {
         "user_id": 1,
         "category_id": 1,
         "title": "게시글 이용 방법 안내드리겠습니다.",
         "content": "카테고리 별로 검색이 가능하며 옆의 아이콘을 누를시 사용자가 이용하기 편한 방식으로 게시판을 볼 수 있습니다.",
         "view_count": 1462
     },
-    "6": {
+    "5": {
         "user_id": 2,
         "category_id": 3,
         "title": "문의드립니다!!",
         "content": "문의",
         "view_count": 3
     },
-    "7": {
+    "6": {
         "user_id": 3,
         "category_id": 2,
         "title": "이용하기편해요~",
         "content": "진짜 편해요",
         "view_count": 132
     },
-    "8": {
+    "7": {
         "user_id": 6,
         "category_id": 3,
         "title": "이메일로 문의드렸던 유저입니다",
         "content": "good",
         "view_count": 2
     },
-    "9": {
+    "8": {
         "user_id": 8,
         "category_id": 2,
         "title": "카테고리도 많아서 편해요",
         "content": "이용하기도 편해요",
         "view_count": 36
     },
-    "10": {
+    "9": {
         "user_id": 3,
         "category_id": 3,
         "title": "게시글 리액트로 만든건가요?",
         "content": "리액트를 공부하고 있는 학생입니다. 리액트의 장점이 뭐에요?",
         "view_count": 98
     },
-    "11": {
+    "10": {
         "user_id": 7,
         "category_id": 4,
         "title": "한 게시판을 3종류로 볼 수 있는 방법!",

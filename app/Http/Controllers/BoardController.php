@@ -23,13 +23,17 @@ class BoardController extends Controller
             array_push($categories, \App\Category::get()[$i]->category);
         }
         // \Log::info($categories);
-
+        
         //카테고리 검색한 게 있으면 카테고리별로 아니면 그냥 보여줌
         $query = $choice_category ? \App\Category::whereCategory($choice_category)->first()->boards() : new \App\Board;
-        \Log::info($query);
+        // \Log::info($query);
+        
+        //카테고리 == 공지인 글
+        $notice = \App\Board::whereCategory_id(1)->get();
+        // \Log::info($notice);
 
-        //게시글 10개 내림차순
-        $boards = $query->orderBy('id', 'desc')->paginate(10);
+        //게시글 10 - 공지 수 내림차순
+        $boards = $query->where('category_id','!=',1)->orderBy('id','desc')->paginate(10 - count($notice));
         // \Log::info($boards);
 
         //게시글에 해당하는 카테고리
@@ -45,16 +49,22 @@ class BoardController extends Controller
         }
         // \Log::info($board_categories);
         // \Log::info($board_user);
+        $category_count = array();
+        for($i = 0; $i < count($categories); $i++){
 
-
+            array_push($category_count, count(\App\Board::whereCategory_id($i+1)->get()));
+        }
+        \Log::info($category_count);
 
 
         return response()->json([
             'status' => true,
-            'category' => $categories,    //존재하는 카테고리 전부
+            'categories' => $categories,    //존재하는 카테고리 전부
             'boards' => $boards,        //게시글(pagenate(10))
             'board_categories' => $board_categories,    //게시글에 해당하는 카테고리
             'board_users' => $board_users,
+            'notice' => $notice,
+            'category_count' => $category_count
         ]);
     }
 

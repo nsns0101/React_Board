@@ -7,8 +7,10 @@ import {BoardContext} from "../BoardContainer";
 export default () => {
     //공지 자유 문의 팁 구매 판매
     const {
-        categories
+        categories,
+        category_count
     } = useContext(BoardContext);
+    
     return (
         <div>
             {/* 백그라운드 이미지 */}
@@ -37,7 +39,7 @@ export default () => {
                             {categories ? categories.map( (value, index) => {
                                 return (
                                     <div key={index} className="col-md-2">
-                                        <p className="category_p">{categories[index]}<span>()</span></p>
+                                        <p className="category_p">{categories[index]}<span>({category_count[index]})</span></p>
                                     </div>
                                 )
                             }) : null}
