@@ -1,4 +1,8 @@
 import React from "react";
+import Board_1 from "./Board_1.js";
+import Board_2 from "./Board_2.js";
+import Board_3 from "./Board_3.js";
+
 
 export default () => {
     const category = 
@@ -74,6 +78,9 @@ export default () => {
                 {/* </Link> */}
                 </div>
             </div>
+            
+            <Board_1/>
+
         </div>
     )
 }
