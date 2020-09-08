@@ -7,17 +7,26 @@ export const BoardContext = createContext();
 export default () => {
 
     // const { setUser } = useContext(AppContext);
-    // const [user, setUser] = useState(false);                            //로그인 유저
-    const [board_count, setBoard_count] = useState(false);
-    const [categories, setCategories] = useState(false);                    //카테고리
-    const [boards, setBoards] = useState(false);                        //게시글
-    const [board_categories, setBoard_categories] = useState(false);    //게시글에 해당하는 카테고리
-    const [board_users, setBoard_users] = useState(false);              //게시글 작성 유저 정보
-    const [notice, setNotice] = useState(false);
-    const [pageCount, setPageCount] = useState(false);
-    const [category_count, setCategory_count] = useState(false);
+    // const [user, setUser] = useState(false);                      //로그인 유저
+    const [action, setAction] = useState(false);                     //
+    const [board_count, setBoard_count] = useState(false);           //전체 게시글 수   
+    const [categories, setCategories] = useState(false);             //카테고리
+    const [boards, setBoards] = useState(false);                     //게시글
+    const [board_categories, setBoard_categories] = useState(false); //게시글에 해당하는 카테고리
+    const [board_users, setBoard_users] = useState(false);           //게시글 작성 유저 정보
+    const [notice, setNotice] = useState(false);                     //공지사항
+    const [pageCount, setPageCount] = useState(false);               //페이지 수
+    const [category_count, setCategory_count] = useState(false);     //카테고리별 게시글 수
+    const [search, setSearch] = useState(false);                     //검색어
 
     const board_get = (url) => {
+        if(location.pathname.split("/")[2] == "write"){
+            setAction("write"); //글 작성
+        }
+        else {
+            setAction("home");  //홈
+        }
+
         Axios.get(url).then(res => {
             console.log(res);
             
@@ -39,7 +48,7 @@ export default () => {
     useEffect( () => {
         board_get("/board_get");
     }, []);
-    console.log(board_count);
+    // console.log(board_count);
     // console.log(boards);
     // console.log(board_categories);
     // console.log(categories);
@@ -47,10 +56,13 @@ export default () => {
     // console.log(pageCount);
     // console.log(board_users);
     // console.log(boards.length);
+    // console.log(search);
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
-    return boards.length == board_users.length  ? (
+    return action && boards.length == board_users.length  ? (
         <BoardContext.Provider value={{
+            action,
+            setAction,
             board_count,
             board_get,
             boards,
@@ -60,6 +72,8 @@ export default () => {
             notice,
             pageCount,
             category_count,
+            setSearch,
+
         }}>
             <BoardView/>
         </BoardContext.Provider>

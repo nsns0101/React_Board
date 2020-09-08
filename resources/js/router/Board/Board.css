@@ -69,8 +69,25 @@
   font-size: 18px;
 }
 
+.search_input {
+  /* margin-top: 10px; */
+  font-size: 24px;
+}
 
+.write_button {
+  font-size: 24px;
+  color: white;
+  background-color: blue;
+  float: right;
+}
 
+.search_button {
+  margin-left: 10px;
+  font-size: 24px;
+  background-color: #2D8CFF;
+  color: white;
+  border: 0px;
+}
 
 
 
