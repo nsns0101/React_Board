@@ -7,8 +7,11 @@ import {BoardContext} from "../BoardContainer";
 export default () => {
     //공지 자유 문의 팁 구매 판매
     const {
+        board_get,
+        board_count,
         categories,
-        category_count
+        category_count,
+        pageCount,
     } = useContext(BoardContext);
     
     return (
@@ -23,7 +26,7 @@ export default () => {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <p className="board_total_p">
-                        Total <span style={{color:"red", fontWeight:"bold"}}>0건</span>의 게시물
+                        Total <span style={{color:"red", fontWeight:"bold"}}>{board_count}건</span>의 게시물
                     </p>
                 </div>
             </div>
@@ -38,7 +41,7 @@ export default () => {
                         <div className="row col-md-8" style={{borderRadius:"5px", borderLeft: "1px solid #8E9799"}}>
                             {categories ? categories.map( (value, index) => {
                                 return (
-                                    <div key={index} className="col-md-2">
+                                    <div key={index} className="col-md-2" onClick={()=>board_get(`/${categories[index]}/board_get`)}>
                                         <p className="category_p">{categories[index]}<span>({category_count[index]})</span></p>
                                     </div>
                                 )
@@ -59,7 +62,26 @@ export default () => {
             </div>
             
             <Board_1/>
+            
+            {/* 페이징 */}
+            <div className="row">
+                <div className="col-md-12 text-center">
+                    {pageCount ? pageCount.map( (value, index) => {
+                        return (
+                            <button 
+                                key={index} 
+                                className="btn btn-primary" 
+                                onClick={()=> board_get(`/board_get?page=${index + 1}`)}
+                                style={{marginRight:"3px"}}
+                            >    
+                                {index + 1}
+                            </button>
+                        )
+                    }) : null}
+                </div>
+            </div>
 
+            {/*  */}
         </div>
     )
 }

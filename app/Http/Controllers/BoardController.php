@@ -17,6 +17,9 @@ class BoardController extends Controller
         //검색한 카테고리
         \Log::info($choice_category);
 
+        //토탈 게시글 수
+        $board_count = count(\App\Board::get());
+
         //존재하는 카테고리
         $categories = array();
         for($i = 0; $i < count(\App\Category::get()); $i++){
@@ -54,17 +57,18 @@ class BoardController extends Controller
 
             array_push($category_count, count(\App\Board::whereCategory_id($i+1)->get()));
         }
-        \Log::info($category_count);
+        // \Log::info($category_count);
 
 
         return response()->json([
             'status' => true,
+            'board_count' => $board_count,  //전체 보드 수
             'categories' => $categories,    //존재하는 카테고리 전부
-            'boards' => $boards,        //게시글(pagenate(10))
-            'board_categories' => $board_categories,    //게시글에 해당하는 카테고리
-            'board_users' => $board_users,
-            'notice' => $notice,
-            'category_count' => $category_count
+            'boards' => $boards,            //게시글(pagenate(10 - 공지사항 수))
+            'board_categories' => $board_categories, //게시글에 해당하는 카테고리
+            'board_users' => $board_users,  //게시글의 작성자 정보
+            'notice' => $notice,    //공지사항
+            'category_count' => $category_count //각각 카테고리가 생성된 게시글 수
         ]);
     }
 

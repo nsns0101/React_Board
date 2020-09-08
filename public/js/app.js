@@ -96258,46 +96258,52 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   // const [user, setUser] = useState(false);                            //로그인 유저
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
-      categories = _useState2[0],
-      setCategories = _useState2[1]; //카테고리
-
+      board_count = _useState2[0],
+      setBoard_count = _useState2[1];
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      boards = _useState4[0],
-      setBoards = _useState4[1]; //게시글
+      categories = _useState4[0],
+      setCategories = _useState4[1]; //카테고리
 
 
   var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      board_categories = _useState6[0],
-      setBoard_categories = _useState6[1]; //게시글에 해당하는 카테고리
+      boards = _useState6[0],
+      setBoards = _useState6[1]; //게시글
 
 
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState8 = _slicedToArray(_useState7, 2),
-      board_users = _useState8[0],
-      setBoard_users = _useState8[1]; //게시글 작성 유저 정보
+      board_categories = _useState8[0],
+      setBoard_categories = _useState8[1]; //게시글에 해당하는 카테고리
 
 
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState10 = _slicedToArray(_useState9, 2),
-      notice = _useState10[0],
-      setNotice = _useState10[1];
+      board_users = _useState10[0],
+      setBoard_users = _useState10[1]; //게시글 작성 유저 정보
+
 
   var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState12 = _slicedToArray(_useState11, 2),
-      pageCount = _useState12[0],
-      setPageCount = _useState12[1];
+      notice = _useState12[0],
+      setNotice = _useState12[1];
 
   var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState14 = _slicedToArray(_useState13, 2),
-      category_count = _useState14[0],
-      setCategory_count = _useState14[1];
+      pageCount = _useState14[0],
+      setPageCount = _useState14[1];
+
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState16 = _slicedToArray(_useState15, 2),
+      category_count = _useState16[0],
+      setCategory_count = _useState16[1];
 
   var board_get = function board_get(url) {
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(url).then(function (res) {
       console.log(res);
+      setBoard_count(res.data.board_count);
       setBoards(res.data.boards.data);
       setBoard_categories(res.data.board_categories);
       setCategories(res.data.categories);
@@ -96316,10 +96322,11 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     board_get("/board_get");
-  }, []); // console.log(boards);
+  }, []);
+  console.log(board_count); // console.log(boards);
   // console.log(board_categories);
-
-  console.log(categories); // console.log(board_users);
+  // console.log(categories);
+  // console.log(board_users);
   // console.log(pageCount);
   // console.log(board_users);
   // console.log(boards.length);
@@ -96327,6 +96334,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
   return boards.length == board_users.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
+      board_count: board_count,
       board_get: board_get,
       boards: boards,
       board_categories: board_categories,
@@ -96412,6 +96420,7 @@ __webpack_require__.r(__webpack_exports__);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: index,
       style: {
+        color: "red",
         fontWeight: "bold",
         backgroundColor: "#e8e8e8"
       }
@@ -96428,20 +96437,7 @@ __webpack_require__.r(__webpack_exports__);
         textAlign: "left"
       }
     }, boards[index].title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, board_users[index].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, moment__WEBPACK_IMPORTED_MODULE_3___default()(boards[index].created_at).format("YYYY-MM-DD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, boards[index].view_count));
-  }) : null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-12 text-center"
-  }, pageCount ? pageCount.map(function (value, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      key: index,
-      className: "btn btn-primary",
-      onClick: function onClick() {
-        return board_get("/board_get?page=".concat(index + 1));
-      },
-      style: {
-        marginRight: "3px"
-      }
-    }, index + 1);
-  }) : null));
+  }) : null))));
 });
 
 /***/ }),
@@ -96525,8 +96521,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   //공지 자유 문의 팁 구매 판매
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_4__["BoardContext"]),
+      board_get = _useContext.board_get,
+      board_count = _useContext.board_count,
       categories = _useContext.categories,
-      category_count = _useContext.category_count;
+      category_count = _useContext.category_count,
+      pageCount = _useContext.pageCount;
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "board_image"
@@ -96549,7 +96548,7 @@ __webpack_require__.r(__webpack_exports__);
       color: "red",
       fontWeight: "bold"
     }
-  }, "0\uAC74"), "\uC758 \uAC8C\uC2DC\uBB3C"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, board_count, "\uAC74"), "\uC758 \uAC8C\uC2DC\uBB3C"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "board_category col-xl-8 col-lg-8 col-md-8"
@@ -96572,7 +96571,10 @@ __webpack_require__.r(__webpack_exports__);
   }, categories ? categories.map(function (value, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index,
-      className: "col-md-2"
+      className: "col-md-2",
+      onClick: function onClick() {
+        return board_get("/".concat(categories[index], "/board_get"));
+      }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "category_p"
     }, categories[index], /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "(", category_count[index], ")")));
@@ -96591,7 +96593,22 @@ __webpack_require__.r(__webpack_exports__);
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "menu_icon_3",
     src: "icon/menu3.png"
-  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Board_1_js__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Board_1_js__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-12 text-center"
+  }, pageCount ? pageCount.map(function (value, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      key: index,
+      className: "btn btn-primary",
+      onClick: function onClick() {
+        return board_get("/board_get?page=".concat(index + 1));
+      },
+      style: {
+        marginRight: "3px"
+      }
+    }, index + 1);
+  }) : null)));
 });
 
 /***/ }),

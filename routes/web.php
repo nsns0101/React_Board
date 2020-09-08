@@ -27,3 +27,4 @@ Route::get('/get_user', 'LoginController@is_login');
 //보드 페이지
 Route::resource('/board', 'BoardController');
 Route::get('/board_get', 'BoardController@get_boards');
+Route::get('/{id}/board_get', 'BoardController@get_boards');

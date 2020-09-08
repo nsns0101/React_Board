@@ -29,7 +29,7 @@ export default () => {
                     <tbody className="col-12 board_tbody text-center">
                             {notice ? notice.map( (value, index) => {
                                 return (
-                                    <tr key={index} style={{fontWeight:"bold", backgroundColor:"#e8e8e8"}}>
+                                    <tr key={index} style={{color:"red", fontWeight:"bold", backgroundColor:"#e8e8e8"}}>
                                         {/* {board_categories[index] = "공지"} */}
                                         <td>{notice[index].id}</td>
                                         <td>공지</td>
@@ -57,20 +57,7 @@ export default () => {
                 </table>
             </div>
 
-            <div className="col-md-12 text-center">
-                {pageCount ? pageCount.map( (value, index) => {
-                    return (
-                        <button 
-                            key={index} 
-                            className="btn btn-primary" 
-                            onClick={()=> board_get(`/board_get?page=${index + 1}`)}
-                            style={{marginRight:"3px"}}
-                        >    
-                            {index + 1}
-                        </button>
-                    )
-                }) : null}
-            </div>
+            
         </div>
     )
 }
