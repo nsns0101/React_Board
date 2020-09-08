@@ -5,6 +5,7 @@ import Board_3 from "./Board_3.js";
 import {BoardContext} from "../BoardContainer";
 import { Link } from "react-router-dom";
 import Board_write from "./Board_write.js";
+import { get } from "jquery";
 
 export default () => {
     //공지 자유 문의 팁 구매 판매
@@ -16,6 +17,7 @@ export default () => {
         categories,
         category_count,
         pageCount,
+        search,
         setSearch,
     } = useContext(BoardContext);
     
@@ -111,7 +113,10 @@ export default () => {
                                 setSearch(value);
                                 }}
                             />
-                            <button className="search_button">검색</button>
+                            <button 
+                                className="search_button"
+                                onClick={()=>board_get(`/${search}/board_get`)}
+                            >검색</button>
                         </div>    
                     </div>
                 </div>

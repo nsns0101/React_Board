@@ -182,27 +182,27 @@ export default ({ location, history }) => {
 
   return (
       <AuthView
-      action={action}
-      setAction={setAction}
-      // email={email} 
-      setEmail={setEmail}
-      // password={password}
-      setPassword={setPassword}
-      // password_check={password_check}
-      setPassword_check={setPassword_check}
-      // name={name}
-      setName={setName}
-      // birth={birth}
-      setBirth={setBirth}
-      gender={gender}
-      setGender={setGender}
-      // phone={phone}
-      setPhone={setPhone}
-      onSubmit={onSubmit}
-      setGender={setGender}
-      setConfirm_code={setConfirm_code}
-      danger_message={danger_message}
-      setDanger_message={setDanger_message}
+        action={action}
+        setAction={setAction}
+        // email={email} 
+        setEmail={setEmail}
+        // password={password}
+        setPassword={setPassword}
+        // password_check={password_check}
+        setPassword_check={setPassword_check}
+        // name={name}
+        setName={setName}
+        // birth={birth}
+        setBirth={setBirth}
+        gender={gender}
+        setGender={setGender}
+        // phone={phone}
+        setPhone={setPhone}
+        onSubmit={onSubmit}
+        setGender={setGender}
+        setConfirm_code={setConfirm_code}
+        danger_message={danger_message}
+        setDanger_message={setDanger_message}
       />
   );
 };

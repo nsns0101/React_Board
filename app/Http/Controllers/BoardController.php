@@ -27,16 +27,32 @@ class BoardController extends Controller
         }
         // \Log::info($categories);
         
-        //카테고리 검색한 게 있으면 카테고리별로 아니면 그냥 보여줌
-        $query = $choice_category ? \App\Category::whereCategory($choice_category)->first()->boards() : new \App\Board;
-        // \Log::info($query);
-        
         //카테고리 == 공지인 글
         $notice = \App\Board::whereCategory_id(1)->get();
+        
+        //키워드 검색을 통하여 게시글을 볼 경우
+        if($choice_category && !\App\Category::whereCategory($choice_category)->first()){
+            \Log::info("good");
+            $query = new \App\Board;
+            \Log::info($query->where('title','like', '%'.$choice_category.'%')->orderBy('id','desc')->paginate(10));
+            $boards = $query->where('title','like', '%'.$choice_category.'%')->orderBy('id','desc')->paginate(10);
+        }
+
+        //카테고리 검색을 통해 게시글을 볼 경우
+        else if($choice_category){
+            $query = $choice_category ? \App\Category::whereCategory($choice_category)->first()->boards() : new \App\Board;
+            // \Log::info($query);
+            $notice = [];   //카테고리 검색시 공지사항은 안보이게
+            $boards = $query->where('category_id','!=',1)->orderBy('id','desc')->paginate(10 - count($notice));
+        }
+        //홈페이지
+        else{
+            $query = new \App\Board;
+            $boards = $query->where('category_id','!=',1)->orderBy('id','desc')->paginate(10 - count($notice));
+        }
         // \Log::info($notice);
 
         //게시글 10 - 공지 수 내림차순
-        $boards = $query->where('category_id','!=',1)->orderBy('id','desc')->paginate(10 - count($notice));
         // \Log::info($boards);
 
         //게시글에 해당하는 카테고리

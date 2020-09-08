@@ -96368,6 +96368,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       notice: notice,
       pageCount: pageCount,
       category_count: category_count,
+      search: search,
       setSearch: setSearch
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BoardView__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : null;
@@ -96541,6 +96542,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BoardContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../BoardContainer */ "./resources/js/router/Board/BoardContainer.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _Board_write_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Board_write.js */ "./resources/js/router/Board/partial/Board_write.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -96558,6 +96562,7 @@ __webpack_require__.r(__webpack_exports__);
       categories = _useContext.categories,
       category_count = _useContext.category_count,
       pageCount = _useContext.pageCount,
+      search = _useContext.search,
       setSearch = _useContext.setSearch;
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -96662,7 +96667,10 @@ __webpack_require__.r(__webpack_exports__);
       setSearch(value);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "search_button"
+    className: "search_button",
+    onClick: function onClick() {
+      return board_get("/".concat(search, "/board_get"));
+    }
   }, "\uAC80\uC0C9")))) : action == "write" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Board_write_js__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
 });
 

@@ -72,6 +72,7 @@ export default () => {
             notice,
             pageCount,
             category_count,
+            search,
             setSearch,
 
         }}>
