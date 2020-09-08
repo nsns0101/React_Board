@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useState, useContext} from "react";
 import Board_1 from "./Board_1.js";
 import Board_2 from "./Board_2.js";
 import Board_3 from "./Board_3.js";
@@ -19,8 +19,9 @@ export default () => {
         pageCount,
         search,
         setSearch,
+        first_current_end_page,
+        setfirst_current_end_page
     } = useContext(BoardContext);
-    
     return (
         <div>
             {/* 백그라운드 이미지 */}
@@ -77,21 +78,43 @@ export default () => {
                     {/* 페이징 */}
                     <div className="row justify-content-around">
                         <div className="col-md-8 text-center">
+                            <button 
+                                className="btn"
+                                onClick={()=> {
+                                    board_get(`/board_get?page=${first_current_end_page[1]}`);
+                                }}
+                                style={{marginRight:"3px"}}
+                            >
+                                <img src="/icon/arrow_back_2.png" className="arrow_icon"/>
+                            </button>                                    
                             {pageCount ? pageCount.map( (value, index) => {
                                 return (
                                     <button 
                                         key={index} 
-                                        className="btn btn-primary" 
-                                        onClick={()=> board_get(`/board_get?page=${index + 1}`)}
+                                        className={`btn page_btn ${index+1 == first_current_end_page[0] ? "active" : "" }`}
+                                        onClick={()=> {
+                                            board_get(`/board_get?page=${index + 1}`);
+                                        }}
                                         style={{marginRight:"3px"}}
                                     >    
                                         {index + 1}
                                     </button>
                                 )
                             }) : null}
+                            <button 
+                                className="btn"
+                                onClick={()=> {
+                                    board_get(`/board_get?page=${first_current_end_page[2]}`);
+                                }}
+                                style={{marginRight:"3px"}}
+                            >
+                                <img src="/icon/arrow_next_2.png" className="arrow_icon"/>
+                            </button>   
+
+                            {/* 글 작성 버튼 */}
                             <button className="write_button">
                                 <Link to="/board/write" onClick={() => setAction("write")}>
-                                    글쓰기
+                                    글 작성
                                 </Link>
                             </button>
                         </div>
@@ -115,6 +138,7 @@ export default () => {
                             />
                             <button 
                                 className="search_button"
+                                style={{}}
                                 onClick={()=>board_get(`/${search}/board_get`)}
                             >검색</button>
                         </div>    

@@ -36,6 +36,8 @@ class BoardController extends Controller
             $query = new \App\Board;
             \Log::info($query->where('title','like', '%'.$choice_category.'%')->orderBy('id','desc')->paginate(10));
             $boards = $query->where('title','like', '%'.$choice_category.'%')->orderBy('id','desc')->paginate(10);
+            $notice = [];   //카테고리 검색시 공지사항은 안보이게
+
         }
 
         //카테고리 검색을 통해 게시글을 볼 경우

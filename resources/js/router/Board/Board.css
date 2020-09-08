@@ -69,28 +69,50 @@
   font-size: 18px;
 }
 
-.search_input {
-  /* margin-top: 10px; */
-  font-size: 24px;
-}
 
 .write_button {
-  font-size: 24px;
-  color: white;
-  background-color: blue;
+  padding: 5px;
+  background-color: #6b6b6b;
   float: right;
+  font-size: 20px;
+  color: white;
+}
+/* .write_button_p {
+  font-size: 20px;
+  color: white;
+}
+.write_button_icon {
+  width: 10%;
+} */
+
+.write_button a {
+  color: white;
 }
 
+.search_input {
+  width: 20%;
+  padding: 4px 0;
+  font-size: 16px;
+}
 .search_button {
   margin-left: 10px;
-  font-size: 24px;
+  padding: 5px;
+  font-size: 18px;
   background-color: #2D8CFF;
   color: white;
-  border: 0px;
+  /* border: 0px; */
 }
 
-
-
+.page_btn {
+  color: white;
+  background-color: gray;
+}
+.page_btn.active {
+  background-color:black;
+}
+.arrow_icon {
+  width: 10px;
+}
 
 .new {
     font-size : 18px;

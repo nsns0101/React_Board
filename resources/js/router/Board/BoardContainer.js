@@ -18,6 +18,7 @@ export default () => {
     const [pageCount, setPageCount] = useState(false);               //페이지 수
     const [category_count, setCategory_count] = useState(false);     //카테고리별 게시글 수
     const [search, setSearch] = useState(false);                     //검색어
+    const [first_current_end_page, setFirst_current_end_page] = useState(1);             //현재 페이지
 
     const board_get = (url) => {
         if(location.pathname.split("/")[2] == "write"){
@@ -38,11 +39,17 @@ export default () => {
             setNotice(res.data.notice);
             setCategory_count(res.data.category_count);
 
-            const array_page = [];
+            const array_page_count = [];
             for(var i = 0; i < res.data.boards.last_page; i++){
-                array_page.push(i);    //그냥 배열갯수늘릴려고
+                array_page_count.push(i);    //그냥 배열갯수늘릴려고
             }
-            setPageCount(array_page);
+            setPageCount(array_page_count);
+
+            setFirst_current_end_page([
+                res.data.boards.current_page,
+                1,
+                res.data.boards.last_page
+            ]);
         })
     }
     useEffect( () => {
@@ -57,6 +64,7 @@ export default () => {
     // console.log(board_users);
     // console.log(boards.length);
     // console.log(search);
+    console.log(first_current_end_page);
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
     return action && boards.length == board_users.length  ? (
@@ -74,6 +82,8 @@ export default () => {
             category_count,
             search,
             setSearch,
+            first_current_end_page,
+            setFirst_current_end_page
 
         }}>
             <BoardView/>
