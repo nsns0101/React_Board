@@ -132,3 +132,22 @@
     30% {color: yellow;}
     100% {color:red; font-weight: bold;} */
   }
+
+
+.write_main_p {
+  font-size: 30px;
+  margin-bottom: 20px;
+  /* color: black; */
+  /* font-weight: bold; */
+}
+
+.title_input {
+  font-size: 18px;
+  width: 70%;
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.03);
+  border: 0px;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+
+}

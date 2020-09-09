@@ -7198,7 +7198,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".board_image {\r\n    width: 100%;\r\n    height: 25vh;\r\n    background: url(\"/img/board_main.jpg\") center center no-repeat;\r\n    text-align: center;\r\n    /* background: linear-gradient(45deg, #002ef0 0%, rgba(116, 15, 214, 0.9) 100%), url(/images/hero-bg.jpg) center center no-repeat; */\r\n    background-size: cover;\r\n    /* filter: blur(1px); */\r\n  /* -webkit-filter: blur(8px) */\r\n    margin-bottom : 50px;\r\n\r\n}\r\n\r\n.board_total_p {\r\n  font-size: 30px;\r\n}\r\n\r\n.board_category {\r\n  margin: 10px 0 30px 0;\r\n  border-radius: 10px;\r\n  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .2);\r\n}\r\n\r\n.home_icon {\r\n  width: 30px;\r\n  padding: 10px 0;\r\n}\r\n.menu_box {\r\n  margin-top: 4px;\r\n  text-align: right;\r\n}\r\n.menu_icon_1 {\r\n  border : 1px solid black;\r\n  /* border-right : 1px solid white; */\r\n  border-radius: 5px 0px 0px 5px;\r\n  width: 40px;\r\n  padding: 5px;\r\n}\r\n.menu_icon_2 {\r\n  border : 1px solid black;\r\n  width: 40px;\r\n  padding: 5px;\r\n}\r\n.menu_icon_3 {\r\n  border : 1px solid black;\r\n  border-radius: 0px 5px 5px 0px;\r\n  width: 40px;\r\n  padding: 5px;\r\n}\r\n\r\n\r\n.category_p {\r\n  text-align: center;\r\n  padding-top: 13px;\r\n  font-size: 18px;\r\n}\r\n\r\n.board_thead {\r\n  text-align: center;\r\n  border-top : 3px solid #d1d1d1;\r\n  border-bottom : 3px solid #d1d1d1;\r\n}\r\n\r\n.board_thead tr td {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n.board_tbody tr td {\r\n  font-size: 18px;\r\n}\r\n\r\n\r\n.write_button {\r\n  padding: 5px;\r\n  background-color: #6b6b6b;\r\n  float: right;\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n/* .write_button_p {\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n.write_button_icon {\r\n  width: 10%;\r\n} */\r\n\r\n.write_button a {\r\n  color: white;\r\n}\r\n\r\n.search_input {\r\n  width: 20%;\r\n  padding: 4px 0;\r\n  font-size: 16px;\r\n}\r\n.search_button {\r\n  margin-left: 10px;\r\n  padding: 5px;\r\n  font-size: 18px;\r\n  background-color: #2D8CFF;\r\n  color: white;\r\n  /* border: 0px; */\r\n}\r\n\r\n.page_btn {\r\n  color: white;\r\n  background-color: gray;\r\n}\r\n.page_btn.active {\r\n  background-color:black;\r\n}\r\n.arrow_icon {\r\n  width: 10px;\r\n}\r\n\r\n.new {\r\n    font-size : 18px;\r\n    -webkit-animation-name: blink;\r\n            animation-name: blink;\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n    -webkit-animation-timing-function: ease;\r\n            animation-timing-function: ease;\r\n    -webkit-animation-iteration-count: infinite;\r\n            animation-iteration-count: infinite;\r\n    /* 위 속성들을 한 줄로 표기하기 */\r\n    /* -webkit-animation: blink 1.5s ease infinite; */\r\n  }\r\n\r\n  @-webkit-keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n  @keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }", ""]);
+exports.push([module.i, ".board_image {\r\n    width: 100%;\r\n    height: 25vh;\r\n    background: url(\"/img/board_main.jpg\") center center no-repeat;\r\n    text-align: center;\r\n    /* background: linear-gradient(45deg, #002ef0 0%, rgba(116, 15, 214, 0.9) 100%), url(/images/hero-bg.jpg) center center no-repeat; */\r\n    background-size: cover;\r\n    /* filter: blur(1px); */\r\n  /* -webkit-filter: blur(8px) */\r\n    margin-bottom : 50px;\r\n\r\n}\r\n\r\n.board_total_p {\r\n  font-size: 30px;\r\n}\r\n\r\n.board_category {\r\n  margin: 10px 0 30px 0;\r\n  border-radius: 10px;\r\n  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .2);\r\n}\r\n\r\n.home_icon {\r\n  width: 30px;\r\n  padding: 10px 0;\r\n}\r\n.menu_box {\r\n  margin-top: 4px;\r\n  text-align: right;\r\n}\r\n.menu_icon_1 {\r\n  border : 1px solid black;\r\n  /* border-right : 1px solid white; */\r\n  border-radius: 5px 0px 0px 5px;\r\n  width: 40px;\r\n  padding: 5px;\r\n}\r\n.menu_icon_2 {\r\n  border : 1px solid black;\r\n  width: 40px;\r\n  padding: 5px;\r\n}\r\n.menu_icon_3 {\r\n  border : 1px solid black;\r\n  border-radius: 0px 5px 5px 0px;\r\n  width: 40px;\r\n  padding: 5px;\r\n}\r\n\r\n\r\n.category_p {\r\n  text-align: center;\r\n  padding-top: 13px;\r\n  font-size: 18px;\r\n}\r\n\r\n.board_thead {\r\n  text-align: center;\r\n  border-top : 3px solid #d1d1d1;\r\n  border-bottom : 3px solid #d1d1d1;\r\n}\r\n\r\n.board_thead tr td {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n.board_tbody tr td {\r\n  font-size: 18px;\r\n}\r\n\r\n\r\n.write_button {\r\n  padding: 5px;\r\n  background-color: #6b6b6b;\r\n  float: right;\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n/* .write_button_p {\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n.write_button_icon {\r\n  width: 10%;\r\n} */\r\n\r\n.write_button a {\r\n  color: white;\r\n}\r\n\r\n.search_input {\r\n  width: 20%;\r\n  padding: 4px 0;\r\n  font-size: 16px;\r\n}\r\n.search_button {\r\n  margin-left: 10px;\r\n  padding: 5px;\r\n  font-size: 18px;\r\n  background-color: #2D8CFF;\r\n  color: white;\r\n  /* border: 0px; */\r\n}\r\n\r\n.page_btn {\r\n  color: white;\r\n  background-color: gray;\r\n}\r\n.page_btn.active {\r\n  background-color:black;\r\n}\r\n.arrow_icon {\r\n  width: 10px;\r\n}\r\n\r\n.new {\r\n    font-size : 18px;\r\n    -webkit-animation-name: blink;\r\n            animation-name: blink;\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n    -webkit-animation-timing-function: ease;\r\n            animation-timing-function: ease;\r\n    -webkit-animation-iteration-count: infinite;\r\n            animation-iteration-count: infinite;\r\n    /* 위 속성들을 한 줄로 표기하기 */\r\n    /* -webkit-animation: blink 1.5s ease infinite; */\r\n  }\r\n\r\n  @-webkit-keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n  @keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n\r\n.write_main_p {\r\n  font-size: 30px;\r\n  margin-bottom: 20px;\r\n  /* color: black; */\r\n  /* font-weight: bold; */\r\n}\r\n\r\n.title_input {\r\n  font-size: 18px;\r\n  width: 70%;\r\n  padding: .75rem 1.25rem;\r\n  margin-bottom: 0;\r\n  background-color: rgba(0,0,0,.03);\r\n  border: 0px;\r\n  border-bottom: 1px solid rgba(0,0,0,.125);\r\n\r\n}", ""]);
 
 // exports
 
@@ -96322,6 +96322,36 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       setFirst_current_end_page = _useState22[1]; //현재 페이지
 
 
+  var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState24 = _slicedToArray(_useState23, 2),
+      title = _useState24[0],
+      setTitle = _useState24[1]; //제목
+
+
+  var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState26 = _slicedToArray(_useState25, 2),
+      category = _useState26[0],
+      setCategory = _useState26[1]; //카테고리
+
+
+  var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState28 = _slicedToArray(_useState27, 2),
+      content = _useState28[0],
+      setContent = _useState28[1]; //내용
+
+
+  var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState30 = _slicedToArray(_useState29, 2),
+      secret = _useState30[0],
+      setSecret = _useState30[1]; //비밀 글 여부
+
+
+  var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState32 = _slicedToArray(_useState31, 2),
+      attachment = _useState32[0],
+      setAttachment = _useState32[1]; //첨부파일
+
+
   var board_get = function board_get(url) {
     if (location.pathname.split("/")[2] == "write") {
       setAction("write"); //글 작성
@@ -96351,7 +96381,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     board_get("/board_get");
-  }, []); // console.log(board_count);
+  }, [location.pathname]); // console.log(board_count);
   // console.log(boards);
   // console.log(board_categories);
   // console.log(categories);
@@ -96379,7 +96409,17 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       search: search,
       setSearch: setSearch,
       first_current_end_page: first_current_end_page,
-      setFirst_current_end_page: setFirst_current_end_page
+      setFirst_current_end_page: setFirst_current_end_page,
+      title: title,
+      setTitle: setTitle,
+      category: category,
+      setCategory: setCategory,
+      content: content,
+      setContent: setContent,
+      secret: secret,
+      setSecret: setSecret,
+      attachment: attachment,
+      setAttachment: setAttachment
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BoardView__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : null;
 });
@@ -96400,7 +96440,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Board_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Board.css */ "./resources/js/router/Board/Board.css");
 /* harmony import */ var _Board_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Board_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _BoardContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BoardContainer */ "./resources/js/router/Board/BoardContainer.js");
-/* harmony import */ var _partial_Board_home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partial/Board_home */ "./resources/js/router/Board/partial/Board_home.js");
+/* harmony import */ var _home_Board_home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/Board_home */ "./resources/js/router/Board/home/Board_home.js");
 
 
 
@@ -96409,16 +96449,16 @@ __webpack_require__.r(__webpack_exports__);
   return (
     /*#__PURE__*/
     // <span class="hit">New</span>
-    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Board_home__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Board_home__WEBPACK_IMPORTED_MODULE_3__["default"], null)
   );
 });
 
 /***/ }),
 
-/***/ "./resources/js/router/Board/partial/Board_1.js":
-/*!******************************************************!*\
-  !*** ./resources/js/router/Board/partial/Board_1.js ***!
-  \******************************************************/
+/***/ "./resources/js/router/Board/home/Board_1.js":
+/*!***************************************************!*\
+  !*** ./resources/js/router/Board/home/Board_1.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -96479,10 +96519,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/router/Board/partial/Board_2.js":
-/*!******************************************************!*\
-  !*** ./resources/js/router/Board/partial/Board_2.js ***!
-  \******************************************************/
+/***/ "./resources/js/router/Board/home/Board_2.js":
+/*!***************************************************!*\
+  !*** ./resources/js/router/Board/home/Board_2.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -96507,10 +96547,10 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
 
 /***/ }),
 
-/***/ "./resources/js/router/Board/partial/Board_3.js":
-/*!******************************************************!*\
-  !*** ./resources/js/router/Board/partial/Board_3.js ***!
-  \******************************************************/
+/***/ "./resources/js/router/Board/home/Board_3.js":
+/*!***************************************************!*\
+  !*** ./resources/js/router/Board/home/Board_3.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -96535,10 +96575,10 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
 
 /***/ }),
 
-/***/ "./resources/js/router/Board/partial/Board_home.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/router/Board/partial/Board_home.js ***!
-  \*********************************************************/
+/***/ "./resources/js/router/Board/home/Board_home.js":
+/*!******************************************************!*\
+  !*** ./resources/js/router/Board/home/Board_home.js ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -96546,12 +96586,12 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Board_1_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Board_1.js */ "./resources/js/router/Board/partial/Board_1.js");
-/* harmony import */ var _Board_2_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Board_2.js */ "./resources/js/router/Board/partial/Board_2.js");
-/* harmony import */ var _Board_3_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Board_3.js */ "./resources/js/router/Board/partial/Board_3.js");
+/* harmony import */ var _Board_1_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Board_1.js */ "./resources/js/router/Board/home/Board_1.js");
+/* harmony import */ var _Board_2_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Board_2.js */ "./resources/js/router/Board/home/Board_2.js");
+/* harmony import */ var _Board_3_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Board_3.js */ "./resources/js/router/Board/home/Board_3.js");
 /* harmony import */ var _BoardContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../BoardContainer */ "./resources/js/router/Board/BoardContainer.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Board_write_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Board_write.js */ "./resources/js/router/Board/partial/Board_write.js");
+/* harmony import */ var _write_Board_write_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../write/Board_write.js */ "./resources/js/router/Board/write/Board_write.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_7__);
 
@@ -96680,13 +96720,13 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "/icon/arrow_next_2.png",
     className: "arrow_icon"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "write_button"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
     to: "/board/write",
     onClick: function onClick() {
       return setAction("write");
     }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "write_button"
   }, "\uAE00 \uC791\uC131")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -96706,15 +96746,15 @@ __webpack_require__.r(__webpack_exports__);
     onClick: function onClick() {
       return board_get("/".concat(search, "/board_get"));
     }
-  }, "\uAC80\uC0C9")))) : action == "write" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Board_write_js__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
+  }, "\uAC80\uC0C9")))) : action == "write" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_write_Board_write_js__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
 });
 
 /***/ }),
 
-/***/ "./resources/js/router/Board/partial/Board_write.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/router/Board/partial/Board_write.js ***!
-  \**********************************************************/
+/***/ "./resources/js/router/Board/write/Board_write.js":
+/*!********************************************************!*\
+  !*** ./resources/js/router/Board/write/Board_write.js ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -96724,21 +96764,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _BoardContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BoardContainer */ "./resources/js/router/Board/BoardContainer.js");
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_2__["BoardContext"]);
-
-  _objectDestructuringEmpty(_useContext);
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_2__["BoardContext"]),
+      title = _useContext.title,
+      setTitle = _useContext.setTitle,
+      category = _useContext.category,
+      setCategory = _useContext.setCategory,
+      content = _useContext.content,
+      setContent = _useContext.setContent,
+      secret = _useContext.secret,
+      setSecret = _useContext.setSecret,
+      attachment = _useContext.attachment,
+      setAttachment = _useContext.setAttachment;
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-8"
-  }, "good"));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "write_main_p"
+  }, "\uAE00 \uC791\uC131")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-xl-8 col-lg-8 col-md-8",
+    style: {
+      borderRadius: "20px",
+      boxShadow: "6px 6px 6px 6px rgba(0, 0, 0, .2)"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "title_input",
+    name: "title",
+    type: "text",
+    placeholder: "\uAE00 \uC81C\uBAA9\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.",
+    onChange: function onChange(e) {
+      var value = e.target.value;
+      setTitle(value);
+    }
+  }))));
 });
 
 /***/ }),

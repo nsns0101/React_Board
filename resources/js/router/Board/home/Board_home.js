@@ -4,7 +4,7 @@ import Board_2 from "./Board_2.js";
 import Board_3 from "./Board_3.js";
 import {BoardContext} from "../BoardContainer";
 import { Link } from "react-router-dom";
-import Board_write from "./Board_write.js";
+import Board_write from "../write/Board_write.js";
 import { get } from "jquery";
 
 export default () => {
@@ -112,11 +112,11 @@ export default () => {
                             </button>   
 
                             {/* 글 작성 버튼 */}
-                            <button className="write_button">
-                                <Link to="/board/write" onClick={() => setAction("write")}>
-                                    글 작성
-                                </Link>
-                            </button>
+                            <Link to="/board/write" onClick={() => setAction("write")}>
+                                <button className="write_button">
+                                        글 작성
+                                </button>
+                            </Link>
                         </div>
                     </div>
 

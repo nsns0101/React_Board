@@ -20,6 +20,12 @@ export default () => {
     const [search, setSearch] = useState(false);                     //검색어
     const [first_current_end_page, setFirst_current_end_page] = useState(1);             //현재 페이지
 
+    const [title, setTitle] = useState(false);              //제목
+    const [category, setCategory] = useState(false);        //카테고리
+    const [content, setContent] = useState(false);          //내용
+    const [secret, setSecret] = useState(false);            //비밀 글 여부
+    const [attachment, setAttachment] = useState(false);    //첨부파일
+    
     const board_get = (url) => {
         if(location.pathname.split("/")[2] == "write"){
             setAction("write"); //글 작성
@@ -54,7 +60,7 @@ export default () => {
     }
     useEffect( () => {
         board_get("/board_get");
-    }, []);
+    }, [location.pathname]);
     // console.log(board_count);
     // console.log(boards);
     // console.log(board_categories);
@@ -83,7 +89,17 @@ export default () => {
             search,
             setSearch,
             first_current_end_page,
-            setFirst_current_end_page
+            setFirst_current_end_page,
+            title,
+            setTitle,
+            category,
+            setCategory,
+            content,
+            setContent,
+            secret,
+            setSecret,
+            attachment,
+            setAttachment,
 
         }}>
             <BoardView/>
