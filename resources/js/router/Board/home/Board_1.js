@@ -33,7 +33,7 @@ export default () => {
                                         {/* {board_categories[index] = "공지"} */}
                                         <td>{notice[index].id}</td>
                                         <td>공지</td>
-                                        <td style={{textAlign:"left"}}>{notice[index].title}</td>
+                                        <td style={{textAlign:"left", cursor:"pointer"}}>{notice[index].title}</td>
                                         <td>이재영</td>
                                         <td>{moment(notice[index].created_at).format("YYYY-MM-DD")}</td>
                                         <td>{notice[index].view_count}</td>
@@ -46,7 +46,7 @@ export default () => {
                                         {/* {board_categories[index] = "공지"} */}
                                         <td>{boards[index].id}</td>
                                         <td>{board_categories[index]}</td>
-                                        <td style={{textAlign:"left"}}>{boards[index].title}</td>
+                                        <td style={{textAlign:"left", cursor:"pointer"}}>{boards[index].title}</td>
                                         <td>{board_users[index].name}</td>
                                         <td>{moment(boards[index].created_at).format("YYYY-MM-DD")}</td>
                                         <td>{boards[index].view_count}</td>

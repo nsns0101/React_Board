@@ -48,7 +48,7 @@ export default () => {
                             {/* <Link to ="/service/create/survey"> */}
                             <div className="row card-body" style={{padding:0}}>
                                 <div className="col-md-1 text-center">
-                                    <img className="home_icon" src="icon/home.png"/>
+                                    <img className="home_icon" src="icon/home.png" onClick={() => board_get(`/board_get`)}/>
                                 </div>
                                 <div className="row col-md-8" style={{borderRadius:"5px", borderLeft: "1px solid #8E9799"}}>
                                     {categories ? categories.map( (value, index) => {

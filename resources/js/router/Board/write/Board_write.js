@@ -23,19 +23,33 @@ export default () => {
             </div>
 
             <div className="col-xl-8 col-lg-8 col-md-8" style={{borderRadius:"20px",boxShadow:"6px 6px 6px 6px rgba(0, 0, 0, .2)"}}>
-                <div className="card-body">
-                    <input 
-                        className="title_input"
-                        name ="title"
-                        type="text"
-                        placeholder="글 제목을 입력해주세요."
-                        onChange={ e => {
-                        const {
-                            target: { value }
-                        } = e;
-                        setTitle(value);
-                        }}
-                    />
+                <div className="row card-body">
+                    {/* 제목 */}
+                    <div className="col-md-8">
+                        <input 
+                            className="title_input"
+                            name ="title"
+                            type="text"
+                            placeholder="글 제목을 입력해주세요."
+                            onChange={ e => {
+                            const {
+                                target: { value }
+                            } = e;
+                            setTitle(value);
+                            }}
+                        />
+                    </div>
+                    {/* 비밀 글 여부 */}
+                    <div>
+                        <label style={{fontSize:"18px"}}>
+                            <input 
+                                type="checkbox" 
+                                class="option-input"
+                                style={{border:0, outline: 0}}    
+                            />
+                            비밀 글 여부
+                        </label>
+                    </div>
                 </div> 
             </div>
         </div>
