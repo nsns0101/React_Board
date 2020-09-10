@@ -70,7 +70,11 @@ export default () => {
     // console.log(board_users);
     // console.log(boards.length);
     // console.log(search);
-    console.log(first_current_end_page);
+    // console.log(first_current_end_page);
+    // console.log(secret);
+    // console.log(title);
+    // console.log(content);
+
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
     return action && boards.length == board_users.length  ? (

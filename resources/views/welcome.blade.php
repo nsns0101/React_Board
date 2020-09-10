@@ -24,7 +24,7 @@
 	<link rel="stylesheet" href="/css/style.css">
     
 	{{-- 자체 css --}}
-	<link rel="stylesheet" href="/css/app.css">
+	<link rel="stylesheet" href="/css/ljy.css">
     
     
     
