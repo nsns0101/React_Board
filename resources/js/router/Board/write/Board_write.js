@@ -15,10 +15,19 @@ export default () => {
         setSecret,
         attachment,
         setAttachment,
-        categories,     
+        categories,
+        Submit,    
     } = useContext(BoardContext);
     return (
         <div className="row justify-content-center">
+
+            {/* 백그라운드 이미지 */}
+            <div className="board_image">
+                <p style={{color:"white", textShadow:"black 12px 0px 3px",fontSize:"80px", paddingTop:"120px", fontWeight:"bold"}}>
+                    Board
+                </p>
+            </div>
+
             <div className="col-md-8 text-center">
                 <p className="write_main_title">글 작성</p>
             </div>
@@ -43,7 +52,7 @@ export default () => {
                     </div>
                     {/* 비밀 글 여부 */}
                     <div className="col-md-4">
-                        <label className="row" style={{fontSize:"18px", float:"right", marginRight:"30px"}}>
+                        <label className="row" style={{fontSize:"18px", float:"right", marginRight:"10px"}}>
                             <input 
                                 type="checkbox" 
                                 className="option-input"
@@ -83,7 +92,13 @@ export default () => {
                     {/* 첨부파일 추가 */}
                     <div className="col-md-12">
                         <span className="write_main_p" style={{color:"black"}}>첨부파일 추가</span>
-                        
+                    </div>
+
+                    <div className="col-md-12 text-center">
+                        <button 
+                            className="btn btn-primary"
+                            onClick={() => Submit("write")}    
+                        >작성하기</button>
                     </div>
                 </div> 
             </div>

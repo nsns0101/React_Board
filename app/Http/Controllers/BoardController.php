@@ -97,7 +97,19 @@ class BoardController extends Controller
 
     public function store(Request $request)
     {
-        //
+        \Log::info($request->all());
+
+        $category_id = \App\Category::whereCategory($request["category"])->first()->id;
+        \App\Board::create([
+            'user_id' => \Auth::user()->id,
+            'category_id' => $category_id,
+            'title' => $request["title"],
+            'content' => $request["content"],
+            'secret' => $request["secret"]
+        ]);
+        return response()->json([
+            'status' => true
+        ]);
     }
 
     /**

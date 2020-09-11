@@ -4,7 +4,7 @@ import { AppContext } from "../../components/App";
 import Axios from "axios";
 export const BoardContext = createContext();
 
-export default () => {
+export default ({history}) => {
 
     // const { setUser } = useContext(AppContext);
     // const [user, setUser] = useState(false);                      //로그인 유저
@@ -61,6 +61,31 @@ export default () => {
     useEffect( () => {
         board_get("/board_get");
     }, [location.pathname]);
+
+
+    const Submit = (form) => {
+        if(form == "write"){
+            const body = {
+                title : title,
+                category : category,
+                content : content,
+                secret : secret,
+            }
+            const config = {
+                headers: {
+                  'Content-Type' : 'application/json'
+                }
+              }
+            Axios.post("/board", body, config).then( res => {
+                console.log(res);
+
+                if(res.data.status){
+                    history.push("/board");
+                }
+            })
+        }
+    }
+
     // console.log(board_count);
     // console.log(boards);
     // console.log(board_categories);
@@ -104,7 +129,7 @@ export default () => {
             setSecret,
             attachment,
             setAttachment,
-
+            Submit,
         }}>
             <BoardView/>
         </BoardContext.Provider>
