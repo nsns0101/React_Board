@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext, createContext} from "react";
 import BoardView from "./BoardView";
 import { AppContext } from "../../components/App";
 import Axios from "axios";
+import Board_write from "./write/Board_write";
 export const BoardContext = createContext();
 
 export default ({history}) => {
@@ -25,16 +26,11 @@ export default ({history}) => {
     const [content, setContent] = useState(false);          //내용
     const [secret, setSecret] = useState(false);            //비밀 글 여부
     const [attachment, setAttachment] = useState(false);    //첨부파일
-    
-    const board_get = (url) => {
-        if(location.pathname.split("/")[2] == "write"){
-            setAction("write"); //글 작성
-        }
-        else {
-            setAction("home");  //홈
-        }
 
-        Axios.get(url).then(res => {
+
+    //홈페이지
+    const board_get = () => {
+        Axios.get("board_get").then(res => {
             console.log(res);
             
             setBoard_count(res.data.board_count);
@@ -58,8 +54,47 @@ export default ({history}) => {
             ]);
         })
     }
+
+    //글 작성페이지
+    const board_write = () => {
+        Axios.get("/board/create").then(res => {
+            console.log(res);
+
+            setCategories(res.data.categories);
+
+        })
+    }
+    
+    // 글 디테일페이지
+    const board_detail = (id) => {
+        Axios.get(`/board/detail/${id}`).then(res => {
+            console.log(res);
+
+            setTitle(res.data.detail_board.title);
+            setCategory(res.data.category);
+            setContent(res.data.detail_board.content);
+            // setSecret(res.data);
+            // setAttachment(res.data);
+        })
+    }
+
     useEffect( () => {
-        board_get("/board_get");
+        if(location.pathname.split("/")[2] == "write"){
+            console.log("write");
+            setAction("write"); //글 작성
+            board_write();
+        }
+        //Number형으로 바꿔도 옳은 값이면 => 게시글 detail
+        else if(location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])){
+            console.log("detail");
+            setAction("detail");
+            board_detail(location.pathname.split("/")[2])
+        }
+        else {
+            console.log("home");
+            setAction("home");  //홈
+            board_get();
+        }
     }, [location.pathname]);
 
 
@@ -85,7 +120,7 @@ export default ({history}) => {
             })
         }
     }
-
+    console.log(action);
     // console.log(board_count);
     // console.log(boards);
     // console.log(board_categories);
@@ -97,8 +132,10 @@ export default ({history}) => {
     // console.log(search);
     // console.log(first_current_end_page);
     // console.log(secret);
-    // console.log(title);
-    // console.log(content);
+
+    console.log(category);
+    console.log(title);
+    console.log(content);
 
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리

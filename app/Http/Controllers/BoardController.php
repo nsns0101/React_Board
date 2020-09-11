@@ -92,7 +92,17 @@ class BoardController extends Controller
 
     public function create()
     {
-        //
+        //존재하는 카테고리
+        $categories = array();
+        for($i = 0; $i < count(\App\Category::get()); $i++){
+            array_push($categories, \App\Category::get()[$i]->category);
+        }
+        // \Log::info($categories);
+
+        return response()->json([
+            'status' => true,
+            'categories' => $categories,
+        ]);
     }
 
     public function store(Request $request)
@@ -123,6 +133,18 @@ class BoardController extends Controller
         return view('welcome');
     }
 
+    public function board_detail($id){
+        $detail_board = \App\Board::whereId($id)->first();
+        \Log::info($detail_board);
+        $category = \App\Category::whereId($detail_board->category_id)->first()->category;
+        \Log::info($category);
+
+        return response()->json([
+            'status' => true,
+            'category' => $category,
+            'detail_board' => $detail_board,
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

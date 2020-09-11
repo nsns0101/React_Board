@@ -96597,6 +96597,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/App */ "./resources/js/components/App.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _write_Board_write__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./write/Board_write */ "./resources/js/router/Board/write/Board_write.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -96608,6 +96609,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -96713,16 +96715,11 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       _useState32 = _slicedToArray(_useState31, 2),
       attachment = _useState32[0],
       setAttachment = _useState32[1]; //첨부파일
+  //홈페이지
 
 
-  var board_get = function board_get(url) {
-    if (location.pathname.split("/")[2] == "write") {
-      setAction("write"); //글 작성
-    } else {
-      setAction("home"); //홈
-    }
-
-    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(url).then(function (res) {
+  var board_get = function board_get() {
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("board_get").then(function (res) {
       console.log(res);
       setBoard_count(res.data.board_count);
       setBoards(res.data.boards.data);
@@ -96740,10 +96737,44 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       setPageCount(array_page_count);
       setFirst_current_end_page([res.data.boards.current_page, 1, res.data.boards.last_page]);
     });
+  }; //글 작성페이지
+
+
+  var board_write = function board_write() {
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/board/create").then(function (res) {
+      console.log(res);
+      setCategories(res.data.categories);
+    });
+  }; // 글 디테일페이지
+
+
+  var board_detail = function board_detail(id) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/board/detail/".concat(id)).then(function (res) {
+      console.log(res);
+      setTitle(res.data.detail_board.title);
+      setCategory(res.data.category);
+      setContent(res.data.detail_board.content); // setSecret(res.data);
+      // setAttachment(res.data);
+    });
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    board_get("/board_get");
+    if (location.pathname.split("/")[2] == "write") {
+      console.log("write");
+      setAction("write"); //글 작성
+
+      board_write();
+    } //Number형으로 바꿔도 옳은 값이면 => 게시글 detail
+    else if (location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])) {
+        console.log("detail");
+        setAction("detail");
+        board_detail(location.pathname.split("/")[2]);
+      } else {
+        console.log("home");
+        setAction("home"); //홈
+
+        board_get();
+      }
   }, [location.pathname]);
 
   var Submit = function Submit(form) {
@@ -96767,7 +96798,9 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         }
       });
     }
-  }; // console.log(board_count);
+  };
+
+  console.log(action); // console.log(board_count);
   // console.log(boards);
   // console.log(board_categories);
   // console.log(categories);
@@ -96778,10 +96811,10 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   // console.log(search);
   // console.log(first_current_end_page);
   // console.log(secret);
-  // console.log(title);
-  // console.log(content);
-  //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
 
+  console.log(category);
+  console.log(title);
+  console.log(content); //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
 
   return action && boards.length == board_users.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
@@ -96833,6 +96866,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BoardContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BoardContainer */ "./resources/js/router/Board/BoardContainer.js");
 /* harmony import */ var _home_Board_home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/Board_home */ "./resources/js/router/Board/home/Board_home.js");
 /* harmony import */ var _write_Board_write__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./write/Board_write */ "./resources/js/router/Board/write/Board_write.js");
+/* harmony import */ var _detail_Board_detail__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./detail/Board_detail */ "./resources/js/router/Board/detail/Board_detail.js");
+
 
 
 
@@ -96845,7 +96880,43 @@ __webpack_require__.r(__webpack_exports__);
   return action && action == "home" ?
   /*#__PURE__*/
   // <span class="hit">New</span>
-  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Board_home__WEBPACK_IMPORTED_MODULE_3__["default"], null) : action == "write" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_write_Board_write__WEBPACK_IMPORTED_MODULE_4__["default"], null) : null;
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Board_home__WEBPACK_IMPORTED_MODULE_3__["default"], null) : action == "write" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_write_Board_write__WEBPACK_IMPORTED_MODULE_4__["default"], null) : action == "detail" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_detail_Board_detail__WEBPACK_IMPORTED_MODULE_5__["default"], null) : null;
+});
+
+/***/ }),
+
+/***/ "./resources/js/router/Board/detail/Board_detail.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/router/Board/detail/Board_detail.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _BoardContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BoardContainer */ "./resources/js/router/Board/BoardContainer.js");
+/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dropdown */ "./node_modules/react-dropdown/dist/index.js");
+/* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dropdown__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_2__["BoardContext"]),
+      title = _useContext.title,
+      category = _useContext.category,
+      content = _useContext.content,
+      secret = _useContext.secret,
+      attachment = _useContext.attachment,
+      categories = _useContext.categories,
+      Submit = _useContext.Submit;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row justify-content-center"
+  });
 });
 
 /***/ }),
@@ -96876,7 +96947,8 @@ __webpack_require__.r(__webpack_exports__);
       board_categories = _useContext.board_categories,
       board_users = _useContext.board_users,
       notice = _useContext.notice,
-      pageCount = _useContext.pageCount;
+      pageCount = _useContext.pageCount,
+      setAction = _useContext.setAction;
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center"
@@ -96901,7 +96973,12 @@ __webpack_require__.r(__webpack_exports__);
         textAlign: "left",
         cursor: "pointer"
       }
-    }, notice[index].title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\uC774\uC7AC\uC601"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, moment__WEBPACK_IMPORTED_MODULE_3___default()(notice[index].created_at).format("YYYY-MM-DD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, notice[index].view_count));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/board/".concat(index + 1),
+      onClick: function onClick() {
+        return setAction("detail");
+      }
+    }, notice[index].title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\uC774\uC7AC\uC601"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, moment__WEBPACK_IMPORTED_MODULE_3___default()(notice[index].created_at).format("YYYY-MM-DD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, notice[index].view_count));
   }) : null, boards && board_categories && board_users ? boards.map(function (value, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: index

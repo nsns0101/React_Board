@@ -11,6 +11,7 @@ export default () => {
         board_users,
         notice,
         pageCount,
+        setAction,
     } = useContext(BoardContext);
     return (
         <div className="row justify-content-center">
@@ -33,7 +34,11 @@ export default () => {
                                         {/* {board_categories[index] = "공지"} */}
                                         <td>{notice[index].id}</td>
                                         <td>공지</td>
-                                        <td style={{textAlign:"left", cursor:"pointer"}}>{notice[index].title}</td>
+                                        <td style={{textAlign:"left", cursor:"pointer"}}>
+                                            <Link to={`/board/${index+1}`} onClick={()=>setAction("detail")}>
+                                                {notice[index].title}
+                                            </Link>
+                                        </td>
                                         <td>이재영</td>
                                         <td>{moment(notice[index].created_at).format("YYYY-MM-DD")}</td>
                                         <td>{notice[index].view_count}</td>

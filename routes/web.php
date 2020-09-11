@@ -28,3 +28,4 @@ Route::get('/get_user', 'LoginController@is_login');
 Route::resource('/board', 'BoardController');
 Route::get('/board_get', 'BoardController@get_boards');
 Route::get('/{id}/board_get', 'BoardController@get_boards');
+Route::get('/board/detail/{id}', 'BoardController@board_detail');
