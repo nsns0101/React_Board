@@ -4,6 +4,7 @@ import { AppContext } from "../../components/App";
 import Axios from "axios";
 import Board_write from "./write/Board_write";
 export const BoardContext = createContext();
+import moment from "moment";
 
 export default ({history}) => {
 
@@ -21,16 +22,20 @@ export default ({history}) => {
     const [search, setSearch] = useState(false);                     //검색어
     const [first_current_end_page, setFirst_current_end_page] = useState(1);             //현재 페이지
 
+    const [user, setUser] = useState(false);
     const [title, setTitle] = useState(false);              //제목
     const [category, setCategory] = useState(false);        //카테고리
     const [content, setContent] = useState(false);          //내용
     const [secret, setSecret] = useState(false);            //비밀 글 여부
     const [attachment, setAttachment] = useState(false);    //첨부파일
-
-
+    const [created_at, setCreated_at] = useState(false);
+    //view_count,
+    //comment_count,
+    //vote  //좋아요, 싫어요 배열
+    
     //홈페이지
-    const board_get = () => {
-        Axios.get("board_get").then(res => {
+    const board_get = (url) => {
+        Axios.get(url).then(res => {
             console.log(res);
             
             setBoard_count(res.data.board_count);
@@ -70,11 +75,13 @@ export default ({history}) => {
         Axios.get(`/board/detail/${id}`).then(res => {
             console.log(res);
 
+            setUser(res.data.detail_user);
             setTitle(res.data.detail_board.title);
             setCategory(res.data.category);
             setContent(res.data.detail_board.content);
             // setSecret(res.data);
             // setAttachment(res.data);
+            setCreated_at(moment(res.data.detail_board.created_at).format("YYYY-MM-DD"));
         })
     }
 
@@ -93,7 +100,7 @@ export default ({history}) => {
         else {
             console.log("home");
             setAction("home");  //홈
-            board_get();
+            board_get("board_get");
         }
     }, [location.pathname]);
 
@@ -120,7 +127,7 @@ export default ({history}) => {
             })
         }
     }
-    console.log(action);
+    // console.log(action);
     // console.log(board_count);
     // console.log(boards);
     // console.log(board_categories);
@@ -133,9 +140,11 @@ export default ({history}) => {
     // console.log(first_current_end_page);
     // console.log(secret);
 
-    console.log(category);
-    console.log(title);
-    console.log(content);
+    // console.log(category);
+    // console.log(title);
+    // console.log(content);
+    // console.log(created_at);
+    // console.log(user);
 
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
@@ -166,7 +175,9 @@ export default ({history}) => {
             setSecret,
             attachment,
             setAttachment,
+            created_at,
             Submit,
+            user
         }}>
             <BoardView/>
         </BoardContext.Provider>

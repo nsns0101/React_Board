@@ -255,3 +255,49 @@
   font-weight: 600; 
   margin-bottom: 30px; 
 }
+
+.detail_header {
+  width: 100%;
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.03);
+  border-top: 1px solid rgba(0,0,0,.125);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.detail_header_2 {
+  width: 100%;
+}
+
+.detail_title_span {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  padding: 0;
+  margin: 0;
+}
+
+.detail_date_span {
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+
+
+.detail_name_span {
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.detail_option_span {
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+
+.detail_content {
+  margin: 30px 5%;
+}

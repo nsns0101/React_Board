@@ -7260,7 +7260,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".board_image {\r\n    width: 100%;\r\n    height: 25vh;\r\n    background: url(\"/img/board_main.jpg\") center center no-repeat;\r\n    text-align: center;\r\n    /* background: linear-gradient(45deg, #002ef0 0%, rgba(116, 15, 214, 0.9) 100%), url(/images/hero-bg.jpg) center center no-repeat; */\r\n    background-size: cover;\r\n    /* filter: blur(1px); */\r\n  /* -webkit-filter: blur(8px) */\r\n    margin-bottom : 50px;\r\n\r\n}\r\n\r\n.board_total_p {\r\n  font-size: 30px;\r\n}\r\n\r\n.board_category {\r\n  margin: 10px 0 30px 0;\r\n  border-radius: 10px;\r\n  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .2);\r\n}\r\n\r\n.home_icon {\r\n  width: 30px;\r\n  padding: 10px 0;\r\n  cursor: pointer;\r\n}\r\n.menu_box {\r\n  margin-top: 4px;\r\n  text-align: right;\r\n}\r\n.menu_icon_1 {\r\n  border : 1px solid black;\r\n  /* border-right : 1px solid white; */\r\n  border-radius: 5px 0px 0px 5px;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n.menu_icon_2 {\r\n  border : 1px solid black;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n.menu_icon_3 {\r\n  border : 1px solid black;\r\n  border-radius: 0px 5px 5px 0px;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n\r\n.category_p {\r\n  text-align: center;\r\n  padding-top: 13px;\r\n  font-size: 18px;\r\n  cursor: pointer;\r\n}\r\n\r\n.board_thead {\r\n  text-align: center;\r\n  border-top : 3px solid #d1d1d1;\r\n  border-bottom : 3px solid #d1d1d1;\r\n}\r\n\r\n.board_thead tr td {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n.board_tbody tr td {\r\n  font-size: 18px;\r\n}\r\n\r\n\r\n.write_button {\r\n  padding: 5px;\r\n  background-color: #6b6b6b;\r\n  float: right;\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n/* .write_button_p {\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n.write_button_icon {\r\n  width: 10%;\r\n} */\r\n\r\n.write_button a {\r\n  color: white;\r\n}\r\n\r\n.search_input {\r\n  width: 20%;\r\n  padding: 4px 0;\r\n  font-size: 16px;\r\n}\r\n.search_button {\r\n  margin-left: 10px;\r\n  padding: 5px;\r\n  font-size: 18px;\r\n  background-color: #2D8CFF;\r\n  color: white;\r\n  /* border: 0px; */\r\n}\r\n\r\n.page_btn {\r\n  color: white;\r\n  background-color: gray;\r\n}\r\n.page_btn.active {\r\n  background-color:black;\r\n}\r\n.arrow_icon {\r\n  width: 10px;\r\n}\r\n\r\n.new {\r\n    font-size : 18px;\r\n    -webkit-animation-name: blink;\r\n            animation-name: blink;\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n    -webkit-animation-timing-function: ease;\r\n            animation-timing-function: ease;\r\n    -webkit-animation-iteration-count: infinite;\r\n            animation-iteration-count: infinite;\r\n    /* 위 속성들을 한 줄로 표기하기 */\r\n    /* -webkit-animation: blink 1.5s ease infinite; */\r\n  }\r\n\r\n  @-webkit-keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n  @keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n.write_main_title {\r\n  color: black;\r\n  font-size: 30px;\r\n  /* font-weight: bold; */\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.write_main_p {\r\n  padding: .75rem 1.25rem;\r\n  font-size: 24px;\r\n  font-weight: bold;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.title_input {\r\n  font-size: 18px;\r\n  width: 100%;\r\n  padding: .75rem 1.25rem;\r\n  margin-bottom: 30px;\r\n  background-color: rgba(0,0,0,.03);\r\n  border: 0px;\r\n  border-bottom: 1px solid rgba(0,0,0,.125);\r\n}\r\n\r\n.all_agree input[type=\"checkbox\"] {\r\n  display: none;\r\n}\r\n.all_agree input[type=\"checkbox\"] + label { \r\n  width: 17px; \r\n  height: 17px; \r\n  background: #fa3062; \r\n  cursor: pointer; \r\n  border-radius: 3px;\r\n  float: right;\r\n}\r\n/* checkbox가 체크될 경우 라벨도 체크 */\r\n@-webkit-keyframes click-wave {\r\n  0% {\r\n    height: 40px;\r\n    width: 40px;\r\n    opacity: 1;\r\n    position: relative;\r\n    border-radius: 50%;\r\n  }\r\n  100% {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin-left: -80px;\r\n    margin-top: -80px;\r\n    opacity: 0;\r\n    border-radius: 50%;\r\n  }\r\n}\r\n@keyframes click-wave {\r\n  0% {\r\n    height: 40px;\r\n    width: 40px;\r\n    opacity: 1;\r\n    position: relative;\r\n    border-radius: 50%;\r\n  }\r\n  100% {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin-left: -80px;\r\n    margin-top: -80px;\r\n    opacity: 0;\r\n    border-radius: 50%;\r\n  }\r\n}\r\n\r\n.option-input {\r\n  border-radius: 50%;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  -ms-appearance: none;\r\n  -o-appearance: none;\r\n  appearance: none;\r\n  position: relative;\r\n  /* top: 13.33333px; */\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height: 40px;\r\n  width: 40px;\r\n  transition: all 0.15s ease-out 0s;\r\n  background: #cbd1d8;\r\n  border: none;\r\n  color: #fff;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  margin-left: 0.5rem;\r\n  margin-right: 0.5rem;\r\n  outline: none;\r\n  position: relative;\r\n  z-index: 1000;\r\n}\r\n.option-input:checked {\r\n  background: #40e0d0;\r\n}\r\n.option-input:checked::before {\r\n  height: 40px;\r\n  width: 40px;\r\n  position: absolute;\r\n  content: '\\2714';\r\n  display: inline-block;\r\n  font-size: 26.66667px;\r\n  text-align: center;\r\n  line-height: 40px;\r\n}\r\n.option-input:checked::after {\r\n  -webkit-animation: click-wave 0.65s;\r\n  animation: click-wave 0.65s;\r\n  background: #40e0d0;\r\n  content: '';\r\n  display: block;\r\n  position: relative;\r\n  z-index: 100;\r\n}\r\n\r\n.write_textarea {\r\n  width: 100%;\r\n  height: 300px;\r\n  font-size: 16px;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.category_dropdown {\r\n  color : black;\r\n  font-size : 18px;\r\n  font-weight: 600; \r\n  margin-bottom: 30px; \r\n}\r\n", ""]);
+exports.push([module.i, ".board_image {\r\n    width: 100%;\r\n    height: 25vh;\r\n    background: url(\"/img/board_main.jpg\") center center no-repeat;\r\n    text-align: center;\r\n    /* background: linear-gradient(45deg, #002ef0 0%, rgba(116, 15, 214, 0.9) 100%), url(/images/hero-bg.jpg) center center no-repeat; */\r\n    background-size: cover;\r\n    /* filter: blur(1px); */\r\n  /* -webkit-filter: blur(8px) */\r\n    margin-bottom : 50px;\r\n\r\n}\r\n\r\n.board_total_p {\r\n  font-size: 30px;\r\n}\r\n\r\n.board_category {\r\n  margin: 10px 0 30px 0;\r\n  border-radius: 10px;\r\n  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .2);\r\n}\r\n\r\n.home_icon {\r\n  width: 30px;\r\n  padding: 10px 0;\r\n  cursor: pointer;\r\n}\r\n.menu_box {\r\n  margin-top: 4px;\r\n  text-align: right;\r\n}\r\n.menu_icon_1 {\r\n  border : 1px solid black;\r\n  /* border-right : 1px solid white; */\r\n  border-radius: 5px 0px 0px 5px;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n.menu_icon_2 {\r\n  border : 1px solid black;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n.menu_icon_3 {\r\n  border : 1px solid black;\r\n  border-radius: 0px 5px 5px 0px;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n\r\n.category_p {\r\n  text-align: center;\r\n  padding-top: 13px;\r\n  font-size: 18px;\r\n  cursor: pointer;\r\n}\r\n\r\n.board_thead {\r\n  text-align: center;\r\n  border-top : 3px solid #d1d1d1;\r\n  border-bottom : 3px solid #d1d1d1;\r\n}\r\n\r\n.board_thead tr td {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n.board_tbody tr td {\r\n  font-size: 18px;\r\n}\r\n\r\n\r\n.write_button {\r\n  padding: 5px;\r\n  background-color: #6b6b6b;\r\n  float: right;\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n/* .write_button_p {\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n.write_button_icon {\r\n  width: 10%;\r\n} */\r\n\r\n.write_button a {\r\n  color: white;\r\n}\r\n\r\n.search_input {\r\n  width: 20%;\r\n  padding: 4px 0;\r\n  font-size: 16px;\r\n}\r\n.search_button {\r\n  margin-left: 10px;\r\n  padding: 5px;\r\n  font-size: 18px;\r\n  background-color: #2D8CFF;\r\n  color: white;\r\n  /* border: 0px; */\r\n}\r\n\r\n.page_btn {\r\n  color: white;\r\n  background-color: gray;\r\n}\r\n.page_btn.active {\r\n  background-color:black;\r\n}\r\n.arrow_icon {\r\n  width: 10px;\r\n}\r\n\r\n.new {\r\n    font-size : 18px;\r\n    -webkit-animation-name: blink;\r\n            animation-name: blink;\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n    -webkit-animation-timing-function: ease;\r\n            animation-timing-function: ease;\r\n    -webkit-animation-iteration-count: infinite;\r\n            animation-iteration-count: infinite;\r\n    /* 위 속성들을 한 줄로 표기하기 */\r\n    /* -webkit-animation: blink 1.5s ease infinite; */\r\n  }\r\n\r\n  @-webkit-keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n  @keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n.write_main_title {\r\n  color: black;\r\n  font-size: 30px;\r\n  /* font-weight: bold; */\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.write_main_p {\r\n  padding: .75rem 1.25rem;\r\n  font-size: 24px;\r\n  font-weight: bold;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.title_input {\r\n  font-size: 18px;\r\n  width: 100%;\r\n  padding: .75rem 1.25rem;\r\n  margin-bottom: 30px;\r\n  background-color: rgba(0,0,0,.03);\r\n  border: 0px;\r\n  border-bottom: 1px solid rgba(0,0,0,.125);\r\n}\r\n\r\n.all_agree input[type=\"checkbox\"] {\r\n  display: none;\r\n}\r\n.all_agree input[type=\"checkbox\"] + label { \r\n  width: 17px; \r\n  height: 17px; \r\n  background: #fa3062; \r\n  cursor: pointer; \r\n  border-radius: 3px;\r\n  float: right;\r\n}\r\n/* checkbox가 체크될 경우 라벨도 체크 */\r\n@-webkit-keyframes click-wave {\r\n  0% {\r\n    height: 40px;\r\n    width: 40px;\r\n    opacity: 1;\r\n    position: relative;\r\n    border-radius: 50%;\r\n  }\r\n  100% {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin-left: -80px;\r\n    margin-top: -80px;\r\n    opacity: 0;\r\n    border-radius: 50%;\r\n  }\r\n}\r\n@keyframes click-wave {\r\n  0% {\r\n    height: 40px;\r\n    width: 40px;\r\n    opacity: 1;\r\n    position: relative;\r\n    border-radius: 50%;\r\n  }\r\n  100% {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin-left: -80px;\r\n    margin-top: -80px;\r\n    opacity: 0;\r\n    border-radius: 50%;\r\n  }\r\n}\r\n\r\n.option-input {\r\n  border-radius: 50%;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  -ms-appearance: none;\r\n  -o-appearance: none;\r\n  appearance: none;\r\n  position: relative;\r\n  /* top: 13.33333px; */\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height: 40px;\r\n  width: 40px;\r\n  transition: all 0.15s ease-out 0s;\r\n  background: #cbd1d8;\r\n  border: none;\r\n  color: #fff;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  margin-left: 0.5rem;\r\n  margin-right: 0.5rem;\r\n  outline: none;\r\n  position: relative;\r\n  z-index: 1000;\r\n}\r\n.option-input:checked {\r\n  background: #40e0d0;\r\n}\r\n.option-input:checked::before {\r\n  height: 40px;\r\n  width: 40px;\r\n  position: absolute;\r\n  content: '\\2714';\r\n  display: inline-block;\r\n  font-size: 26.66667px;\r\n  text-align: center;\r\n  line-height: 40px;\r\n}\r\n.option-input:checked::after {\r\n  -webkit-animation: click-wave 0.65s;\r\n  animation: click-wave 0.65s;\r\n  background: #40e0d0;\r\n  content: '';\r\n  display: block;\r\n  position: relative;\r\n  z-index: 100;\r\n}\r\n\r\n.write_textarea {\r\n  width: 100%;\r\n  height: 300px;\r\n  font-size: 16px;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.category_dropdown {\r\n  color : black;\r\n  font-size : 18px;\r\n  font-weight: 600; \r\n  margin-bottom: 30px; \r\n}\r\n\r\n.detail_header {\r\n  width: 100%;\r\n  padding: .75rem 1.25rem;\r\n  margin-bottom: 0;\r\n  background-color: rgba(0,0,0,.03);\r\n  border-top: 1px solid rgba(0,0,0,.125);\r\n  border-bottom: 1px solid rgba(0,0,0,.125);\r\n}\r\n\r\n.detail_header_2 {\r\n  width: 100%;\r\n}\r\n\r\n.detail_title_span {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n  color: black;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.detail_date_span {\r\n  font-size: 15px;\r\n  padding: 0;\r\n  margin: 0;\r\n  float: right;\r\n}\r\n\r\n\r\n.detail_name_span {\r\n  margin-left: 10px;\r\n  font-size: 15px;\r\n  font-weight: bold;\r\n}\r\n\r\n.detail_option_span {\r\n  font-size: 15px;\r\n  padding: 0;\r\n  margin: 0;\r\n  float: right;\r\n}\r\n\r\n.detail_content {\r\n  margin: 30px 5%;\r\n}", ""]);
 
 // exports
 
@@ -96598,6 +96598,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _write_Board_write__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./write/Board_write */ "./resources/js/router/Board/write/Board_write.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -96616,6 +96618,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
+
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var history = _ref.history;
 
@@ -96689,37 +96692,50 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
   var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState24 = _slicedToArray(_useState23, 2),
-      title = _useState24[0],
-      setTitle = _useState24[1]; //제목
-
+      user = _useState24[0],
+      setUser = _useState24[1];
 
   var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState26 = _slicedToArray(_useState25, 2),
-      category = _useState26[0],
-      setCategory = _useState26[1]; //카테고리
+      title = _useState26[0],
+      setTitle = _useState26[1]; //제목
 
 
   var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState28 = _slicedToArray(_useState27, 2),
-      content = _useState28[0],
-      setContent = _useState28[1]; //내용
+      category = _useState28[0],
+      setCategory = _useState28[1]; //카테고리
 
 
   var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState30 = _slicedToArray(_useState29, 2),
-      secret = _useState30[0],
-      setSecret = _useState30[1]; //비밀 글 여부
+      content = _useState30[0],
+      setContent = _useState30[1]; //내용
 
 
   var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState32 = _slicedToArray(_useState31, 2),
-      attachment = _useState32[0],
-      setAttachment = _useState32[1]; //첨부파일
+      secret = _useState32[0],
+      setSecret = _useState32[1]; //비밀 글 여부
+
+
+  var _useState33 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState34 = _slicedToArray(_useState33, 2),
+      attachment = _useState34[0],
+      setAttachment = _useState34[1]; //첨부파일
+
+
+  var _useState35 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState36 = _slicedToArray(_useState35, 2),
+      created_at = _useState36[0],
+      setCreated_at = _useState36[1]; //view_count,
+  //comment_count,
+  //vote  //좋아요, 싫어요 배열
   //홈페이지
 
 
-  var board_get = function board_get() {
-    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("board_get").then(function (res) {
+  var board_get = function board_get(url) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(url).then(function (res) {
       console.log(res);
       setBoard_count(res.data.board_count);
       setBoards(res.data.boards.data);
@@ -96751,10 +96767,13 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   var board_detail = function board_detail(id) {
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/board/detail/".concat(id)).then(function (res) {
       console.log(res);
+      setUser(res.data.detail_user);
       setTitle(res.data.detail_board.title);
       setCategory(res.data.category);
       setContent(res.data.detail_board.content); // setSecret(res.data);
       // setAttachment(res.data);
+
+      setCreated_at(moment__WEBPACK_IMPORTED_MODULE_5___default()(res.data.detail_board.created_at).format("YYYY-MM-DD"));
     });
   };
 
@@ -96773,7 +96792,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         console.log("home");
         setAction("home"); //홈
 
-        board_get();
+        board_get("board_get");
       }
   }, [location.pathname]);
 
@@ -96798,9 +96817,8 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         }
       });
     }
-  };
-
-  console.log(action); // console.log(board_count);
+  }; // console.log(action);
+  // console.log(board_count);
   // console.log(boards);
   // console.log(board_categories);
   // console.log(categories);
@@ -96811,10 +96829,13 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   // console.log(search);
   // console.log(first_current_end_page);
   // console.log(secret);
+  // console.log(category);
+  // console.log(title);
+  // console.log(content);
+  // console.log(created_at);
+  // console.log(user);
+  //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
 
-  console.log(category);
-  console.log(title);
-  console.log(content); //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
 
   return action && boards.length == board_users.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
@@ -96843,7 +96864,9 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       setSecret: setSecret,
       attachment: attachment,
       setAttachment: setAttachment,
-      Submit: Submit
+      created_at: created_at,
+      Submit: Submit,
+      user: user
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BoardView__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : null;
 });
@@ -96912,11 +96935,51 @@ __webpack_require__.r(__webpack_exports__);
       secret = _useContext.secret,
       attachment = _useContext.attachment,
       categories = _useContext.categories,
-      Submit = _useContext.Submit;
+      created_at = _useContext.created_at,
+      Submit = _useContext.Submit,
+      user = _useContext.user;
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center"
-  });
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "board_image"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    style: {
+      color: "white",
+      textShadow: "black 12px 0px 3px",
+      fontSize: "80px",
+      paddingTop: "120px",
+      fontWeight: "bold"
+    }
+  }, "Board")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-8"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "detail_header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "detail_title_span"
+  }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "detail_date_span"
+  }, created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "detail_headr_2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "detail_name_span"
+  }, user.name, "(", user.email, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "detail_option_span"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      marginRight: "10px"
+    }
+  }, "\uC870\uD68C \uC218 184"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      marginRight: "10px"
+    }
+  }, "\uCD94\uCC9C \uC218 12"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      marginRight: "10px"
+    }
+  }, "\uB313\uAE00 \uC218 0"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row detail_content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, content)))) : null;
 });
 
 /***/ }),

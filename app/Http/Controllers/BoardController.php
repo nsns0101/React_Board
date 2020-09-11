@@ -110,6 +110,7 @@ class BoardController extends Controller
         \Log::info($request->all());
 
         $category_id = \App\Category::whereCategory($request["category"])->first()->id;
+        
         \App\Board::create([
             'user_id' => \Auth::user()->id,
             'category_id' => $category_id,
@@ -134,15 +135,22 @@ class BoardController extends Controller
     }
 
     public function board_detail($id){
+        //게시글 정보
         $detail_board = \App\Board::whereId($id)->first();
         \Log::info($detail_board);
+        
+        //카테고리 id를 가지고 카테고리 찾기
         $category = \App\Category::whereId($detail_board->category_id)->first()->category;
         \Log::info($category);
+
+        //유저 id를 가지고 유저정보 찾기
+        $detail_user = \App\User::whereId($detail_board->user_id)->first();
 
         return response()->json([
             'status' => true,
             'category' => $category,
             'detail_board' => $detail_board,
+            'detail_user' => $detail_user,
         ]);
     }
     /**

@@ -14,8 +14,8 @@ class CreateBoardsTable extends Migration
             $table->unsignedBigInteger('category_id')->comment('카테고리 번호');
             $table->string('title')->comment('게시판 제목');
             $table->text('content')->comment('게시판 내용');
-            $table->boolean('secret')->comment('비밀글 여부');
-            $table->bigInteger('view_count')->comment('조회수')->default(0);
+            $table->boolean('secret')->default(false)->comment('비밀글 여부');
+            $table->bigInteger('view_count')->default(0)->comment('조회수');
             $table->timestamps();
 
 
