@@ -12,6 +12,9 @@ export default () => {
         attachment,
         categories,
         created_at,
+        //view_count,
+        //comment_count,
+        //vote //좋아요, 싫어요
         Submit,
         user,
     } = useContext(BoardContext);
