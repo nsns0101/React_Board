@@ -35,7 +35,7 @@ export default () => {
                                         <td>{notice[index].id}</td>
                                         <td>공지</td>
                                         <td style={{textAlign:"left", cursor:"pointer"}}>
-                                            <Link to={`/board/${index+1}`} onClick={()=>setAction("detail")}>
+                                            <Link to={`/board/${notice[index].id}`} onClick={()=>setAction("detail")}>
                                                 {notice[index].title}
                                             </Link>
                                         </td>
@@ -51,7 +51,11 @@ export default () => {
                                         {/* {board_categories[index] = "공지"} */}
                                         <td>{boards[index].id}</td>
                                         <td>{board_categories[index]}</td>
-                                        <td style={{textAlign:"left", cursor:"pointer"}}>{boards[index].title}</td>
+                                        <td style={{textAlign:"left", cursor:"pointer"}}>
+                                            <Link to={`/board/${boards[index].id}`} onClick={()=>setAction("detail")}>
+                                                {boards[index].title}
+                                            </Link>
+                                        </td>
                                         <td>{board_users[index].name}</td>
                                         <td>{moment(boards[index].created_at).format("YYYY-MM-DD")}</td>
                                         <td>{boards[index].view_count}</td>

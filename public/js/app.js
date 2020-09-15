@@ -97037,7 +97037,7 @@ __webpack_require__.r(__webpack_exports__);
         cursor: "pointer"
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/board/".concat(index + 1),
+      to: "/board/".concat(notice[index].id),
       onClick: function onClick() {
         return setAction("detail");
       }
@@ -97050,7 +97050,12 @@ __webpack_require__.r(__webpack_exports__);
         textAlign: "left",
         cursor: "pointer"
       }
-    }, boards[index].title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, board_users[index].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, moment__WEBPACK_IMPORTED_MODULE_3___default()(boards[index].created_at).format("YYYY-MM-DD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, boards[index].view_count));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/board/".concat(boards[index].id),
+      onClick: function onClick() {
+        return setAction("detail");
+      }
+    }, boards[index].title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, board_users[index].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, moment__WEBPACK_IMPORTED_MODULE_3___default()(boards[index].created_at).format("YYYY-MM-DD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, boards[index].view_count));
   }) : null))));
 });
 
