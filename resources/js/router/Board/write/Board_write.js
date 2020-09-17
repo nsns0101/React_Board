@@ -32,7 +32,7 @@ export default () => {
                 <p className="write_main_title">글 작성</p>
             </div>
 
-            <div className="col-xl-8 col-lg-8 col-md-8" style={{borderRadius:"20px",boxShadow:"6px 6px 6px 6px rgba(0, 0, 0, .2)"}}>
+            <div className="col-xl-8 col-lg-8 col-md-8" style={{borderRadius:"20px",boxShadow:"6px 6px 6px 6px rgba(0, 0, 0, .2)", marginBottom:"60px"}}>
                 <div className="row card-body">
                     {/* 제목 */}
                     <div className="col-md-8">

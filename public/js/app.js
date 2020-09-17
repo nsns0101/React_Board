@@ -97352,7 +97352,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     className: "col-xl-8 col-lg-8 col-md-8",
     style: {
       borderRadius: "20px",
-      boxShadow: "6px 6px 6px 6px rgba(0, 0, 0, .2)"
+      boxShadow: "6px 6px 6px 6px rgba(0, 0, 0, .2)",
+      marginBottom: "60px"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row card-body"
