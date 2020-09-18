@@ -23,7 +23,7 @@ export default () => {
         setfirst_current_end_page
     } = useContext(BoardContext);
     return (
-        <div>
+        <div style={{marginBottom:"50px"}}>
             {/* 백그라운드 이미지 */}
             <div className="board_image">
                 <p style={{color:"white", textShadow:"black 12px 0px 3px",fontSize:"80px", paddingTop:"120px", fontWeight:"bold"}}>
