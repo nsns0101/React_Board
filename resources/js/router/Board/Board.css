@@ -1,3 +1,4 @@
+/* 메인 이미지 */
 .board_image {
     width: 100%;
     height: 25vh;
@@ -11,25 +12,31 @@
 
 }
 
+/* 메인 이미지에 들어갈 텍스트 */
 .board_total_p {
   font-size: 30px;
 }
 
+/* 카테고리 박스 */
 .board_category {
   margin: 10px 0 30px 0;
   border-radius: 10px;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .2);
 }
 
+/* 카테고리 전부 보기 */
 .home_icon {
   width: 30px;
   padding: 10px 0;
   cursor: pointer;
 }
+/* 각각의 카테고리를 담은 박스 */
 .menu_box {
   margin-top: 4px;
   text-align: right;
 }
+
+/* 1번째 게시글 유형 */
 .menu_icon_1 {
   border : 1px solid black;
   /* border-right : 1px solid white; */
@@ -38,12 +45,16 @@
   padding: 5px;
   cursor: pointer;
 }
+
+/* 2번째 게시글 유형 */
 .menu_icon_2 {
   border : 1px solid black;
   width: 40px;
   padding: 5px;
   cursor: pointer;
 }
+
+/* 3번째 게시글 유형 */
 .menu_icon_3 {
   border : 1px solid black;
   border-radius: 0px 5px 5px 0px;
