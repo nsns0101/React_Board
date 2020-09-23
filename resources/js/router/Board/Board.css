@@ -311,4 +311,40 @@
 
 .detail_content {
   margin: 30px 5%;
+  min-height: 30vh;
+}
+
+.button_board_group {
+  text-align: center;
+  margin-bottom: 30px;
+
+}
+
+.button_board_group button {
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10%;
+  padding: 6px 12px;
+}
+.button_board_list {
+  margin-left: 20px;
+  background-color: white;
+  color: black;
+}
+
+.button_board_update {
+  margin-left: 20px;
+  background-color: blue;
+  color: white;
+}
+
+.button_board_delete {
+  margin-left: 20px;
+  background-color: #DC3545;
+  color: white;
+}
+
+.button_board_image {
+  width: 20px;
+  margin: 5px;
 }

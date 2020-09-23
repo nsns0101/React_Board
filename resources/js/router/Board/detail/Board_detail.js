@@ -53,6 +53,31 @@ export default () => {
                 <div className="row detail_content">
                     <p>{content}</p>
                 </div>
+
+                {/* 버튼 그룹 */}
+                <div className="button_board_group">
+                    {/* 글 목록 */}
+                    <button className="button_board_list">
+                        <img className="button_board_image" src="/icon/board_list.png"/>
+                        <span>글 목록</span>
+                    </button>
+                    {/* 글 수정 */}
+                    <button className="button_board_update">
+                        <img className="button_board_image" src="/icon/board_update.png"/>
+                        <span>글 수정</span>
+                    </button>
+                    {/* 글 삭제 */}
+                    <button className="button_board_delete">
+                        <img className="button_board_image" src="/icon/board_trash.png"/>
+                        <span>글 삭제</span>
+                    </button>
+                </div>
+                
+                <hr style={{margin:0}}/>
+                
+                {/* 댓글 칸 */}
+                <div className="row detail_comment">
+                </div>
             </div>
         </div>
     ) : null
