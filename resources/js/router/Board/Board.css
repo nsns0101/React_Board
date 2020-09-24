@@ -357,7 +357,8 @@
 }
 
 
-.comment_input {
+.comment_textarea {
+  padding: 5px 10px;
   width: 95%;
   min-height: 10vh;
   font-size: 16px;
@@ -370,4 +371,34 @@
   background-color: black;
   color: white;
   border: 0;
+}
+
+.detail_comment  {
+  margin: 20px 0px;
+}
+
+.comment_image {
+  width: 90px;
+  margin-right: 10px;
+}
+
+.comment_name {
+  font-weight: bold;
+  font-size: 20px;
+}
+.comment_value {
+  font-size: 16px;
+}
+.comment_date {
+  font-size: 14px;
+  color: gray;
+}
+
+.arrow_reply_image {
+  width: 60px;
+  margin: 0 20px;
+}
+
+.detail_comment_reply {
+
 }

@@ -18,6 +18,9 @@ export default () => {
         Submit,
         user,
     } = useContext(BoardContext);
+
+    const comment = [1,2];
+
     return user ? (
         <div className="row justify-content-center board">
             {/* 백그라운드 이미지 */}
@@ -75,10 +78,10 @@ export default () => {
                 
                 <hr style={{margin: "30px 0px", padding: 0, backgroundColor: "black", opacity: 0.3 }}/>
                 
-                {/* 댓글 칸 */}
-                <div className="row detail_comment">
-                    <input 
-                        className="comment_input"
+                {/* 댓글 입력 칸 */}
+                <div className="row detail_comment_input">
+                    <textarea 
+                        className="comment_textarea"
                         name="comment"
                         placeholder="한마디를 남겨보세요!"
                     />
@@ -87,6 +90,36 @@ export default () => {
                         {/* <span></span> */}
                     </button>
                 </div>
+                
+                {/* 댓글 뷰 */}
+                <div className="detail_comment_view">
+                    { comment ? comment.map( (index, value) => {
+                        return (
+                            <div key={index}>
+                                <div className="row detail_comment">
+                                    <img className="comment_image" src="/icon/user_1.png"/>
+                                    <div>
+                                        <p className="comment_name">장준혁</p>
+                                        <p className="comment_value">안녕하세요! 게시글 잘만드셨네요!!!</p>
+                                        <p className="comment_date">2020-09-24</p>
+                                    </div>
+                                </div>
+                                <div className="row detail_comment_reply">
+                                    <img className="arrow_reply_image" src="/icon/arrow_reply_2.png"/>
+                                    <img className="comment_image" src="/icon/user_1.png"/>
+                                    <div>
+                                        <p className="comment_name">장준혁</p>
+                                        <p className="comment_value">안녕하세요! 게시글 잘만드셨네요!!!</p>
+                                        <p className="comment_date">2020-09-24</p>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        )
+                    }) : 
+                    null}
+                </div>
+
             </div>
         </div>
     ) : null
