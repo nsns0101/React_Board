@@ -5,6 +5,8 @@ import Dropdown from "react-dropdown";
 
 export default () => {
     const {
+        history,
+        setAction,
         title,
         category,
         content,
@@ -60,7 +62,7 @@ export default () => {
                 {/* 버튼 그룹 */}
                 <div className="button_board_group">
                     {/* 글 목록 */}
-                    <button className="button_board_list">
+                    <button className="button_board_list" onClick={()=> history.push("/board")}>
                         <img className="button_board_image" src="/icon/board_list.png"/>
                         <span>글 목록</span>
                     </button>

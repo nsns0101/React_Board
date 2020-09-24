@@ -127,6 +127,22 @@ export default ({history}) => {
             })
         }
     }
+
+    const Board_delete = (board_id) => {
+        Axios.delete(`/board/${board_id}`).then( res => {
+            console.log(res);
+
+            //삭제되면
+            if(res.data.status){
+                console.log("yes delete");
+            }
+            // 삭제 안되면
+            else {
+                console.log("no delete");
+            }
+        })
+        
+    }
     // console.log(action);
     // console.log(board_count);
     // console.log(boards);
@@ -150,6 +166,7 @@ export default ({history}) => {
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
     return action && boards.length == board_users.length  ? (
         <BoardContext.Provider value={{
+            history,
             action,
             setAction,
             board_count,

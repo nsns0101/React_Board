@@ -96817,6 +96817,19 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         }
       });
     }
+  };
+
+  var Board_delete = function Board_delete(board_id) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"]("/board/".concat(board_id)).then(function (res) {
+      console.log(res); //삭제되면
+
+      if (res.data.status) {
+        console.log("yes delete");
+      } // 삭제 안되면
+      else {
+          console.log("no delete");
+        }
+    });
   }; // console.log(action);
   // console.log(board_count);
   // console.log(boards);
@@ -96839,6 +96852,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
   return action && boards.length == board_users.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
+      history: history,
       action: action,
       setAction: setAction,
       board_count: board_count,
@@ -96929,6 +96943,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_2__["BoardContext"]),
+      history = _useContext.history,
+      setAction = _useContext.setAction,
       title = _useContext.title,
       category = _useContext.category,
       content = _useContext.content,
@@ -96983,7 +96999,10 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, content)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "button_board_group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "button_board_list"
+    className: "button_board_list",
+    onClick: function onClick() {
+      return history.push("/board");
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "button_board_image",
     src: "/icon/board_list.png"
