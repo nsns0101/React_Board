@@ -19,7 +19,7 @@ export default () => {
         user,
     } = useContext(BoardContext);
     return user ? (
-        <div className="row justify-content-center">
+        <div className="row justify-content-center board">
             {/* 백그라운드 이미지 */}
             <div className="board_image">
                 <p style={{color:"white", textShadow:"black 12px 0px 3px",fontSize:"80px", paddingTop:"120px", fontWeight:"bold"}}>
@@ -73,10 +73,19 @@ export default () => {
                     </button>
                 </div>
                 
-                <hr style={{margin:0}}/>
+                <hr style={{margin: "30px 0px", padding: 0, backgroundColor: "black", opacity: 0.3 }}/>
                 
                 {/* 댓글 칸 */}
                 <div className="row detail_comment">
+                    <input 
+                        className="comment_input"
+                        name="comment"
+                        placeholder="한마디를 남겨보세요!"
+                    />
+                    <button className="comment_button">
+                        <img className="button_board_image" src="/icon/board_update.png"/>
+                        {/* <span></span> */}
+                    </button>
                 </div>
             </div>
         </div>

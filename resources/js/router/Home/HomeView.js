@@ -4,6 +4,6 @@ import "./Home.css";
 
 export default () => {
     return (
-        <div/>
+        <div className="main_image"></div>
     )
 }
