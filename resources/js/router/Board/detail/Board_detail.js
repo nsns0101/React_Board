@@ -1,29 +1,27 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BoardContext } from "../BoardContainer";
 import Dropdown from "react-dropdown";
 
 export default () => {
     const {
+        user,
         history,
         setAction,
-        title,
-        category,
-        content,
-        secret,
-        attachment,
-        categories,
-        created_at,
+        detail_board,
         //view_count,
         //comment_count,
         //vote //좋아요, 싫어요
         Submit,
-        user,
+        Board_delete,
     } = useContext(BoardContext);
+
+    console.log(detail_board);
+    console.log(user);
 
     const comment = [1,2];
 
-    return user ? (
+    return user &&detail_board.user ? (
         <div className="row justify-content-center board">
             {/* 백그라운드 이미지 */}
             <div className="board_image">
@@ -36,16 +34,16 @@ export default () => {
                 {/* 헤더 */}
                 <div className="detail_header">
                     <span className="detail_title_span">
-                        {title}
+                        {detail_board.title}
                     </span>
                     <span className="detail_date_span">
-                        {created_at}
+                        {detail_board.created_at}
                     </span>
                 </div>
                 {/* 이름 및 조회수, 좋아요 수,댓글 수 표시 */}
                 <div className="detail_headr_2">
                     <span className="detail_name_span">
-                        {user.name}({user.email})
+                        {detail_board.user.name}({detail_board.user.email})
                     </span>
                     <span className="detail_option_span">
                         <span style={{marginRight:"10px"}}>조회 수 184</span>
@@ -56,7 +54,7 @@ export default () => {
 
                 {/* 내용 */}
                 <div className="row detail_content">
-                    <p>{content}</p>
+                    <p>{detail_board.content}</p>
                 </div>
 
                 {/* 버튼 그룹 */}
@@ -66,16 +64,20 @@ export default () => {
                         <img className="button_board_image" src="/icon/board_list.png"/>
                         <span>글 목록</span>
                     </button>
-                    {/* 글 수정 */}
-                    <button className="button_board_update">
-                        <img className="button_board_image" src="/icon/board_update.png"/>
-                        <span>글 수정</span>
-                    </button>
-                    {/* 글 삭제 */}
-                    <button className="button_board_delete">
-                        <img className="button_board_image" src="/icon/board_trash.png"/>
-                        <span>글 삭제</span>
-                    </button>
+                    {user && user.id == detail_board.user.id && 
+                    <Fragment>
+                        {/* 글 수정 */}
+                        <button className="button_board_update">
+                            <img className="button_board_image" src="/icon/board_update.png"/>
+                            <span>글 수정</span>
+                        </button>
+                        {/* 글 삭제 */}
+                        <button className="button_board_delete" onClick={()=> Board_delete(detail_board.id)}>
+                            <img className="button_board_image" src="/icon/board_trash.png"/>
+                            <span>글 삭제</span>
+                        </button> 
+                    </Fragment>
+                    }
                 </div>
                 
                 <hr style={{margin: "30px 0px", padding: 0, backgroundColor: "black", opacity: 0.3 }}/>
@@ -95,7 +97,7 @@ export default () => {
                 
                 {/* 댓글 뷰 */}
                 <div className="detail_comment_view">
-                    { comment ? comment.map( (index, value) => {
+                    { detail_board.comment ? detail_board.comment.map( (index, value) => {
                         return (
                             <div key={index}>
                                 <div className="row detail_comment">

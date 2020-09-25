@@ -95518,19 +95518,28 @@ function App() {
       isLoggedIn = _useState2[0],
       setIsLoggedIn = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      user = _useState4[0],
+      setUser = _useState4[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("/get_user").then(function (res) {
       if (res.data.id) {
+        setUser(res.data);
         setIsLoggedIn("login");
       } else {
+        setUser(false);
         setIsLoggedIn("logout");
       }
     });
   }, []);
+  console.log(user);
   return isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppContext.Provider, {
     value: {
       isLoggedIn: isLoggedIn,
-      setIsLoggedIn: setIsLoggedIn
+      setIsLoggedIn: setIsLoggedIn,
+      user: user
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/",
@@ -95604,7 +95613,6 @@ __webpack_require__.r(__webpack_exports__);
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_3__["AppContext"]),
       isLoggedIn = _useContext.isLoggedIn;
 
-  console.log(isLoggedIn);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "body-inner"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
@@ -96622,8 +96630,9 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var history = _ref.history;
 
-  // const { setUser } = useContext(AppContext);
-  // const [user, setUser] = useState(false);                      //로그인 유저
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_2__["AppContext"]),
+      user = _useContext.user;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       action = _useState2[0],
@@ -96688,47 +96697,51 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       _useState22 = _slicedToArray(_useState21, 2),
       first_current_end_page = _useState22[0],
       setFirst_current_end_page = _useState22[1]; //현재 페이지
+  //Write Board Infomation
 
 
   var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState24 = _slicedToArray(_useState23, 2),
-      user = _useState24[0],
-      setUser = _useState24[1];
+      title = _useState24[0],
+      setTitle = _useState24[1]; //제목
+
 
   var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState26 = _slicedToArray(_useState25, 2),
-      title = _useState26[0],
-      setTitle = _useState26[1]; //제목
+      category = _useState26[0],
+      setCategory = _useState26[1]; //카테고리
 
 
   var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState28 = _slicedToArray(_useState27, 2),
-      category = _useState28[0],
-      setCategory = _useState28[1]; //카테고리
+      content = _useState28[0],
+      setContent = _useState28[1]; //내용
 
 
   var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState30 = _slicedToArray(_useState29, 2),
-      content = _useState30[0],
-      setContent = _useState30[1]; //내용
+      secret = _useState30[0],
+      setSecret = _useState30[1]; //비밀 글 여부
 
 
   var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState32 = _slicedToArray(_useState31, 2),
-      secret = _useState32[0],
-      setSecret = _useState32[1]; //비밀 글 여부
+      attachment = _useState32[0],
+      setAttachment = _useState32[1]; //첨부파일
 
 
   var _useState33 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState34 = _slicedToArray(_useState33, 2),
-      attachment = _useState34[0],
-      setAttachment = _useState34[1]; //첨부파일
+      created_at = _useState34[0],
+      setCreated_at = _useState34[1]; //생성날짜
+  //Detail Board Infomation
 
 
   var _useState35 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState36 = _slicedToArray(_useState35, 2),
-      created_at = _useState36[0],
-      setCreated_at = _useState36[1]; //view_count,
+      detail_board = _useState36[0],
+      setDetail_board = _useState36[1]; //게시글 정보
+  //view_count,
   //comment_count,
   //vote  //좋아요, 싫어요 배열
   //홈페이지
@@ -96767,13 +96780,10 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   var board_detail = function board_detail(id) {
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/board/detail/".concat(id)).then(function (res) {
       console.log(res);
-      setUser(res.data.detail_user);
-      setTitle(res.data.detail_board.title);
-      setCategory(res.data.category);
-      setContent(res.data.detail_board.content); // setSecret(res.data);
-      // setAttachment(res.data);
-
-      setCreated_at(moment__WEBPACK_IMPORTED_MODULE_5___default()(res.data.detail_board.created_at).format("YYYY-MM-DD"));
+      var board_obj = res.data.detail_board;
+      board_obj.user = res.data.detail_user;
+      board_obj.category = res.data.category;
+      setDetail_board(board_obj);
     });
   };
 
@@ -96794,9 +96804,9 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
         board_get("board_get");
       }
-  }, [location.pathname]);
+  }, [location.pathname]); //게시글 생성
 
-  var Submit = function Submit(form) {
+  var Board_create = function Board_create(form) {
     if (form == "write") {
       var body = {
         title: title,
@@ -96817,20 +96827,21 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         }
       });
     }
-  };
+  }; //게시글 삭제
+
 
   var Board_delete = function Board_delete(board_id) {
+    console.log(board_id);
     axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"]("/board/".concat(board_id)).then(function (res) {
       console.log(res); //삭제되면
 
       if (res.data.status) {
-        console.log("yes delete");
-      } // 삭제 안되면
-      else {
-          console.log("no delete");
-        }
+        history.push("/board");
+      }
     });
-  }; // console.log(action);
+  };
+
+  console.log(user); // console.log(action);
   // console.log(board_count);
   // console.log(boards);
   // console.log(board_categories);
@@ -96842,16 +96853,11 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   // console.log(search);
   // console.log(first_current_end_page);
   // console.log(secret);
-  // console.log(category);
-  // console.log(title);
-  // console.log(content);
-  // console.log(created_at);
-  // console.log(user);
   //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
-
 
   return action && boards.length == board_users.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
+      user: user,
       history: history,
       action: action,
       setAction: setAction,
@@ -96879,8 +96885,11 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       attachment: attachment,
       setAttachment: setAttachment,
       created_at: created_at,
-      Submit: Submit,
-      user: user
+      Board_create: Board_create,
+      Board_delete: Board_delete,
+      // user,
+      detail_board: detail_board,
+      setDetail_board: setDetail_board
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BoardView__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : null;
 });
@@ -96943,20 +96952,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_2__["BoardContext"]),
+      user = _useContext.user,
       history = _useContext.history,
       setAction = _useContext.setAction,
-      title = _useContext.title,
-      category = _useContext.category,
-      content = _useContext.content,
-      secret = _useContext.secret,
-      attachment = _useContext.attachment,
-      categories = _useContext.categories,
-      created_at = _useContext.created_at,
+      detail_board = _useContext.detail_board,
       Submit = _useContext.Submit,
-      user = _useContext.user;
+      Board_delete = _useContext.Board_delete;
 
+  console.log(detail_board);
+  console.log(user);
   var comment = [1, 2];
-  return user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return user && detail_board.user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center board"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "board_image"
@@ -96974,13 +96980,13 @@ __webpack_require__.r(__webpack_exports__);
     className: "detail_header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "detail_title_span"
-  }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, detail_board.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "detail_date_span"
-  }, created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, detail_board.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail_headr_2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "detail_name_span"
-  }, user.name, "(", user.email, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, detail_board.user.name, "(", detail_board.user.email, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "detail_option_span"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     style: {
@@ -96996,7 +97002,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   }, "\uB313\uAE00 \uC218 0"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row detail_content"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, content)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, detail_board.content)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "button_board_group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "button_board_list",
@@ -97006,17 +97012,20 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "button_board_image",
     src: "/icon/board_list.png"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uAE00 \uBAA9\uB85D")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uAE00 \uBAA9\uB85D")), user && user.id == detail_board.user.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "button_board_update"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "button_board_image",
     src: "/icon/board_update.png"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uAE00 \uC218\uC815")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "button_board_delete"
+    className: "button_board_delete",
+    onClick: function onClick() {
+      return Board_delete(detail_board.id);
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "button_board_image",
     src: "/icon/board_trash.png"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uAE00 \uC0AD\uC81C"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uAE00 \uC0AD\uC81C")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
     style: {
       margin: "30px 0px",
       padding: 0,
@@ -97036,7 +97045,7 @@ __webpack_require__.r(__webpack_exports__);
     src: "/icon/board_update.png"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail_comment_view"
-  }, comment ? comment.map(function (index, value) {
+  }, detail_board.comment ? detail_board.comment.map(function (index, value) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -97420,7 +97429,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       attachment = _useContext.attachment,
       setAttachment = _useContext.setAttachment,
       categories = _useContext.categories,
-      Submit = _useContext.Submit;
+      Board_create = _useContext.Board_create;
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center"
@@ -97536,7 +97545,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-primary",
     onClick: function onClick() {
-      return Submit("write");
+      return Board_create("write");
     }
   }, "\uC791\uC131\uD558\uAE30")))));
 });

@@ -15,20 +15,25 @@ export const AppContext = createContext();
 export default function App() {
 
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+    const [ user, setUser ] = useState(false);
 
     useEffect( () => {
         Axios.get("/get_user").then(res => {
             if(res.data.id){
+                setUser(res.data);
                 setIsLoggedIn("login");
             }
             else {
+                setUser(false);
                 setIsLoggedIn("logout");
             }
         })
     }, [])
     
+    console.log(user);
+
     return isLoggedIn ? (
-        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
+        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user}}>
             <BrowserRouter>
                 <Header/>
                 <Route path="/" exact={true} component={Home}/>

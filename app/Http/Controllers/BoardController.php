@@ -182,8 +182,14 @@ class BoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(\App\Board $board)
     {
-        //
+        \Log::info("delete");
+        $this->authorize('board_delete', $board);
+        $board->delete();
+        return response()->json([
+            'status' => true
+        ]);
+    
     }
 }

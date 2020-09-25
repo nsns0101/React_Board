@@ -5,7 +5,6 @@ import { AppContext } from "../components/App";
 
 export default () => {
     const { isLoggedIn } = useContext(AppContext);
-    console.log(isLoggedIn);
     return (
         <div className="body-inner">
 		    <header id="header" className="header-one">

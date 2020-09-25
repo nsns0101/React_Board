@@ -16,7 +16,7 @@ export default () => {
         attachment,
         setAttachment,
         categories,
-        Submit,    
+        Board_create,    
     } = useContext(BoardContext);
     return (
         <div className="row justify-content-center">
@@ -97,7 +97,7 @@ export default () => {
                     <div className="col-md-12 text-center">
                         <button 
                             className="btn btn-primary"
-                            onClick={() => Submit("write")}    
+                            onClick={() => Board_create("write")}    
                         >작성하기</button>
                     </div>
                 </div> 
