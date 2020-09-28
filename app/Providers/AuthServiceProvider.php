@@ -30,6 +30,12 @@ class AuthServiceProvider extends ServiceProvider
             if ($user->isAdmin()) return true;
         });
 
+        //게시글 수정 권한
+        Gate::define('board_update', function ($user, $model) {
+            \Log::info($user->id === $model->user_id);
+            return $user->id === $model->user_id;
+        });
+        
         //게시글 삭제 권한
         Gate::define('board_delete', function ($user, $model) {
             \Log::info($user->id === $model->user_id);
