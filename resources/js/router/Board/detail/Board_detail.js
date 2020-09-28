@@ -21,7 +21,7 @@ export default () => {
 
     const comment = [1,2];
 
-    return user &&detail_board.user ? (
+    return detail_board.user ? (
         <div className="row justify-content-center board">
             {/* 백그라운드 이미지 */}
             <div className="board_image">

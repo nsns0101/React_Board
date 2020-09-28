@@ -92,6 +92,13 @@ export default () => {
                     {/* 첨부파일 추가 */}
                     <div className="col-md-12">
                         <span className="write_main_p" style={{color:"black"}}>첨부파일 추가</span>
+                        <input 
+                            className="write_file" 
+                            type="file" name="file[]" multiple="multple" encType="multipart/form-data"
+                            onChange={ e => {
+                                console.log(e.target.value);
+                            }}
+                        />
                     </div>
 
                     <div className="col-md-12 text-center">
