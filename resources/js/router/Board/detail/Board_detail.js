@@ -17,7 +17,7 @@ export default () => {
     } = useContext(BoardContext);
 
     console.log(detail_board);
-    console.log(user);
+    // console.log(user);
 
     const comment = [1,2];
 

@@ -30,10 +30,10 @@ export default function App() {
         })
     }, [])
     
-    console.log(user);
+    // console.log(user);
 
     return isLoggedIn ? (
-        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user}}>
+        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser}}>
             <BrowserRouter>
                 <Header/>
                 <Route path="/" exact={true} component={Home}/>

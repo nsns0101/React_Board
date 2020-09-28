@@ -4,7 +4,7 @@ import Axios from "axios";
 import { AppContext } from "../../components/App";
 
 export default ({ location, history }) => {
-  const { setIsLoggedIn } = useContext(AppContext);
+  const { setIsLoggedIn, setUser } = useContext(AppContext);
 
 
   //현재 로그인인지 회원가입인지 등의 상태
@@ -77,7 +77,9 @@ export default ({ location, history }) => {
         if(res.data.value){
           // localStorage.setItem('userValue', JSON.stringify(res.data.value));
           history.push('/');
-          setIsLoggedIn("login")
+          setUser(res.data.value);
+          setIsLoggedIn("login");
+
         }
         else if(res.data.status == "confirm"){
           setAction('confirm');
@@ -108,6 +110,7 @@ export default ({ location, history }) => {
       console.log(res);
       if(res.data.status){
         // localStorage.setItem('userValue', JSON.stringify(res.data.value));
+        setUser(res.data.value);
         setIsLoggedIn("login");
         history.push("/");
       }
@@ -126,6 +129,7 @@ export default ({ location, history }) => {
     Axios.get('/auth/logout').then(res => {
       console.log(res);
       history.push("/");
+      setUser(false);
       setIsLoggedIn("logout");
 
     })

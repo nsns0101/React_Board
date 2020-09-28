@@ -89,18 +89,18 @@ export default ({history}) => {
 
     useEffect( () => {
         if(location.pathname.split("/")[2] == "write"){
-            console.log("write");
+            // console.log("write");
             setAction("write"); //글 작성
             board_write();
         }
         //Number형으로 바꿔도 옳은 값이면 => 게시글 detail
         else if(location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])){
-            console.log("detail");
+            // console.log("detail");
             setAction("detail");
             board_detail(location.pathname.split("/")[2])
         }
         else {
-            console.log("home");
+            // console.log("home");
             setAction("home");  //홈
             board_get("board_get");
         }
@@ -144,7 +144,7 @@ export default ({history}) => {
             }
         });        
     }
-    console.log(user);
+    // console.log(user);
     // console.log(action);
     // console.log(board_count);
     // console.log(boards);
@@ -157,6 +157,7 @@ export default ({history}) => {
     // console.log(search);
     // console.log(first_current_end_page);
     // console.log(secret);
+    // console.log(attachment[0]);
 
 
 

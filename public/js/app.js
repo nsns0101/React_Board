@@ -95533,13 +95533,14 @@ function App() {
         setIsLoggedIn("logout");
       }
     });
-  }, []);
-  console.log(user);
+  }, []); // console.log(user);
+
   return isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppContext.Provider, {
     value: {
       isLoggedIn: isLoggedIn,
       setIsLoggedIn: setIsLoggedIn,
-      user: user
+      user: user,
+      setUser: setUser
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/",
@@ -95771,7 +95772,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       history = _ref.history;
 
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_4__["AppContext"]),
-      setIsLoggedIn = _useContext.setIsLoggedIn; //현재 로그인인지 회원가입인지 등의 상태
+      setIsLoggedIn = _useContext.setIsLoggedIn,
+      setUser = _useContext.setUser; //현재 로그인인지 회원가입인지 등의 상태
 
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(location.pathname === "/auth/login" ? "login" : location.pathname === "/auth/register" ? "register" : "logout"),
@@ -95910,6 +95912,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
                 if (res.data.value) {
                   // localStorage.setItem('userValue', JSON.stringify(res.data.value));
                   history.push('/');
+                  setUser(res.data.value);
                   setIsLoggedIn("login");
                 } else if (res.data.status == "confirm") {
                   setAction('confirm');
@@ -95955,6 +95958,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
                 if (res.data.status) {
                   // localStorage.setItem('userValue', JSON.stringify(res.data.value));
+                  setUser(res.data.value);
                   setIsLoggedIn("login");
                   history.push("/");
                 } else {
@@ -95983,6 +95987,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/auth/logout').then(function (res) {
       console.log(res);
       history.push("/");
+      setUser(false);
       setIsLoggedIn("logout");
     }); // location.reload("/");
   } //회원가입이나 로그인 버튼 클릭시
@@ -96789,17 +96794,17 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (location.pathname.split("/")[2] == "write") {
-      console.log("write");
+      // console.log("write");
       setAction("write"); //글 작성
 
       board_write();
     } //Number형으로 바꿔도 옳은 값이면 => 게시글 detail
     else if (location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])) {
-        console.log("detail");
+        // console.log("detail");
         setAction("detail");
         board_detail(location.pathname.split("/")[2]);
       } else {
-        console.log("home");
+        // console.log("home");
         setAction("home"); //홈
 
         board_get("board_get");
@@ -96839,9 +96844,8 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         history.push("/board");
       }
     });
-  };
-
-  console.log(user); // console.log(action);
+  }; // console.log(user);
+  // console.log(action);
   // console.log(board_count);
   // console.log(boards);
   // console.log(board_categories);
@@ -96853,7 +96857,9 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   // console.log(search);
   // console.log(first_current_end_page);
   // console.log(secret);
+  // console.log(attachment[0]);
   //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
+
 
   return action && boards.length == board_users.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
@@ -96959,8 +96965,8 @@ __webpack_require__.r(__webpack_exports__);
       Submit = _useContext.Submit,
       Board_delete = _useContext.Board_delete;
 
-  console.log(detail_board);
-  console.log(user);
+  console.log(detail_board); // console.log(user);
+
   var comment = [1, 2];
   return detail_board.user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center board"
@@ -97242,6 +97248,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   //공지 자유 문의 팁 구매 판매
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_4__["BoardContext"]),
+      user = _useContext.user,
       action = _useContext.action,
       setAction = _useContext.setAction,
       board_get = _useContext.board_get,
@@ -97364,7 +97371,7 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "/icon/arrow_next_2.png",
     className: "arrow_icon"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
+  })), user && user.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
     to: "/board/write",
     onClick: function onClick() {
       return setAction("write");
@@ -97543,11 +97550,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }, "\uCCA8\uBD80\uD30C\uC77C \uCD94\uAC00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "write_file",
     type: "file",
-    name: "file[]",
     multiple: "multple",
     encType: "multipart/form-data",
     onChange: function onChange(e) {
-      console.log(e.target.value);
+      console.log(e.target.files);
+      setAttachment(e.target.files);
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-12 text-center"

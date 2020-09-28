@@ -10,6 +10,7 @@ import { get } from "jquery";
 export default () => {
     //공지 자유 문의 팁 구매 판매
     const {
+        user,
         action,
         setAction,
         board_get,
@@ -111,11 +112,13 @@ export default () => {
                         </button>   
 
                         {/* 글 작성 버튼 */}
-                        <Link to="/board/write" onClick={() => setAction("write")}>
-                            <button className="write_button">
-                                    글 작성
-                            </button>
-                        </Link>
+                        {user && user.id && (
+                            <Link to="/board/write" onClick={() => setAction("write")}>
+                                <button className="write_button">
+                                        글 작성
+                                </button>
+                            </Link>
+                        )}
                     </div>
                 </div>
 

@@ -94,9 +94,10 @@ export default () => {
                         <span className="write_main_p" style={{color:"black"}}>첨부파일 추가</span>
                         <input 
                             className="write_file" 
-                            type="file" name="file[]" multiple="multple" encType="multipart/form-data"
+                            type="file" multiple="multple" encType="multipart/form-data"
                             onChange={ e => {
-                                console.log(e.target.value);
+                                console.log(e.target.files);
+                                setAttachment(e.target.files);
                             }}
                         />
                     </div>

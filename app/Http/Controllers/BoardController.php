@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class BoardController extends Controller
 {
+    public function __construct()
+    {
+        //로그인 하지 않아도 index(게시판 홈), show(게시판 뷰)는 볼 수 있음
+        $this->middleware('auth', ['except' => ['index', 'show','get_boards', 'board_detail']]);
+    }
 
     public function index()
     {
