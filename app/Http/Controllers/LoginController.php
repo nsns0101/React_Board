@@ -38,7 +38,8 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $user = \App\User::whereConfirmCode($request->confirm_code)->first();
+        $user = \App\User::whereEmail($request->email)->first();
+        \Log::info($user);
 
         if (!$user) {
             // flash('입력하신 코드가 올바르지 않습니다. 다시 입력해 주세요.');

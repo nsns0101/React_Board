@@ -77,6 +77,9 @@ export default ({ location, history }) => {
         if(res.data.value){
           // localStorage.setItem('userValue', JSON.stringify(res.data.value));
           history.push('/');
+          console.log("--------------");
+          console.log(res.data.value);
+          console.log("--------------");
           setUser(res.data.value);
           setIsLoggedIn("login");
 

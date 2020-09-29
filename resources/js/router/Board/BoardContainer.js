@@ -36,7 +36,7 @@ export default ({history}) => {
     //view_count,
     //comment_count,
     //vote  //좋아요, 싫어요 배열
-    
+    console.log(user);
     //홈페이지
     const board_get = (url) => {
         Axios.get(url).then(res => {
@@ -68,8 +68,13 @@ export default ({history}) => {
     const board_write = () => {
         Axios.get("/board/create").then(res => {
             console.log(res);
-
-            setCategories(res.data.categories);
+            if(user.id == 1){
+                setCategories(res.data.categories);
+            }
+            //Admin권한만 공지사항 작성이 가능하게
+            else {
+                setCategories(res.data.categories.splice(1, res.data.categories.length - 1));
+            }
 
         })
     }
@@ -133,7 +138,7 @@ export default ({history}) => {
 
     //게시글 삭제
     const Board_delete = (board_id) => {
-        console.log(board_id);
+        // console.log(board_id);
 
         Axios.delete(`/board/${board_id}`).then( res => {
             console.log(res);

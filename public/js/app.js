@@ -95912,6 +95912,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
                 if (res.data.value) {
                   // localStorage.setItem('userValue', JSON.stringify(res.data.value));
                   history.push('/');
+                  console.log("--------------");
+                  console.log(res.data.value);
+                  console.log("--------------");
                   setUser(res.data.value);
                   setIsLoggedIn("login");
                 } else if (res.data.status == "confirm") {
@@ -96749,8 +96752,9 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   //view_count,
   //comment_count,
   //vote  //좋아요, 싫어요 배열
-  //홈페이지
 
+
+  console.log(user); //홈페이지
 
   var board_get = function board_get(url) {
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(url).then(function (res) {
@@ -96777,7 +96781,13 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   var board_write = function board_write() {
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/board/create").then(function (res) {
       console.log(res);
-      setCategories(res.data.categories);
+
+      if (user.id == 1) {
+        setCategories(res.data.categories);
+      } //Admin권한만 공지사항 작성이 가능하게
+      else {
+          setCategories(res.data.categories.splice(1, res.data.categories.length - 1));
+        }
     });
   }; // 글 디테일페이지
 
@@ -96836,7 +96846,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
 
   var Board_delete = function Board_delete(board_id) {
-    console.log(board_id);
+    // console.log(board_id);
     axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"]("/board/".concat(board_id)).then(function (res) {
       console.log(res); //삭제되면
 
