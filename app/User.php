@@ -44,17 +44,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // 한 유저는 여러개의 게시판을 가질 수 있음
+    //한 유저는 여러개의 게시판을 가질 수 있음
     public function boards()
     {
         return $this->hasMany(Board::class);
     }
-    // 한 유저는 여러개의 댓글을 쓸 수 있음
+    //한 유저는 여러개의 댓글을 쓸 수 있음
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
-    // 한 유저는 여러개의 좋아요
+    //한 유저는 여러개의 좋아요
     public function votes()
     {
         return $this->hasMany(Vote::class);
@@ -62,7 +62,7 @@ class User extends Authenticatable
 
 
 
-    // 슈퍼 계정 어드민 권한(AuthServiceProvider참고)
+    //슈퍼 계정 어드민 권한(AuthServiceProvider참고)
     public function isAdmin()
     {
         return ($this->id === 1) ? true : false;
