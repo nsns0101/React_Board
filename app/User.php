@@ -62,7 +62,7 @@ class User extends Authenticatable
 
 
 
-    //슈퍼 계정 어드민 권한(AuthServiceProvider참고)
+    // 슈퍼 계정 어드민 권한(AuthServiceProvider참고)
     public function isAdmin()
     {
         return ($this->id === 1) ? true : false;
