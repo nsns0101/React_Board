@@ -23,7 +23,7 @@ export default () => {
 
             {/* 백그라운드 이미지 */}
             <div className="board_image">
-                <p style={{color:"white", textShadow:"black 12px 0px 3px",fontSize:"80px", paddingTop:"120px", fontWeight:"bold"}}>
+                <p className="board_image_p">
                     Board
                 </p>
             </div>
@@ -46,7 +46,7 @@ export default () => {
                             const {
                                 target: { value }
                             } = e;
-                            setTitle(value);
+                                setTitle(value);
                             }}
                         />
                     </div>
@@ -96,7 +96,7 @@ export default () => {
                             className="write_file" 
                             type="file" multiple="multple" encType="multipart/form-data"
                             onChange={ e => {
-                                console.log(e.target.files);
+                                // console.log(e.target.files);
                                 setAttachment(e.target.files);
                             }}
                         />

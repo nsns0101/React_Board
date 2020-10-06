@@ -16,6 +16,14 @@
 
 }
 
+.board_image_p {
+  color: white; 
+  text-shadow: black 12px 0px 3px;
+  font-size: 80px; 
+  padding-top: 120px; 
+  font-weight: bold;
+}
+
 /* 메인 이미지에 들어갈 텍스트 */
 .board_total_p {
   font-size: 30px;
