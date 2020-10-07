@@ -78,6 +78,7 @@ export default () => {
                 {/* 페이징 */}
                 <div className="row justify-content-around">
                     <div className="col-md-8 text-center">
+                        {/* First Page */}
                         <button 
                             className="btn"
                             onClick={()=> {
@@ -86,13 +87,15 @@ export default () => {
                             style={{marginRight:"3px"}}
                         >
                             <img src="/icon/arrow_back_2.png" className="arrow_icon"/>
-                        </button>                                    
+                        </button>
+                        {/* Pagenate */}
                         {pageCount ? pageCount.map( (value, index) => {
                             return (
                                 <button 
                                     key={index} 
                                     className={`btn page_btn ${index+1 == first_current_end_page[0] ? "active" : "" }`}
                                     onClick={()=> {
+                                        // 라라벨 Controller에서 자동으로 잡아줌
                                         board_get(`/board_get?page=${index + 1}`);
                                     }}
                                     style={{marginRight:"3px"}}
@@ -101,6 +104,7 @@ export default () => {
                                 </button>
                             )
                         }) : null}
+                        {/* Last Page */}
                         <button 
                             className="btn"
                             onClick={()=> {
