@@ -84,7 +84,7 @@ class BoardController extends Controller
 
 
         return response()->json([
-            'status' => true,
+            'status' => true,                         
             'board_count' => $board_count,            //전체 보드 수
             'categories' => $categories,              //존재하는 카테고리 전부
             'boards' => $boards,                      //게시글(pagenate(10 - 공지사항 수))

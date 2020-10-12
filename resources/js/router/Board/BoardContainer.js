@@ -149,6 +149,19 @@ export default ({history}) => {
             }
         });        
     }
+
+    const Comment_create = (board_id) => {
+        const body = {
+            parent_id,                      //부모 댓글 id
+            content         
+        }
+        //board_id는 게시글 id
+        Axios.post(`/comment/${board_id}`).then( res => {
+            console.log(res);
+
+            //
+        })
+    }
     // console.log(user);
     // console.log(action);
     // console.log(board_count);

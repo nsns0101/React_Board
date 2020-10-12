@@ -96854,6 +96854,18 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         history.push("/board");
       }
     });
+  };
+
+  var Comment_create = function Comment_create(board_id) {
+    var body = {
+      parent_id: parent_id,
+      //부모 댓글 id
+      content: content
+    }; //board_id는 게시글 id
+
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/comment/".concat(board_id)).then(function (res) {
+      console.log(res); //
+    });
   }; // console.log(user);
   // console.log(action);
   // console.log(board_count);
