@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 
 export default () => {
-    const [a, setA] = useState();
+    const [a, setA] = useState(0);
 
     const myF = () => {
       console.log("myF");
@@ -14,7 +14,7 @@ export default () => {
   
     return (
       <div>
-        <button onClick={()=>setA("b")}>good</button>
+        <button onClick={()=>setA(a+1)}>{a}</button>
         {myF()}
       </div>
     );

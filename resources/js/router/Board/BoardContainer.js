@@ -121,6 +121,7 @@ export default ({history}) => {
                 category : category,
                 content : content,
                 secret : secret,
+                attachment,
             }
             const config = {
                 headers: {
@@ -166,9 +167,6 @@ export default ({history}) => {
         //board_id는 게시글 id
         Axios.post(`/boards/${board_id}/comments`, body, config).then( res => {
             // console.log(res);
-            // console.log(res.data.comment.content);
-            // console.log(res.data.comment);
-        
             setDetail_comment(res.data.comments);
         });
     }

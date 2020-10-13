@@ -96838,7 +96838,8 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         title: title,
         category: category,
         content: content,
-        secret: secret
+        secret: secret,
+        attachment: attachment
       };
       var config = {
         headers: {
@@ -96883,8 +96884,6 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/boards/".concat(board_id, "/comments"), body, config).then(function (res) {
       // console.log(res);
-      // console.log(res.data.comment.content);
-      // console.log(res.data.comment);
       setDetail_comment(res.data.comments);
     });
   }; // console.log(user);
