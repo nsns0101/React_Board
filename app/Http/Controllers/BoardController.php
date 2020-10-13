@@ -41,7 +41,9 @@ class BoardController extends Controller
             $query = new \App\Board;
             \Log::info($query->where('title','like', '%'.$choice_category.'%')->orderBy('id','desc')->paginate(10));
             $boards = $query->where('title','like', '%'.$choice_category.'%')->orderBy('id','desc')->paginate(10);
-            $notice = [];   //카테고리 검색시 공지사항은 안보이게
+            // if($choice_category != "공지"){
+            //     $notice = [];   //카테고리 검색시 공지사항은 안보이게
+            // }
 
         }
 
@@ -49,7 +51,9 @@ class BoardController extends Controller
         else if($choice_category){
             $query = $choice_category ? \App\Category::whereCategory($choice_category)->first()->boards() : new \App\Board;
             // \Log::info($query);
-            $notice = [];   //카테고리 검색시 공지사항은 안보이게
+            if($choice_category != "공지"){
+                $notice = [];   //카테고리 검색시 공지사항은 안보이게
+            }
             $boards = $query->where('category_id','!=',1)->orderBy('id','desc')->paginate(10 - count($notice));
         }
         //홈페이지
