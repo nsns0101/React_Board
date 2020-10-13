@@ -96749,12 +96749,22 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       _useState36 = _slicedToArray(_useState35, 2),
       detail_board = _useState36[0],
       setDetail_board = _useState36[1]; //게시글 정보
-  //view_count,
+
+
+  var _useState37 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState38 = _slicedToArray(_useState37, 2),
+      detail_comment = _useState38[0],
+      setDetail_comment = _useState38[1];
+
+  var _useState39 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState40 = _slicedToArray(_useState39, 2),
+      comment = _useState40[0],
+      setComment = _useState40[1]; //view_count,
   //comment_count,
   //vote  //좋아요, 싫어요 배열
+  // console.log(user);
+  //홈페이지
 
-
-  console.log(user); //홈페이지
 
   var board_get = function board_get(url) {
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(url).then(function (res) {
@@ -96799,6 +96809,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       board_obj.user = res.data.detail_user;
       board_obj.category = res.data.category;
       setDetail_board(board_obj);
+      setDetail_comment(res.data.detail_comments);
     });
   };
 
@@ -96854,17 +96865,27 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         history.push("/board");
       }
     });
-  };
+  }; // 댓글 입력
+
 
   var Comment_create = function Comment_create(board_id) {
     var body = {
-      parent_id: parent_id,
-      //부모 댓글 id
-      content: content
+      // parent_id,      //부모 댓글 id
+      content: comment,
+      //댓글 내용
+      commentable_id: board_id
+    };
+    var config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }; //board_id는 게시글 id
 
-    axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/comment/".concat(board_id)).then(function (res) {
-      console.log(res); //
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/boards/".concat(board_id, "/comments"), body, config).then(function (res) {
+      // console.log(res);
+      // console.log(res.data.comment.content);
+      // console.log(res.data.comment);
+      setDetail_comment(res.data.comments);
     });
   }; // console.log(user);
   // console.log(action);
@@ -96880,6 +96901,8 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   // console.log(first_current_end_page);
   // console.log(secret);
   // console.log(attachment[0]);
+  // console.log(comment);
+  // console.log(detail_board);
   //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
 
 
@@ -96917,7 +96940,12 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       Board_delete: Board_delete,
       // user,
       detail_board: detail_board,
-      setDetail_board: setDetail_board
+      setDetail_board: setDetail_board,
+      detail_comment: detail_comment,
+      setDetail_comment: setDetail_comment,
+      Comment_create: Comment_create,
+      comment: comment,
+      setComment: setComment
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BoardView__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : null;
 });
@@ -96974,6 +97002,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BoardContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BoardContainer */ "./resources/js/router/Board/BoardContainer.js");
 /* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dropdown */ "./node_modules/react-dropdown/dist/index.js");
 /* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dropdown__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -96984,12 +97015,18 @@ __webpack_require__.r(__webpack_exports__);
       history = _useContext.history,
       setAction = _useContext.setAction,
       detail_board = _useContext.detail_board,
+      detail_comment = _useContext.detail_comment,
       Submit = _useContext.Submit,
-      Board_delete = _useContext.Board_delete;
+      Board_delete = _useContext.Board_delete,
+      Comment_create = _useContext.Comment_create,
+      comment = _useContext.comment,
+      setComment = _useContext.setComment; // console.log(detail_board);
+  // console.log(detail_comment);
+  // console.log(user);
+  // console.log(comment);
+  // const comment = [1,2];
 
-  console.log(detail_board); // console.log(user);
 
-  var comment = [1, 2];
   return detail_board.user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center board"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -97010,7 +97047,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "detail_title_span"
   }, detail_board.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "detail_date_span"
-  }, detail_board.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, moment__WEBPACK_IMPORTED_MODULE_4___default()(detail_board.created_at).format("YYYY-MM-DD"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail_headr_2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "detail_name_span"
@@ -97065,15 +97102,23 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
     className: "comment_textarea",
     name: "comment",
-    placeholder: "\uD55C\uB9C8\uB514\uB97C \uB0A8\uACA8\uBCF4\uC138\uC694!"
+    placeholder: "\uD55C\uB9C8\uB514\uB97C \uB0A8\uACA8\uBCF4\uC138\uC694!",
+    onChange: function onChange(e) {
+      setComment(e.target.value);
+    },
+    value: comment
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "comment_button"
+    className: "comment_button",
+    onClick: function onClick() {
+      Comment_create(detail_board.id);
+      setComment("");
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "button_board_image",
     src: "/icon/board_update.png"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail_comment_view"
-  }, detail_board.comment ? detail_board.comment.map(function (index, value) {
+  }, detail_comment ? detail_comment.map(function (value, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -97083,25 +97128,11 @@ __webpack_require__.r(__webpack_exports__);
       src: "/icon/user_1.png"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "comment_name"
-    }, "\uC7A5\uC900\uD601"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    }, detail_comment[index].user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "comment_value"
-    }, "\uC548\uB155\uD558\uC138\uC694! \uAC8C\uC2DC\uAE00 \uC798\uB9CC\uB4DC\uC168\uB124\uC694!!!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    }, detail_comment[index].content), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "comment_date"
-    }, "2020-09-24"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "row detail_comment_reply"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      className: "arrow_reply_image",
-      src: "/icon/arrow_reply_2.png"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      className: "comment_image",
-      src: "/icon/user_1.png"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "comment_name"
-    }, "\uC7A5\uC900\uD601"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "comment_value"
-    }, "\uC548\uB155\uD558\uC138\uC694! \uAC8C\uC2DC\uAE00 \uC798\uB9CC\uB4DC\uC168\uB124\uC694!!!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "comment_date"
-    }, "2020-09-24"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+    }, moment__WEBPACK_IMPORTED_MODULE_4___default()(detail_comment[index].created_at).format("YYYY-MM-DD")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
   }) : null))) : null;
 });
 

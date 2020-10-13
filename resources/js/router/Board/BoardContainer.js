@@ -32,11 +32,13 @@ export default ({history}) => {
     
     //Detail Board Infomation
     const [detail_board, setDetail_board] = useState(false);    //게시글 정보
-    
+    const [detail_comment, setDetail_comment] = useState(false);
+
+    const [comment, setComment] = useState("");
     //view_count,
     //comment_count,
     //vote  //좋아요, 싫어요 배열
-    console.log(user);
+    // console.log(user);
     //홈페이지
     const board_get = (url) => {
         Axios.get(url).then(res => {
@@ -87,8 +89,8 @@ export default ({history}) => {
             let board_obj = res.data.detail_board;
             board_obj.user = res.data.detail_user;
             board_obj.category = res.data.category;
-
             setDetail_board(board_obj);
+            setDetail_comment(res.data.detail_comments);
         })
     }
 
@@ -102,7 +104,7 @@ export default ({history}) => {
         else if(location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])){
             // console.log("detail");
             setAction("detail");
-            board_detail(location.pathname.split("/")[2])
+            board_detail(location.pathname.split("/")[2]);
         }
         else {
             // console.log("home");
@@ -110,7 +112,6 @@ export default ({history}) => {
             board_get("board_get");
         }
     }, [location.pathname]);
-
     
     //게시글 생성
     const Board_create = (form) => {
@@ -125,7 +126,7 @@ export default ({history}) => {
                 headers: {
                   'Content-Type' : 'application/json'
                 }
-              }
+            }
             Axios.post("/board", body, config).then( res => {
                 console.log(res);
 
@@ -150,17 +151,26 @@ export default ({history}) => {
         });        
     }
 
+    // 댓글 입력
     const Comment_create = (board_id) => {
         const body = {
-            parent_id,                      //부모 댓글 id
-            content         
+            // parent_id,      //부모 댓글 id
+            content: comment,         //댓글 내용
+            commentable_id: board_id                  
+        }
+        const config = {
+            headers: {
+              'Content-Type' : 'application/json'
+            }
         }
         //board_id는 게시글 id
-        Axios.post(`/comment/${board_id}`).then( res => {
-            console.log(res);
-
-            //
-        })
+        Axios.post(`/boards/${board_id}/comments`, body, config).then( res => {
+            // console.log(res);
+            // console.log(res.data.comment.content);
+            // console.log(res.data.comment);
+        
+            setDetail_comment(res.data.comments);
+        });
     }
     // console.log(user);
     // console.log(action);
@@ -176,7 +186,8 @@ export default ({history}) => {
     // console.log(first_current_end_page);
     // console.log(secret);
     // console.log(attachment[0]);
-
+    // console.log(comment);
+    // console.log(detail_board);
 
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
@@ -214,7 +225,12 @@ export default ({history}) => {
             Board_delete,
             // user,
             detail_board,
-            setDetail_board
+            setDetail_board,
+            detail_comment,
+            setDetail_comment,
+            Comment_create,
+            comment,
+            setComment
         }}>
             <BoardView/>
         </BoardContext.Provider>

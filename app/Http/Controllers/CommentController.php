@@ -13,7 +13,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -34,6 +34,7 @@ class CommentController extends Controller
      */
     public function store(Request $request, \App\Board $board)
     {
+        \Log::info($request->all());
         //로그인 하지 않은 경우
         if(!$request->user()){
             return response()->json([
@@ -47,10 +48,13 @@ class CommentController extends Controller
             ['user_id' => $request->user()->id]
         ));
         \Log::info($comment);
-        
+
+        $comments = $board->comments()->with('replies')->whereNull('parent_id')->latest()->get();
+
         return response()->json([
             'status' => true,
             'comment' => $comment,
+            'comments' => $comments,
         ]);
     }
 

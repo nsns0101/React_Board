@@ -2,6 +2,7 @@ import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BoardContext } from "../BoardContainer";
 import Dropdown from "react-dropdown";
+import moment from "moment";
 
 export default () => {
     const {
@@ -9,17 +10,22 @@ export default () => {
         history,
         setAction,
         detail_board,
+        detail_comment,
         //view_count,
         //comment_count,
         //vote //좋아요, 싫어요
         Submit,
         Board_delete,
+        Comment_create,
+        comment,
+        setComment,
     } = useContext(BoardContext);
 
-    console.log(detail_board);
+    // console.log(detail_board);
+    // console.log(detail_comment);
     // console.log(user);
-
-    const comment = [1,2];
+    // console.log(comment);
+    // const comment = [1,2];
 
     return detail_board.user ? (
         <div className="row justify-content-center board">
@@ -37,7 +43,7 @@ export default () => {
                         {detail_board.title}
                     </span>
                     <span className="detail_date_span">
-                        {detail_board.created_at}
+                        {moment(detail_board.created_at).format("YYYY-MM-DD")}
                     </span>
                 </div>
                 {/* 이름 및 조회수, 좋아요 수,댓글 수 표시 */}
@@ -88,8 +94,15 @@ export default () => {
                         className="comment_textarea"
                         name="comment"
                         placeholder="한마디를 남겨보세요!"
+                        onChange={ e => {
+                            setComment(e.target.value);
+                        }}
+                        value={comment}
                     />
-                    <button className="comment_button">
+                    <button className="comment_button" onClick={() => {
+                        Comment_create(detail_board.id);
+                        setComment("");
+                    }}>
                         <img className="button_board_image" src="/icon/board_update.png"/>
                         {/* <span></span> */}
                     </button>
@@ -97,18 +110,19 @@ export default () => {
                 
                 {/* 댓글 뷰 */}
                 <div className="detail_comment_view">
-                    { detail_board.comment ? detail_board.comment.map( (index, value) => {
+                    { detail_comment ? detail_comment.map( (value, index) => {
                         return (
                             <div key={index}>
                                 <div className="row detail_comment">
                                     <img className="comment_image" src="/icon/user_1.png"/>
                                     <div>
-                                        <p className="comment_name">장준혁</p>
-                                        <p className="comment_value">안녕하세요! 게시글 잘만드셨네요!!!</p>
-                                        <p className="comment_date">2020-09-24</p>
+                                        <p className="comment_name">{detail_comment[index].user.name}</p>
+                                        <p className="comment_value">{detail_comment[index].content}</p>
+                                        <p className="comment_date">{moment(detail_comment[index].created_at).format("YYYY-MM-DD")}</p>
                                     </div>
                                 </div>
-                                <div className="row detail_comment_reply">
+                                {/* 대댓글 */}
+                                {/* <div className="row detail_comment_reply">
                                     <img className="arrow_reply_image" src="/icon/arrow_reply_2.png"/>
                                     <img className="comment_image" src="/icon/user_1.png"/>
                                     <div>
@@ -116,7 +130,7 @@ export default () => {
                                         <p className="comment_value">안녕하세요! 게시글 잘만드셨네요!!!</p>
                                         <p className="comment_date">2020-09-24</p>
                                     </div>
-                                </div>
+                                </div> */}
                                 <hr/>
                             </div>
                         )
