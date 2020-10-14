@@ -97518,8 +97518,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       boxShadow: "6px 6px 6px 6px rgba(0, 0, 0, .2)",
       marginBottom: "60px"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: Board_create
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row card-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -97618,8 +97616,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-12 text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-primary"
-  }, "\uC791\uC131\uD558\uAE30"))))));
+    className: "btn btn-primary",
+    onClick: function onClick() {
+      return Board_create("write");
+    }
+  }, "\uC791\uC131\uD558\uAE30")))));
 });
 
 /***/ }),
