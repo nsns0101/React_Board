@@ -96834,19 +96834,28 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
   var Board_create = function Board_create(form) {
     if (form == "write") {
-      var body = {
-        title: title,
-        category: category,
-        content: content,
-        secret: secret,
-        attachment: attachment
-      };
+      var formdata = new FormData(); // const body = {
+      //     title : title,
+      //     category : category,
+      //     content : content,
+      //     secret : secret,
+      //     attachment : attachment,
+      // }
+
+      formdata.append('title', title);
+      formdata.append('category', category);
+      formdata.append('content', content);
+      formdata.append('secret', secret);
+      formdata.append('files', attachment);
       var config = {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'multipart/form-data' //   'Accept' : "application/json",
+          //   'type': "formData"
+
         }
       };
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/board", body, config).then(function (res) {
+      console.log(formdata);
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/board", formdata, config).then(function (res) {
         console.log(res);
 
         if (res.data.status) {
@@ -96902,8 +96911,9 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   // console.log(attachment[0]);
   // console.log(comment);
   // console.log(detail_board);
-  //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
 
+
+  console.log(attachment); //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
 
   return action && boards.length == board_users.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
@@ -97508,6 +97518,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       boxShadow: "6px 6px 6px 6px rgba(0, 0, 0, .2)",
       marginBottom: "60px"
     }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: Board_create
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row card-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -97606,11 +97618,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-12 text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-primary",
-    onClick: function onClick() {
-      return Board_create("write");
-    }
-  }, "\uC791\uC131\uD558\uAE30")))));
+    className: "btn btn-primary"
+  }, "\uC791\uC131\uD558\uAE30"))))));
 });
 
 /***/ }),

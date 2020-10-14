@@ -41,12 +41,14 @@ class Attachment extends Model
         return $this->belongsTo(Board::class);
     }
     /* Accessors */
+    //파일의 사이즈(Byte)를 KB, MB 등으로 나타내주는 메서드 (helpers.php 참조)
     public function getBytesAttribute($value)
     {
         return format_filesize($value);
     }
+    //파일의 위치를 찾아주는 메서드
     public function getUrlAttribute()
     {
-        return url('files/' . $this->filename);
+        return url('files/board/' . $this->filename);
     }
 }

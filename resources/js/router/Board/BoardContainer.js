@@ -115,20 +115,33 @@ export default ({history}) => {
     
     //게시글 생성
     const Board_create = (form) => {
+
         if(form == "write"){
-            const body = {
-                title : title,
-                category : category,
-                content : content,
-                secret : secret,
-                attachment,
-            }
+            let formdata = new FormData();
+            // const body = {
+            //     title : title,
+            //     category : category,
+            //     content : content,
+            //     secret : secret,
+            //     attachment : attachment,
+            // }
+            
+            formdata.append('title', title);
+            formdata.append('category', category);
+            formdata.append('content', content);
+            formdata.append('secret', secret);
+            formdata.append('files', attachment);
+            
+
             const config = {
                 headers: {
-                  'Content-Type' : 'application/json'
+                  'Content-Type' : 'multipart/form-data',
+                //   'Accept' : "application/json",
+                //   'type': "formData"
                 }
             }
-            Axios.post("/board", body, config).then( res => {
+            console.log(formdata);
+            Axios.post("/board", formdata, config).then( res => {
                 console.log(res);
 
                 if(res.data.status){
@@ -186,6 +199,7 @@ export default ({history}) => {
     // console.log(attachment[0]);
     // console.log(comment);
     // console.log(detail_board);
+    console.log(attachment);
 
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
