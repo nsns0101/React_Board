@@ -117,9 +117,9 @@ class BoardController extends Controller
     public function store(Request $request)
     {
         \Log::info($request->all());
-        \Log::info($request->hasFile('files'));
-        \Log::info($request->hasFile('file'));
-        \Log::info($request->file());
+        // \Log::info($request->hasFile('files'));
+        // \Log::info($request->hasFile('file'));
+        // \Log::info($request->file());
         $category_id = \App\Category::whereCategory($request["category"])->first()->id;
         
         $board = \App\Board::create([
@@ -141,7 +141,7 @@ class BoardController extends Controller
             //filter_var(필터링할 변수, 필터)
             //Str::random을 넣는 이유는 파일 이름이 겹칠 경우를 대비
             $filename = \Str::random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
-
+            \Log::info($filename);
             //생성
             $board->attachments()->create([
                 'filename' => $filename,
@@ -150,8 +150,10 @@ class BoardController extends Controller
             ]);
              //helpers.php 참조    
             //  $file->move(attachments_path(), $filename);  //옮길 위치
-             $file->move(public_path('files/'. $filename));  //옮길 위치
-             //return public_path('files'.($path ? DIRECTORY_SEPARATOR.$path : $path));
+            // $file->move(public_path('files'. DIRECTORY_SEPARATOR . 'board' .($filename ? DIRECTORY_SEPARATOR.$filename : $filename)));  //옮길 위치
+            // $file->move(public_path('files'. DIRECTORY_SEPARATOR . 'board' . DIRECTORY_SEPARATOR.$filename));  //옮길 위치
+            $file->move(public_path('files/board/' . $filename));  //옮길 위치
+            //return public_path('files'.($path ? DIRECTORY_SEPARATOR.$path : $path));
         }
      }
         \Log::info($board);
