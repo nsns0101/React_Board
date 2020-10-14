@@ -117,7 +117,9 @@ class BoardController extends Controller
     public function store(Request $request)
     {
         \Log::info($request->all());
-        \Log::info($request->hasFile('attachment'));
+        \Log::info($request->hasFile('files'));
+        \Log::info($request->hasFile('file'));
+        \Log::info($request->file());
         $category_id = \App\Category::whereCategory($request["category"])->first()->id;
         
         $board = \App\Board::create([
@@ -129,16 +131,16 @@ class BoardController extends Controller
         ]);
         
        //request안에 files가 있나?(유저가 게시글 생성시 파일을 등록했나?)
-       if ($request->hasFile('files')) {
+    //    if ($request->hasFile('files')) {
+       if ($request->file()) {
         //files라는 file을 files라는 변수에 담음
-        $files = $request->file('files');
-        \Log::info($files);
+        $files = $request->file();
 
         foreach($files as $file) {
             //filter_var은 지정된 필터로 필터링을 실행함
             //filter_var(필터링할 변수, 필터)
             //Str::random을 넣는 이유는 파일 이름이 겹칠 경우를 대비
-            $filename = Str::random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+            $filename = \Str::random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
 
             //생성
             $board->attachments()->create([
@@ -147,10 +149,12 @@ class BoardController extends Controller
                 'mime' => $file->getClientMimeType()     //형식 ex) image/png
             ]);
              //helpers.php 참조    
-            $file->move(attachments_path(), $filename);  //옮길 위치
+            //  $file->move(attachments_path(), $filename);  //옮길 위치
+             $file->move(public_path('files/'. $filename));  //옮길 위치
+             //return public_path('files'.($path ? DIRECTORY_SEPARATOR.$path : $path));
         }
      }
-
+        \Log::info($board);
         // return response()->json([
         //     'status' => true,
         //     'board' => $board

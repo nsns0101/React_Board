@@ -49,6 +49,6 @@ class Attachment extends Model
     //파일의 위치를 찾아주는 메서드
     public function getUrlAttribute()
     {
-        return url('files/board/' . $this->filename);
+        return url('files/' . $this->filename);
     }
 }

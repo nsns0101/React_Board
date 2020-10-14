@@ -125,13 +125,21 @@ export default ({history}) => {
             //     secret : secret,
             //     attachment : attachment,
             // }
-            
             formdata.append('title', title);
             formdata.append('category', category);
             formdata.append('content', content);
             formdata.append('secret', secret);
-            formdata.append('files', attachment);
-            
+            // formdata.append(`files`, attachment[0][0]);
+            // formdata.append(`file1`, attachment[1]);
+
+            if(attachment){
+                // attachment.map( (value, index) => {
+                //     formdata.append(`file${index}`, value);
+                // });
+                for(var i = 0; i <= attachment.length - 1; i++){
+                    formdata.append(`file${i}`, attachment[i]);
+                }
+            }
 
             const config = {
                 headers: {
@@ -140,7 +148,6 @@ export default ({history}) => {
                 //   'type': "formData"
                 }
             }
-            console.log(formdata);
             Axios.post("/board", formdata, config).then( res => {
                 console.log(res);
 

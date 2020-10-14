@@ -96845,8 +96845,18 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       formdata.append('title', title);
       formdata.append('category', category);
       formdata.append('content', content);
-      formdata.append('secret', secret);
-      formdata.append('files', attachment);
+      formdata.append('secret', secret); // formdata.append(`files`, attachment[0][0]);
+      // formdata.append(`file1`, attachment[1]);
+
+      if (attachment) {
+        // attachment.map( (value, index) => {
+        //     formdata.append(`file${index}`, value);
+        // });
+        for (var i = 0; i <= attachment.length - 1; i++) {
+          formdata.append("file".concat(i), attachment[i]);
+        }
+      }
+
       var config = {
         headers: {
           'Content-Type': 'multipart/form-data' //   'Accept' : "application/json",
@@ -96854,7 +96864,6 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
         }
       };
-      console.log(formdata);
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/board", formdata, config).then(function (res) {
         console.log(res);
 
