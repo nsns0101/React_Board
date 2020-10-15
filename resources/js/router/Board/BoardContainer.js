@@ -10,17 +10,18 @@ export default ({history}) => {
     const { user } = useContext(AppContext);
 
     const [action, setAction] = useState(false);                     //
-    const [board_count, setBoard_count] = useState(false);           //전체 게시글 수   
+    const [total_boards, setTotal_boards] = useState(false);
+    // const [board_count, setBoard_count] = useState(false);           //전체 게시글 수   
     const [categories, setCategories] = useState(false);             //카테고리
     const [boards, setBoards] = useState(false);                     //게시글
-    const [board_categories, setBoard_categories] = useState(false); //게시글에 해당하는 카테고리
-    const [board_users, setBoard_users] = useState(false);           //게시글 작성 유저 정보
-    const [notice, setNotice] = useState(false);                     //공지사항
+    // const [board_categories, setBoard_categories] = useState(false); //게시글에 해당하는 카테고리
+    // const [board_users, setBoard_users] = useState(false);           //게시글 작성 유저 정보
+    // const [notice, setNotice] = useState(false);                     //공지사항
     const [pageCount, setPageCount] = useState(false);               //페이지 수
-    const [category_count, setCategory_count] = useState(false);     //카테고리별 게시글 수
+    // const [category_count, setCategory_count] = useState(false);     //카테고리별 게시글 수
     const [search, setSearch] = useState(false);                     //검색어
     const [first_current_end_page, setFirst_current_end_page] = useState(1);             //현재 페이지
-
+    // const [views, setViews] = useState(0);
 
     //Write Board Infomation
     const [title, setTitle] = useState(false);              //제목
@@ -33,6 +34,7 @@ export default ({history}) => {
     //Detail Board Infomation
     const [detail_board, setDetail_board] = useState(false);    //게시글 정보
     const [detail_comments, setDetail_comments] = useState(false);
+
     const [comment, setComment] = useState("");
     //view_count,
     //comment_count,
@@ -43,13 +45,38 @@ export default ({history}) => {
         Axios.get(url).then(res => {
             console.log(res);
             
-            setBoard_count(res.data.board_count);
-            setBoards(res.data.boards.data);
-            setBoard_categories(res.data.board_categories);
-            setCategories(res.data.categories);
-            setBoard_users(res.data.board_users);
-            setNotice(res.data.notice);
-            setCategory_count(res.data.category_count);
+            //게시글들 각각의 정보
+            let boards_infomation = res.data.boards.data;
+            // boards.views = res.data.views;
+            // boards.category - res.data.board_categories;
+            // setBoard_categories(res.data.board_categories);
+            // setViews(res.data.views);
+            for(var i = 0; i < boards_infomation.length; i++){
+                boards_infomation[i].views = res.data.views[i];
+                boards_infomation[i].category = res.data.board_categories[i];
+            }
+            setBoards(boards_infomation);
+
+            //게시글 홈의 정보
+            let total_boards_infomation = {};
+            total_boards_infomation.board_count = res.data.board_count;
+            total_boards_infomation.categories = res.data.categories;
+            total_boards_infomation.board_users = res.data.board_users;
+            total_boards_infomation.notice = res.data.notice;
+            total_boards_infomation.category_count = res.data.category_count;
+
+            //공지사항의 조회수
+            for(var i = 0; i < total_boards_infomation.notice.length; i++){
+                total_boards_infomation.notice[i].views = res.data.notice_views[i];
+            }
+            
+            // console.log(total_boards_infomation);
+            // setBoard_count(res.data.board_count);
+            // setCategories(res.data.categories);
+            // setBoard_users(res.data.board_users);
+            // setNotice(res.data.notice);
+            // setCategory_count(res.data.category_count);
+            setTotal_boards(total_boards_infomation)
 
             const array_page_count = [];
             for(var i = 0; i < res.data.boards.last_page; i++){
@@ -69,10 +96,11 @@ export default ({history}) => {
     const board_write = () => {
         Axios.get("/board/create").then(res => {
             console.log(res);
+            // 공지사항을 쓸 수 있게
             if(user.id == 1){
                 setCategories(res.data.categories);
             }
-            //Admin권한만 공지사항 작성이 가능하게
+            // 공지사항을 못 쓰게
             else {
                 setCategories(res.data.categories.splice(1, res.data.categories.length - 1));
             }
@@ -86,9 +114,12 @@ export default ({history}) => {
             console.log(res);
 
             let board_obj = res.data.detail_board;
+
+            board_obj.views = res.data.detail_views;
             board_obj.attachments = res.data.detail_attachments;
             board_obj.user = res.data.detail_user;
             board_obj.category = res.data.category;
+
             setDetail_board(board_obj);
             setDetail_comments(res.data.comments);
         })
@@ -207,24 +238,27 @@ export default ({history}) => {
     // console.log(comment);
     // console.log(detail_board);
     // console.log(attachment);
-
+    // console.log(total_boards);
+    // console.log(boards);
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
-    return action && boards.length == board_users.length  ? (
+    //categories.length는 write 페이지에만 제공하는 것(write페이지에서 새로고침시 total_boards가 없으니까)
+    return total_boards && action && boards.length == total_boards.board_users.length || categories.length ? (
         <BoardContext.Provider value={{
             user,
             history,
             action,
             setAction,
-            board_count,
+            total_boards,
+            // board_count,
             board_get,
             boards,
-            board_categories,
+            // board_categories,
             categories,
-            board_users,
-            notice,
+            // board_users,
+            // notice,
             pageCount,
-            category_count,
+            // category_count,
             search,
             setSearch,
             first_current_end_page,
@@ -249,7 +283,8 @@ export default ({history}) => {
             setDetail_comments,
             Comment_create,
             comment,
-            setComment
+            setComment,
+            // views
         }}>
             <BoardView/>
         </BoardContext.Provider>

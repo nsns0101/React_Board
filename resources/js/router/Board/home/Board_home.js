@@ -20,6 +20,8 @@ export default () => {
         pageCount,
         search,
         setSearch,
+        total_boards,
+        boards,
         first_current_end_page,
         setfirst_current_end_page
     } = useContext(BoardContext);
@@ -51,10 +53,10 @@ export default () => {
                                 <img className="home_icon" src="icon/home.png" onClick={() => board_get(`/board_get`)}/>
                             </div>
                             <div className="row col-md-8" style={{borderRadius:"5px", borderLeft: "1px solid #8E9799"}}>
-                                {categories ? categories.map( (value, index) => {
+                                {total_boards.categories ? total_boards.categories.map( (value, index) => {
                                     return (
-                                        <div key={index} className="col-md-2" onClick={()=>board_get(`/${categories[index]}/board_get`)}>
-                                            <p className="category_p">{categories[index]}<span>({category_count[index]})</span></p>
+                                        <div key={index} className="col-md-2" onClick={()=>board_get(`/${total_boards.categories[index]}/board_get`)}>
+                                            <p className="category_p">{total_boards.categories[index]}<span>({total_boards.category_count[index]})</span></p>
                                         </div>
                                     )
                                 }) : null}

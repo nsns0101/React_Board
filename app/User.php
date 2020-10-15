@@ -49,6 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Board::class);
     }
+    public function views() {
+        return $this->hasMany(View::class);
+    }
     //한 유저는 여러개의 댓글을 쓸 수 있음
     public function comments()
     {
@@ -59,6 +62,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Vote::class);
     }
+
 
 
 

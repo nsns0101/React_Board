@@ -13,12 +13,12 @@ class CreateViewsTable extends Migration
      */
     public function up()
     {
-        Schema::table('views', function (Blueprint $table) {
+        Schema::create('views', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('board_id');
-            $table->bigInteger('view_count')->comment('조회수');
-            $table->timestamp();
+            $table->boolean('look')->comment('보다');
+            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
         });
@@ -31,8 +31,6 @@ class CreateViewsTable extends Migration
      */
     public function down()
     {
-        Schema::table('views', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('views');
     }
 }

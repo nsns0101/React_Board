@@ -6,12 +6,15 @@ import moment  from "moment";
 export default () => {
     const {
         board_get,
+        total_boards,
         boards,
-        board_categories,
-        board_users,
-        notice,
+        // boards,
+        // board_categories,
+        // board_users,
+        // notice,
         pageCount,
         setAction,
+        // views
     } = useContext(BoardContext);
     return (
         <div className="row justify-content-center">
@@ -28,37 +31,39 @@ export default () => {
                         </tr>
                     </thead>
                     <tbody className="col-12 board_tbody text-center">
-                            {notice ? notice.map( (value, index) => {
+                            {total_boards.notice ? total_boards.notice.map( (value, index) => {
                                 return (
                                     <tr key={index} style={{color:"red", fontWeight:"bold", backgroundColor:"#e8e8e8"}}>
                                         {/* {board_categories[index] = "공지"} */}
-                                        <td>{notice[index].id}</td>
+                                        <td>{total_boards.notice[index].id}</td>
                                         <td>공지</td>
                                         <td style={{textAlign:"left", cursor:"pointer"}}>
-                                            <Link to={`/board/${notice[index].id}`} onClick={()=>setAction("detail")}>
-                                                {notice[index].title}
+                                            <Link to={`/board/${total_boards.notice[index].id}`} onClick={()=>setAction("detail")}>
+                                                {total_boards.notice[index].title}
                                             </Link>
                                         </td>
                                         <td>이재영</td>
-                                        <td>{moment(notice[index].created_at).format("YYYY-MM-DD")}</td>
-                                        <td>{notice[index].view_count}</td>
+                                        <td>{moment(total_boards.notice[index].created_at).format("YYYY-MM-DD")}</td>
+                                        <td>{total_boards.notice[index].views}</td>
                                     </tr>
                                 )
                             }) : null}
-                            {boards && board_categories && board_users ? boards.map( (value, index) => {
+                            {/* {console.log(boards)} */}
+                            {/* {console.log(total_boards)} */}
+                            {boards && total_boards ? boards.map( (value, index) => {
                                 return (
                                     <tr key={index}>
                                         {/* {board_categories[index] = "공지"} */}
                                         <td>{boards[index].id}</td>
-                                        <td>{board_categories[index]}</td>
+                                        <td>{boards[index].category}</td>
                                         <td style={{textAlign:"left", cursor:"pointer"}}>
                                             <Link to={`/board/${boards[index].id}`} onClick={()=>setAction("detail")}>
                                                 {boards[index].title}
                                             </Link>
                                         </td>
-                                        <td>{board_users[index].name}</td>
+                                        <td>{boards[index].user.name}</td>
                                         <td>{moment(boards[index].created_at).format("YYYY-MM-DD")}</td>
-                                        <td>{boards[index].view_count}</td>
+                                        <td>{boards[index].views}</td>
                                     </tr>
                                 )
                             }) : null}

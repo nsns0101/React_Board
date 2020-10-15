@@ -19,7 +19,7 @@ class BoardSeeder extends Seeder
                 'category_id' => $json_board["$i"]["category_id"],
                 'title' => $json_board["$i"]["title"],
                 'content' => $json_board["$i"]["content"],
-                'view_count' => $json_board["$i"]["view_count"],
+                // 'view_count' => $json_board["$i"]["view_count"],
             ]);
         }
     }

@@ -26,7 +26,9 @@ class Board extends Model
     {
         return $this->hasMany(Attachment::class);
     }
-
+    public function views() {
+        return $this->hasMany(View::class);
+    }
     //
     public function comments()
     {

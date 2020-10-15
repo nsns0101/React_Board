@@ -34,7 +34,12 @@ class BoardController extends Controller
         
         //카테고리 == 공지인 글
         $notice = \App\Board::whereCategory_id(1)->get();
-        
+        $notice_views = [];
+        for($i = 0; $i < count($notice); $i++){
+            array_push($notice_views,count($notice[$i]->views()->get()));
+        }
+        // \Log::info($notice_views);
+
         //키워드 검색을 통하여 게시글을 볼 경우
         if($choice_category && !\App\Category::whereCategory($choice_category)->first()){
             \Log::info("good");
@@ -66,22 +71,27 @@ class BoardController extends Controller
         //게시글 10 - 공지 수 내림차순
         // \Log::info($boards);
 
+        //작성자
+        $views = array();
         //게시글에 해당하는 카테고리
         $board_categories = array();
         //게시글 작성자 
         $board_users = array();
         
         for($i = 0; $i < count($boards); $i++){
+            //조회수 얻기
+            array_push($views, count(\App\View::whereBoard_id($boards[$i]->id)->get()));
+
             //게시글에 해당하는 카테고리 얻기
             array_push($board_categories, \App\Category::whereId($boards[$i]->category_id)->first()->category);
             //게시글 작성자 정보
             array_push($board_users, \App\User::whereId($boards[$i]->user_id)->first());
         }
+        // \Log::info($views);
         // \Log::info($board_categories);
-        // \Log::info($board_user);
+        // \Log::info($board_users);
         $category_count = array();
         for($i = 0; $i < count($categories); $i++){
-
             array_push($category_count, count(\App\Board::whereCategory_id($i+1)->get()));
         }
         // \Log::info($category_count);
@@ -95,8 +105,10 @@ class BoardController extends Controller
             'board_categories' => $board_categories,  //게시글에 해당하는 카테고리
             'board_users' => $board_users,            //게시글의 작성자 정보
             'notice' => $notice,                      //공지사항
-            'category_count' => $category_count       //각각 카테고리가 생성된 게시글 수
-        ]);
+            'notice_views' => $notice_views,          //공지사항의 조회수
+            'category_count' => $category_count,      //각각 카테고리가 생성된 게시글 수
+            'views' => $views                         //조회수
+            ]);
     }
 
     public function create()
@@ -172,6 +184,8 @@ class BoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
+     // detail 페이지 새로고침시 보여줄 뷰
     public function show($id)
     {
         return view('welcome');
@@ -179,32 +193,32 @@ class BoardController extends Controller
 
     public function board_detail(\App\Board $board){
         \Log::info($board);
-        //게시글 정보
-        // $detail_board = \App\Board::whereId($board->id)->first();
-        
+
+        if( !($board->views()->whereUserId(\Auth::user()->id)->exists()) ){
+            \Log::info("create");
+            $board->views()->create([
+                'user_id' => \Auth::user()->id,
+                'look' => true
+            ]);
+        }
+
         //카테고리 id를 가지고 카테고리 찾기
         $category = \App\Category::whereId($board->category_id)->first()->category;
-        // \Log::info($category);
-        //유저 id를 가지고 유저정보 찾기
-        // $detail_user = \App\User::whereId($board->user_id)->first();
-
-        //유저
-        // \Log::info($board->user()->first());
-
+        
         //댓글
         $comments = $board->comments()->with('replies')->whereNull('parent_id')->latest()->get();
-        // \Log::info($comments);
-
-        //첨부파일
+        
+        // \Log::info($category);  
+        // \Log::info($comments);        
         // \Log::info($board->attachments()->get());
         
-
 
         return response()->json([
             'status' => true,
             'category' => $category,
             'detail_user' => $board->user()->first(),
             'detail_board' => $board,
+            'detail_views' => count($board->views()->get()),
             'detail_comments' => $comments,
             'detail_attachments' => $board->attachments()->get(),
         ]);
