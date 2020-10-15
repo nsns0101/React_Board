@@ -1,4 +1,7 @@
 <?php
+//도우미 함수를 사용하기 위해 composer.json 등록해야함
+//autoload에 "files": ["app/helpers"] 선언 후
+//composer dump-autoload --optimize
 
 function attachments_path($path = null)
 {   

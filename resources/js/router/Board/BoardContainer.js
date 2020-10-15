@@ -28,12 +28,11 @@ export default ({history}) => {
     const [content, setContent] = useState(false);          //내용
     const [secret, setSecret] = useState(false);            //비밀 글 여부
     const [attachment, setAttachment] = useState(false);    //첨부파일
-    const [created_at, setCreated_at] = useState(false);    //생성날짜
+    // const [created_at, setCreated_at] = useState(false);    //생성날짜
     
     //Detail Board Infomation
     const [detail_board, setDetail_board] = useState(false);    //게시글 정보
-    const [detail_comment, setDetail_comment] = useState(false);
-
+    const [detail_comments, setDetail_comments] = useState(false);
     const [comment, setComment] = useState("");
     //view_count,
     //comment_count,
@@ -87,10 +86,11 @@ export default ({history}) => {
             console.log(res);
 
             let board_obj = res.data.detail_board;
+            board_obj.attachments = res.data.detail_attachments;
             board_obj.user = res.data.detail_user;
             board_obj.category = res.data.category;
             setDetail_board(board_obj);
-            setDetail_comment(res.data.detail_comments);
+            setDetail_comments(res.data.comments);
         })
     }
 
@@ -187,7 +187,7 @@ export default ({history}) => {
         //board_id는 게시글 id
         Axios.post(`/boards/${board_id}/comments`, body, config).then( res => {
             // console.log(res);
-            setDetail_comment(res.data.comments);
+            setDetail_comments(res.data.comments);
         });
     }
     // console.log(user);
@@ -206,7 +206,7 @@ export default ({history}) => {
     // console.log(attachment[0]);
     // console.log(comment);
     // console.log(detail_board);
-    console.log(attachment);
+    // console.log(attachment);
 
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
@@ -239,14 +239,14 @@ export default ({history}) => {
             setSecret,
             attachment,
             setAttachment,
-            created_at,
+            // created_at,
             Board_create,
             Board_delete,
             // user,
             detail_board,
             setDetail_board,
-            detail_comment,
-            setDetail_comment,
+            detail_comments,
+            setDetail_comments,
             Comment_create,
             comment,
             setComment

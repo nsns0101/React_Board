@@ -15,7 +15,7 @@ class CreateBoardsTable extends Migration
             $table->string('title')->comment('게시판 제목');
             $table->text('content')->comment('게시판 내용');
             $table->boolean('secret')->default(false)->comment('비밀글 여부');
-            $table->bigInteger('view_count')->default(0)->comment('조회수');
+            // $table->bigInteger('view_count')->default(0)->comment('조회수');
             $table->timestamps();
 
 

@@ -10,7 +10,7 @@ export default () => {
         history,
         setAction,
         detail_board,
-        detail_comment,
+        detail_comments,
         //view_count,
         //comment_count,
         //vote //좋아요, 싫어요
@@ -22,7 +22,7 @@ export default () => {
     } = useContext(BoardContext);
 
     // console.log(detail_board);
-    // console.log(detail_comment);
+    // console.log(detail_comments);
     // console.log(user);
     // console.log(comment);
     // const comment = [1,2];
@@ -60,6 +60,11 @@ export default () => {
 
                 {/* 내용 */}
                 <div className="row detail_content">
+                    {detail_board.attachments && detail_board.attachments.map( (value, index) => {
+                        return (
+                            <img key={index} src={`/files/board/${detail_board.attachments[index].filename}`}/>
+                        )
+                    })}
                     <p>{detail_board.content}</p>
                 </div>
 
@@ -110,15 +115,15 @@ export default () => {
                 
                 {/* 댓글 뷰 */}
                 <div className="detail_comment_view">
-                    { detail_comment ? detail_comment.map( (value, index) => {
+                    { detail_comments ? detail_comments.map( (value, index) => {
                         return (
                             <div key={index}>
                                 <div className="row detail_comment">
                                     <img className="comment_image" src="/icon/user_1.png"/>
                                     <div>
-                                        <p className="comment_name">{detail_comment[index].user.name}</p>
-                                        <p className="comment_value">{detail_comment[index].content}</p>
-                                        <p className="comment_date">{moment(detail_comment[index].created_at).format("YYYY-MM-DD")}</p>
+                                        <p className="comment_name">{detail_comments[index].user.name}</p>
+                                        <p className="comment_value">{detail_comments[index].content}</p>
+                                        <p className="comment_date">{moment(detail_comments[index].created_at).format("YYYY-MM-DD")}</p>
                                     </div>
                                 </div>
                                 {/* 대댓글 */}

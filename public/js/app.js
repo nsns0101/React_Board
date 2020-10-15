@@ -96736,30 +96736,25 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       _useState32 = _slicedToArray(_useState31, 2),
       attachment = _useState32[0],
       setAttachment = _useState32[1]; //첨부파일
+  // const [created_at, setCreated_at] = useState(false);    //생성날짜
+  //Detail Board Infomation
 
 
   var _useState33 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState34 = _slicedToArray(_useState33, 2),
-      created_at = _useState34[0],
-      setCreated_at = _useState34[1]; //생성날짜
-  //Detail Board Infomation
+      detail_board = _useState34[0],
+      setDetail_board = _useState34[1]; //게시글 정보
 
 
   var _useState35 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState36 = _slicedToArray(_useState35, 2),
-      detail_board = _useState36[0],
-      setDetail_board = _useState36[1]; //게시글 정보
+      detail_comments = _useState36[0],
+      setDetail_comments = _useState36[1];
 
-
-  var _useState37 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+  var _useState37 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState38 = _slicedToArray(_useState37, 2),
-      detail_comment = _useState38[0],
-      setDetail_comment = _useState38[1];
-
-  var _useState39 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
-      _useState40 = _slicedToArray(_useState39, 2),
-      comment = _useState40[0],
-      setComment = _useState40[1]; //view_count,
+      comment = _useState38[0],
+      setComment = _useState38[1]; //view_count,
   //comment_count,
   //vote  //좋아요, 싫어요 배열
   // console.log(user);
@@ -96806,10 +96801,11 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/board/detail/".concat(id)).then(function (res) {
       console.log(res);
       var board_obj = res.data.detail_board;
+      board_obj.attachments = res.data.detail_attachments;
       board_obj.user = res.data.detail_user;
       board_obj.category = res.data.category;
       setDetail_board(board_obj);
-      setDetail_comment(res.data.detail_comments);
+      setDetail_comments(res.data.comments);
     });
   };
 
@@ -96902,7 +96898,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/boards/".concat(board_id, "/comments"), body, config).then(function (res) {
       // console.log(res);
-      setDetail_comment(res.data.comments);
+      setDetail_comments(res.data.comments);
     });
   }; // console.log(user);
   // console.log(action);
@@ -96920,9 +96916,9 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   // console.log(attachment[0]);
   // console.log(comment);
   // console.log(detail_board);
+  // console.log(attachment);
+  //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
 
-
-  console.log(attachment); //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
 
   return action && boards.length == board_users.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
@@ -96953,14 +96949,14 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       setSecret: setSecret,
       attachment: attachment,
       setAttachment: setAttachment,
-      created_at: created_at,
+      // created_at,
       Board_create: Board_create,
       Board_delete: Board_delete,
       // user,
       detail_board: detail_board,
       setDetail_board: setDetail_board,
-      detail_comment: detail_comment,
-      setDetail_comment: setDetail_comment,
+      detail_comments: detail_comments,
+      setDetail_comments: setDetail_comments,
       Comment_create: Comment_create,
       comment: comment,
       setComment: setComment
@@ -97033,13 +97029,13 @@ __webpack_require__.r(__webpack_exports__);
       history = _useContext.history,
       setAction = _useContext.setAction,
       detail_board = _useContext.detail_board,
-      detail_comment = _useContext.detail_comment,
+      detail_comments = _useContext.detail_comments,
       Submit = _useContext.Submit,
       Board_delete = _useContext.Board_delete,
       Comment_create = _useContext.Comment_create,
       comment = _useContext.comment,
       setComment = _useContext.setComment; // console.log(detail_board);
-  // console.log(detail_comment);
+  // console.log(detail_comments);
   // console.log(user);
   // console.log(comment);
   // const comment = [1,2];
@@ -97085,7 +97081,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   }, "\uB313\uAE00 \uC218 0"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row detail_content"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, detail_board.content)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, detail_board.attachments && detail_board.attachments.map(function (value, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      key: index,
+      src: "/files/board/".concat(detail_board.attachments[index].filename)
+    });
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, detail_board.content)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "button_board_group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "button_board_list",
@@ -97136,7 +97137,7 @@ __webpack_require__.r(__webpack_exports__);
     src: "/icon/board_update.png"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail_comment_view"
-  }, detail_comment ? detail_comment.map(function (value, index) {
+  }, detail_comments ? detail_comments.map(function (value, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -97146,11 +97147,11 @@ __webpack_require__.r(__webpack_exports__);
       src: "/icon/user_1.png"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "comment_name"
-    }, detail_comment[index].user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    }, detail_comments[index].user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "comment_value"
-    }, detail_comment[index].content), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    }, detail_comments[index].content), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "comment_date"
-    }, moment__WEBPACK_IMPORTED_MODULE_4___default()(detail_comment[index].created_at).format("YYYY-MM-DD")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+    }, moment__WEBPACK_IMPORTED_MODULE_4___default()(detail_comments[index].created_at).format("YYYY-MM-DD")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
   }) : null))) : null;
 });
 

@@ -160,10 +160,10 @@ class BoardController extends Controller
             }
         }
         \Log::info($board);
-        // return response()->json([
-        //     'status' => true,
-        //     'board' => $board
-        // ]);
+        return response()->json([
+            'status' => true,
+            'board' => $board
+        ]);
     }
 
     /**
@@ -181,24 +181,32 @@ class BoardController extends Controller
         \Log::info($board);
         //게시글 정보
         // $detail_board = \App\Board::whereId($board->id)->first();
-        // \Log::info($detail_board);
         
         //카테고리 id를 가지고 카테고리 찾기
         $category = \App\Category::whereId($board->category_id)->first()->category;
         // \Log::info($category);
-
         //유저 id를 가지고 유저정보 찾기
-        $detail_user = \App\User::whereId($board->user_id)->first();
+        // $detail_user = \App\User::whereId($board->user_id)->first();
 
+        //유저
+        // \Log::info($board->user()->first());
+
+        //댓글
         $comments = $board->comments()->with('replies')->whereNull('parent_id')->latest()->get();
-        \Log::info($comments);
+        // \Log::info($comments);
+
+        //첨부파일
+        // \Log::info($board->attachments()->get());
+        
+
 
         return response()->json([
             'status' => true,
             'category' => $category,
+            'detail_user' => $board->user()->first(),
             'detail_board' => $board,
             'detail_comments' => $comments,
-            'detail_user' => $detail_user,
+            'detail_attachments' => $board->attachments()->get(),
         ]);
     }
     /**
