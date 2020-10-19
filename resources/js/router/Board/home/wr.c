@@ -37,9 +37,3 @@ int func(int num){
 
 
 
-input_line = int(input())
-
-if input_line % 2 == 1:
-    input_line= input_line - 1
-
-print(int(input_line / 2))
