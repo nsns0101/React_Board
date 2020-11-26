@@ -96868,6 +96868,8 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       };
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/board", formdata, config).then(function (res) {
         console.log(res);
+        console.log(res.data);
+        console.log(res.data.board);
 
         if (res.data.status) {
           history.push("/board");

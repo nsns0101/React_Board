@@ -47,10 +47,6 @@ export default ({history}) => {
             
             //게시글들 각각의 정보
             let boards_infomation = res.data.boards.data;
-            // boards.views = res.data.views;
-            // boards.category - res.data.board_categories;
-            // setBoard_categories(res.data.board_categories);
-            // setViews(res.data.views);
             for(var i = 0; i < boards_infomation.length; i++){
                 boards_infomation[i].views = res.data.views[i];
                 boards_infomation[i].category = res.data.board_categories[i];
@@ -70,12 +66,6 @@ export default ({history}) => {
                 total_boards_infomation.notice[i].views = res.data.notice_views[i];
             }
             
-            // console.log(total_boards_infomation);
-            // setBoard_count(res.data.board_count);
-            // setCategories(res.data.categories);
-            // setBoard_users(res.data.board_users);
-            // setNotice(res.data.notice);
-            // setCategory_count(res.data.category_count);
             setTotal_boards(total_boards_infomation)
 
             const array_page_count = [];
@@ -149,24 +139,13 @@ export default ({history}) => {
 
         if(form == "write"){
             let formdata = new FormData();
-            // const body = {
-            //     title : title,
-            //     category : category,
-            //     content : content,
-            //     secret : secret,
-            //     attachment : attachment,
-            // }
             formdata.append('title', title);
             formdata.append('category', category);
             formdata.append('content', content);
             formdata.append('secret', secret);
-            // formdata.append(`files`, attachment[0][0]);
-            // formdata.append(`file1`, attachment[1]);
 
             if(attachment){
-                // attachment.map( (value, index) => {
-                //     formdata.append(`file${index}`, value);
-                // });
+
                 for(var i = 0; i <= attachment.length - 1; i++){
                     formdata.append(`file${i}`, attachment[i]);
                 }
@@ -181,6 +160,8 @@ export default ({history}) => {
             }
             Axios.post("/board", formdata, config).then( res => {
                 console.log(res);
+                console.log(res.data);
+                console.log(res.data.board);
 
                 if(res.data.status){
                     history.push("/board");
@@ -221,25 +202,6 @@ export default ({history}) => {
             setDetail_comments(res.data.comments);
         });
     }
-    // console.log(user);
-    // console.log(action);
-    // console.log(board_count);
-    // console.log(boards);
-    // console.log(board_categories);
-    // console.log(categories);
-    // console.log(board_users);
-    // console.log(pageCount);
-    // console.log(board_users);
-    // console.log(boards.length);
-    // console.log(search);
-    // console.log(first_current_end_page);
-    // console.log(secret);
-    // console.log(attachment[0]);
-    // console.log(comment);
-    // console.log(detail_board);
-    // console.log(attachment);
-    // console.log(total_boards);
-    // console.log(boards);
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
     //categories.length는 write 페이지에만 제공하는 것(write페이지에서 새로고침시 total_boards가 없으니까)

@@ -128,7 +128,7 @@ class BoardController extends Controller
 
     public function store(Request $request)
     {
-        \Log::info($request->all());
+        \Log::info($request->user());
         // \Log::info($_FILES);
         // \Log::info($request->hasFile('files'));
         // \Log::info($request->hasFile('file'));
@@ -201,7 +201,6 @@ class BoardController extends Controller
                 'look' => true
             ]);
         }
-
         //카테고리 id를 가지고 카테고리 찾기
         $category = \App\Category::whereId($board->category_id)->first()->category;
         
