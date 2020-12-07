@@ -96746,10 +96746,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(url).then(function (res) {
       console.log(res); //게시글들 각각의 정보
 
-      var boards_infomation = res.data.boards.data; // boards.views = res.data.views;
-      // boards.category - res.data.board_categories;
-      // setBoard_categories(res.data.board_categories);
-      // setViews(res.data.views);
+      var boards_infomation = res.data.boards.data;
 
       for (var i = 0; i < boards_infomation.length; i++) {
         boards_infomation[i].views = res.data.views[i];
@@ -96767,13 +96764,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
       for (var i = 0; i < total_boards_infomation.notice.length; i++) {
         total_boards_infomation.notice[i].views = res.data.notice_views[i];
-      } // console.log(total_boards_infomation);
-      // setBoard_count(res.data.board_count);
-      // setCategories(res.data.categories);
-      // setBoard_users(res.data.board_users);
-      // setNotice(res.data.notice);
-      // setCategory_count(res.data.category_count);
-
+      }
 
       setTotal_boards(total_boards_infomation);
       var array_page_count = [];
@@ -96811,7 +96802,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       board_obj.user = res.data.detail_user;
       board_obj.category = res.data.category;
       setDetail_board(board_obj);
-      setDetail_comments(res.data.comments);
+      setDetail_comments(res.data.detail_comments);
     });
   };
 
@@ -96836,24 +96827,13 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
   var Board_create = function Board_create(form) {
     if (form == "write") {
-      var formdata = new FormData(); // const body = {
-      //     title : title,
-      //     category : category,
-      //     content : content,
-      //     secret : secret,
-      //     attachment : attachment,
-      // }
-
+      var formdata = new FormData();
       formdata.append('title', title);
       formdata.append('category', category);
       formdata.append('content', content);
-      formdata.append('secret', secret); // formdata.append(`files`, attachment[0][0]);
-      // formdata.append(`file1`, attachment[1]);
+      formdata.append('secret', secret);
 
       if (attachment) {
-        // attachment.map( (value, index) => {
-        //     formdata.append(`file${index}`, value);
-        // });
         for (var i = 0; i <= attachment.length - 1; i++) {
           formdata.append("file".concat(i), attachment[i]);
         }
@@ -96908,26 +96888,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       // console.log(res);
       setDetail_comments(res.data.comments);
     });
-  }; // console.log(user);
-  // console.log(action);
-  // console.log(board_count);
-  // console.log(boards);
-  // console.log(board_categories);
-  // console.log(categories);
-  // console.log(board_users);
-  // console.log(pageCount);
-  // console.log(board_users);
-  // console.log(boards.length);
-  // console.log(search);
-  // console.log(first_current_end_page);
-  // console.log(secret);
-  // console.log(attachment[0]);
-  // console.log(comment);
-  // console.log(detail_board);
-  // console.log(attachment);
-  // console.log(total_boards);
-  // console.log(boards);
-  //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
+  }; //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
   //categories.length는 write 페이지에만 제공하는 것(write페이지에서 새로고침시 total_boards가 없으니까)
 
 

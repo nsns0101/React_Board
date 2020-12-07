@@ -111,10 +111,9 @@ export default ({history}) => {
             board_obj.category = res.data.category;
 
             setDetail_board(board_obj);
-            setDetail_comments(res.data.comments);
+            setDetail_comments(res.data.detail_comments);
         })
     }
-
     useEffect( () => {
         if(location.pathname.split("/")[2] == "write"){
             // console.log("write");

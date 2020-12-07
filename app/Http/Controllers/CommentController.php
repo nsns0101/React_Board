@@ -66,7 +66,16 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        //한 주문의 모든 주문 디테일
+        // $order_total = \App\Order_detail::whereOrder_id($order_id)->get();
+        // $order_total_price = 0;
+        
+        // for($i = 0; i < count($order_total); $i++){
+        //   //해당하는 상품가격 * 상품개수
+        //   $price = \App\Product::whereProduct_id($order_total[i]->product_id)->first()->product_price * $order_total[i]->order_product_quantity;
+        
+        //   $order_total_price += $price;
+        // }
     }
 
     /**
