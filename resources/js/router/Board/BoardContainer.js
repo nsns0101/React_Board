@@ -114,15 +114,50 @@ export default ({history}) => {
             setDetail_comments(res.data.detail_comments);
         })
     }
+
+    //bool = True면 업데이트 요청
+    //bool = False면 write폼에 edit 데이터 요청
+    const Board_update = (id, bool) => {
+        // 업데이트
+        if(bool){
+            Axios.put(`/board/${id}`).then(res => {
+                console.log(res);
+                
+                // let set
+            });
+        }
+        // Write폼 데이터 요청
+        else{
+            Axios.put(`/board/edit_data/${id}`).then(res => {
+                console.log(res);
+                // const [title, setTitle] = useState(false);              //제목
+                // const [category, setCategory] = useState(false);        //카테고리
+                // const [content, setContent] = useState(false);          //내용
+                // const [secret, setSecret] = useState(false);            //비밀 글 여부
+                // const [attachment, setAttachment] = useState(false);    //첨부파일
+                setTitle(res.data.board.title);
+                setCategory(res.data.category);
+                setContent(res.data.board.content);
+                setSecret(res.data.board.secret);
+                setAttachment(res.data.board.attachment);
+
+            });
+        }
+    }
+
     useEffect( () => {
         if(location.pathname.split("/")[2] == "write"){
             // console.log("write");
             setAction("write"); //글 작성
             board_write();
         }
+        //업데이트
+        else if(location.pathname.split("/")[3] == "edit"){
+            setAction("update");
+            Board_update(location.pathname.split("/")[2], false);
+        }
         //Number형으로 바꿔도 옳은 값이면 => 게시글 detail
-        else if(location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])){
-            // console.log("detail");
+        else if( location.pathname.split("/")[2] && Number(location.pathname.split("/")[2]) ){
             setAction("detail");
             board_detail(location.pathname.split("/")[2]);
         }
@@ -204,7 +239,7 @@ export default ({history}) => {
 
     //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
     //categories.length는 write 페이지에만 제공하는 것(write페이지에서 새로고침시 total_boards가 없으니까)
-    return total_boards && action && boards.length == total_boards.board_users.length || categories.length ? (
+    return action || total_boards   && boards.length == total_boards.board_users.length || categories.length ? (
         <BoardContext.Provider value={{
             user,
             history,
@@ -236,6 +271,7 @@ export default ({history}) => {
             setAttachment,
             // created_at,
             Board_create,
+            Board_update,
             Board_delete,
             // user,
             detail_board,

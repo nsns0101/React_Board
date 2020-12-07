@@ -8,11 +8,13 @@ export default () => {
     const {
         action
     } = useContext(BoardContext);
+    
+    console.log(action);
 
     return action && action == "home" ? ( 
         // <span class="hit">New</span>
         <Board_home/>
-    ) : action == "write" ? (
+    ) : action == "write" || action == "update" ? (
         <Board_write/>
     ) : action == "detail" ? (
         <Board_detail/>

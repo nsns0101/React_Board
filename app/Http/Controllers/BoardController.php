@@ -230,19 +230,28 @@ class BoardController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('welcome');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function board_edit_data($id){
+        $board = \App\Board::whereId($id)->first();
+        $category = \App\Category::whereId($board->category_id)->first()->category;
+        \Log::info($board);
+        return response()->json([
+            'status'=> true,
+            'board'=> $board,
+            'category'=> $category,
+        ]);
+    }
+
     public function update(Request $request, $id)
     {
-        //
+        // \App\Board::whereId($id)->first();
+
+        // return response()->json([
+            
+        // ]);
+        \Log::info($id);
     }
 
     /**

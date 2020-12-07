@@ -16,8 +16,11 @@ export default () => {
         attachment,
         setAttachment,
         categories,
-        Board_create,    
+        Board_create,
+        Board_update,
+        action   
     } = useContext(BoardContext);
+
     return (
         <div className="row justify-content-center">
 
@@ -42,6 +45,7 @@ export default () => {
                             name ="title"
                             type="text"
                             placeholder="글 제목을 입력해주세요."
+                            value={title ? title : ""}
                             onChange={ e => {
                             const {
                                 target: { value }
@@ -57,6 +61,7 @@ export default () => {
                                 type="checkbox" 
                                 className="option-input"
                                 style={{border:0, outline: 0}}
+                                value={secret ? secret : ""}
                                 onClick ={()=> setSecret(!secret)}
                             />
                             <p style={{margin:"12px 5px", fontSize: "20px", fontWeight: "bold"}}>비밀 글 여부</p>
@@ -66,7 +71,7 @@ export default () => {
                     {/* 카테고리 선택 */}
                     <div className="col-md-12 category_dropdown">
                         <span className="write_main_p" style={{color:"black"}}>카테고리</span>
-                        <Dropdown options={categories} style={{zIndex:"9999"}}
+                        <Dropdown options={categories} value={category ? category : ""} style={{zIndex:"9999"}}
                             onChange={
                                 (data) => {
                                     console.log(data.value);
@@ -78,7 +83,7 @@ export default () => {
                     {/* 내용 작성 */}
                     <div className="col-md-12">
                         <span className="write_main_p" style={{color:"black"}}>내용</span>
-                        <textarea className="write_textarea" rows="2" cols="20" wrap="hard"
+                        <textarea className="write_textarea" rows="2" cols="20" wrap="hard" value={content ? content : ""}
                             onChange={ e => {
                                 const {
                                     target: { value }
@@ -95,6 +100,7 @@ export default () => {
                         <input 
                             className="write_file" 
                             type="file" multiple="multple" encType="multipart/form-data"
+                            // file={}
                             onChange={ e => {
                                 // console.log(e.target.files);
                                 setAttachment(e.target.files);
@@ -105,7 +111,16 @@ export default () => {
                     <div className="col-md-12 text-center">
                         <button 
                             className="btn btn-primary"
-                            onClick={() => Board_create("write")}    
+                            onClick={
+                                () => {
+                                    if(action == "write"){
+                                        Board_create("write");
+                                    }
+                                    else{
+                                        Board_update(location.pathname.split("/")[2], true);
+                                    }
+                                }
+                        }    
                         >작성하기</button>
                     </div>
                 </div> 

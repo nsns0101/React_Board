@@ -29,8 +29,9 @@ Route::get('/get_user', 'LoginController@is_login');
 Route::resource('/board', 'BoardController');
 Route::get('/board_get', 'BoardController@get_boards');
 Route::get('/{id}/board_get', 'BoardController@get_boards');
+// Route::get('/board/{board}', 'BoardController@board_detail');
 Route::get('/board/detail/{board}', 'BoardController@board_detail');
-
+Route::put('/board/edit_data/{id}','BoardController@board_edit_data');
 //댓글
 Route::resource('boards.comments', 'CommentController');
 // Route::resource('comment', 'CommentController', ['only' => ['update', 'destroy']]);

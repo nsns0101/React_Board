@@ -8,19 +8,19 @@ export default () => {
     const {
         user,
         history,
-        setAction,
+        // setAction,
         detail_board,
         detail_comments,
         //view_count,
         //comment_count,
         //vote //좋아요, 싫어요
-        Submit,
+        // Submit,
+        Board_update,
         Board_delete,
         Comment_create,
         comment,
         setComment,
     } = useContext(BoardContext);
-
     // console.log(detail_board);
     // console.log(detail_comments);
     // console.log(user);
@@ -78,10 +78,13 @@ export default () => {
                     {user && user.id == detail_board.user.id && 
                     <Fragment>
                         {/* 글 수정 */}
-                        <button className="button_board_update">
+                        {/* <Link to={`/board/${total_boards.notice[index].id}`} onClick={()=>setAction("detail")}>
+                                                {total_boards.notice[index].title}
+                                            </Link> */}
+                        <Link to={`/board/${detail_board.id}/edit`} className="btn button_board_update" onClick={()=> Board_update(detail_board.id)}>
                             <img className="button_board_image" src="/icon/board_update.png"/>
                             <span>글 수정</span>
-                        </button>
+                        </Link>
                         {/* 글 삭제 */}
                         <button className="button_board_delete" onClick={()=> Board_delete(detail_board.id)}>
                             <img className="button_board_image" src="/icon/board_trash.png"/>

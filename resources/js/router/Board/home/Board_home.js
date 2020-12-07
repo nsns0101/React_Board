@@ -11,12 +11,12 @@ export default () => {
     //공지 자유 문의 팁 구매 판매
     const {
         user,
-        action,
+        // action,
         setAction,
         board_get,
         board_count,
-        categories,
-        category_count,
+        // categories,
+        // category_count,
         pageCount,
         search,
         setSearch,
@@ -40,7 +40,7 @@ export default () => {
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <p className="board_total_p">
-                            Total <span style={{color:"red", fontWeight:"bold"}}>{board_count}건</span>의 게시물
+                            Total <span style={{color:"red", fontWeight:"bold"}}>{total_boards.board_count}건</span>의 게시물
                         </p>
                     </div>
                 </div>

@@ -96804,6 +96804,32 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       setDetail_board(board_obj);
       setDetail_comments(res.data.detail_comments);
     });
+  }; //bool = True면 업데이트 요청
+  //bool = False면 write폼에 edit 데이터 요청
+
+
+  var Board_update = function Board_update(id, bool) {
+    // 업데이트
+    if (bool) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.put("/board/".concat(id)).then(function (res) {
+        console.log(res); // let set
+      });
+    } // Write폼 데이터 요청
+    else {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.put("/board/edit_data/".concat(id)).then(function (res) {
+          console.log(res); // const [title, setTitle] = useState(false);              //제목
+          // const [category, setCategory] = useState(false);        //카테고리
+          // const [content, setContent] = useState(false);          //내용
+          // const [secret, setSecret] = useState(false);            //비밀 글 여부
+          // const [attachment, setAttachment] = useState(false);    //첨부파일
+
+          setTitle(res.data.board.title);
+          setCategory(res.data.category);
+          setContent(res.data.board.content);
+          setSecret(res.data.board.secret);
+          setAttachment(res.data.board.attachment);
+        });
+      }
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -96812,17 +96838,20 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       setAction("write"); //글 작성
 
       board_write();
-    } //Number형으로 바꿔도 옳은 값이면 => 게시글 detail
-    else if (location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])) {
-        // console.log("detail");
-        setAction("detail");
-        board_detail(location.pathname.split("/")[2]);
-      } else {
-        // console.log("home");
-        setAction("home"); //홈
+    } //업데이트
+    else if (location.pathname.split("/")[3] == "edit") {
+        setAction("update");
+        Board_update(location.pathname.split("/")[2], false);
+      } //Number형으로 바꿔도 옳은 값이면 => 게시글 detail
+      else if (location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])) {
+          setAction("detail");
+          board_detail(location.pathname.split("/")[2]);
+        } else {
+          // console.log("home");
+          setAction("home"); //홈
 
-        board_get("board_get");
-      }
+          board_get("board_get");
+        }
   }, [location.pathname]); //게시글 생성
 
   var Board_create = function Board_create(form) {
@@ -96892,7 +96921,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
   //categories.length는 write 페이지에만 제공하는 것(write페이지에서 새로고침시 total_boards가 없으니까)
 
 
-  return total_boards && action && boards.length == total_boards.board_users.length || categories.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
+  return action || total_boards && boards.length == total_boards.board_users.length || categories.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
       user: user,
       history: history,
@@ -96924,6 +96953,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       setAttachment: setAttachment,
       // created_at,
       Board_create: Board_create,
+      Board_update: Board_update,
       Board_delete: Board_delete,
       // user,
       detail_board: detail_board,
@@ -96967,10 +96997,11 @@ __webpack_require__.r(__webpack_exports__);
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_2__["BoardContext"]),
       action = _useContext.action;
 
+  console.log(action);
   return action && action == "home" ?
   /*#__PURE__*/
   // <span class="hit">New</span>
-  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Board_home__WEBPACK_IMPORTED_MODULE_3__["default"], null) : action == "write" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_write_Board_write__WEBPACK_IMPORTED_MODULE_4__["default"], null) : action == "detail" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_detail_Board_detail__WEBPACK_IMPORTED_MODULE_5__["default"], null) : null;
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Board_home__WEBPACK_IMPORTED_MODULE_3__["default"], null) : action == "write" || action == "update" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_write_Board_write__WEBPACK_IMPORTED_MODULE_4__["default"], null) : action == "detail" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_detail_Board_detail__WEBPACK_IMPORTED_MODULE_5__["default"], null) : null;
 });
 
 /***/ }),
@@ -97001,10 +97032,9 @@ __webpack_require__.r(__webpack_exports__);
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_2__["BoardContext"]),
       user = _useContext.user,
       history = _useContext.history,
-      setAction = _useContext.setAction,
       detail_board = _useContext.detail_board,
       detail_comments = _useContext.detail_comments,
-      Submit = _useContext.Submit,
+      Board_update = _useContext.Board_update,
       Board_delete = _useContext.Board_delete,
       Comment_create = _useContext.Comment_create,
       comment = _useContext.comment,
@@ -97070,8 +97100,12 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "button_board_image",
     src: "/icon/board_list.png"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uAE00 \uBAA9\uB85D")), user && user.id == detail_board.user.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "button_board_update"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uAE00 \uBAA9\uB85D")), user && user.id == detail_board.user.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/board/".concat(detail_board.id, "/edit"),
+    className: "btn button_board_update",
+    onClick: function onClick() {
+      return Board_update(detail_board.id);
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "button_board_image",
     src: "/icon/board_update.png"
@@ -97293,12 +97327,9 @@ __webpack_require__.r(__webpack_exports__);
   //공지 자유 문의 팁 구매 판매
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_4__["BoardContext"]),
       user = _useContext.user,
-      action = _useContext.action,
       setAction = _useContext.setAction,
       board_get = _useContext.board_get,
       board_count = _useContext.board_count,
-      categories = _useContext.categories,
-      category_count = _useContext.category_count,
       pageCount = _useContext.pageCount,
       search = _useContext.search,
       setSearch = _useContext.setSearch,
@@ -97332,7 +97363,7 @@ __webpack_require__.r(__webpack_exports__);
       color: "red",
       fontWeight: "bold"
     }
-  }, board_count, "\uAC74"), "\uC758 \uAC8C\uC2DC\uBB3C"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, total_boards.board_count, "\uAC74"), "\uC758 \uAC8C\uC2DC\uBB3C"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "board_category col-xl-8 col-lg-8 col-md-8"
@@ -97471,6 +97502,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
+  var _React$createElement;
+
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_BoardContainer__WEBPACK_IMPORTED_MODULE_2__["BoardContext"]),
       title = _useContext.title,
       setTitle = _useContext.setTitle,
@@ -97483,7 +97516,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       attachment = _useContext.attachment,
       setAttachment = _useContext.setAttachment,
       categories = _useContext.categories,
-      Board_create = _useContext.Board_create;
+      Board_create = _useContext.Board_create,
+      Board_update = _useContext.Board_update,
+      action = _useContext.action;
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center"
@@ -97516,6 +97551,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     name: "title",
     type: "text",
     placeholder: "\uAE00 \uC81C\uBAA9\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.",
+    value: title ? title : "",
     onChange: function onChange(e) {
       var value = e.target.value;
       setTitle(value);
@@ -97536,6 +97572,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       border: 0,
       outline: 0
     },
+    value: secret ? secret : "",
     onClick: function onClick() {
       return setSecret(!secret);
     }
@@ -97552,20 +97589,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     style: {
       color: "black"
     }
-  }, "\uCE74\uD14C\uACE0\uB9AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_dropdown__WEBPACK_IMPORTED_MODULE_3___default.a, _defineProperty({
+  }, "\uCE74\uD14C\uACE0\uB9AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_dropdown__WEBPACK_IMPORTED_MODULE_3___default.a, (_React$createElement = {
     options: categories,
+    value: category ? category : "",
     style: {
       zIndex: "9999"
     },
     onChange: function onChange(data) {
       console.log(data.value);
       setCategory(data.value);
-    },
-    value: category ? category : "",
-    placeholder: "선택"
-  }, "style", {
+    }
+  }, _defineProperty(_React$createElement, "value", category ? category : ""), _defineProperty(_React$createElement, "placeholder", "선택"), _defineProperty(_React$createElement, "style", {
     width: "200px"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), _React$createElement))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "write_main_p",
@@ -97577,6 +97613,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     rows: "2",
     cols: "20",
     wrap: "hard",
+    value: content ? content : "",
     onChange: function onChange(e) {
       var value = e.target.value;
       setContent(value);
@@ -97592,7 +97629,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     className: "write_file",
     type: "file",
     multiple: "multple",
-    encType: "multipart/form-data",
+    encType: "multipart/form-data" // file={}
+    ,
     onChange: function onChange(e) {
       // console.log(e.target.files);
       setAttachment(e.target.files);
@@ -97602,7 +97640,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-primary",
     onClick: function onClick() {
-      return Board_create("write");
+      if (action == "write") {
+        Board_create("write");
+      } else {
+        Board_update(location.pathname.split("/")[2], true);
+      }
     }
   }, "\uC791\uC131\uD558\uAE30")))));
 });
