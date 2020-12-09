@@ -96934,7 +96934,7 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
 
   var Comment_update = function Comment_update(detail_board_id, comment_id) {
-    var url = "/boards/".concat(detail_board_id, "/comments").concat(comment_id);
+    var url = "/boards/".concat(detail_board_id, "/comments/").concat(comment_id);
     var body = {
       // parent_id,      //부모 댓글 id
       content: comment,
@@ -96955,9 +96955,11 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
 
 
   var Comment_delete = function Comment_delete(detail_board_id, comment_id) {
-    var url = "/boards/".concat(detail_board_id, "/comments").concat(comment_id);
+    console.log("comment_delete");
+    var url = "/boards/".concat(detail_board_id, "/comments/").concat(comment_id);
     axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"](url).then(function (res) {
       console.log(res);
+      setDetail_comments(res.data.comments);
     });
   };
 
@@ -97102,6 +97104,8 @@ __webpack_require__.r(__webpack_exports__);
       Board_update = _useContext.Board_update,
       Board_delete = _useContext.Board_delete,
       Comment_create = _useContext.Comment_create,
+      Comment_update = _useContext.Comment_update,
+      Comment_delete = _useContext.Comment_delete,
       comment = _useContext.comment,
       setComment = _useContext.setComment; // console.log(detail_board);
   // console.log(detail_comments);
@@ -97227,9 +97231,15 @@ __webpack_require__.r(__webpack_exports__);
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "comment_date"
     }, moment__WEBPACK_IMPORTED_MODULE_4___default()(detail_comments[index].created_at).format("YYYY-MM-DD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "button_comment_update"
+      className: "button_comment_update",
+      onClick: function onClick() {
+        return Comment_update(detail_board.id, detail_comments[index].id);
+      }
     }, "\uB313\uAE00 \uC218\uC815"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "button_comment_delete"
+      className: "button_comment_delete",
+      onClick: function onClick() {
+        return Comment_delete(detail_board.id, detail_comments[index].id);
+      }
     }, "\uB313\uAE00 \uC0AD\uC81C")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
   }) : null))) : null;
 });

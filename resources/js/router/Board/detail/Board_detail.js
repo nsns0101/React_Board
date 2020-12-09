@@ -18,6 +18,8 @@ export default () => {
         Board_update,
         Board_delete,
         Comment_create,
+        Comment_update,
+        Comment_delete,
         comment,
         setComment,
     } = useContext(BoardContext);
@@ -128,8 +130,12 @@ export default () => {
                                         <p className="comment_value">{detail_comments[index].content}</p>
                                         <div className="row">
                                             <p className="comment_date">{moment(detail_comments[index].created_at).format("YYYY-MM-DD")}</p>
-                                            <button className="button_comment_update">댓글 수정</button>
-                                            <button className="button_comment_delete">댓글 삭제</button>
+                                            <button className="button_comment_update" onClick={()=>Comment_update(detail_board.id, detail_comments[index].id)}>
+                                                댓글 수정
+                                            </button>
+                                            <button className="button_comment_delete" onClick={()=>Comment_delete(detail_board.id, detail_comments[index].id)}>
+                                                댓글 삭제
+                                            </button>
                                         </div>
                                         
                                     </div>

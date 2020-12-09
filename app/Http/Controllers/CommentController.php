@@ -107,8 +107,15 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(\App\Board $board, \App\Comment $comment)
     {
-        //
+        // \Log::info($board);
+        // \Log::info($comment);
+        $comment->delete();
+        $comments = $board->comments()->with('replies')->whereNull('parent_id')->latest()->get();
+        return response()->json([
+            'status' => true,
+            'comments' => $comments
+        ]);
     }
 }

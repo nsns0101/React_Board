@@ -244,7 +244,7 @@ export default ({history}) => {
     }
     //댓글 수정
     const Comment_update = (detail_board_id, comment_id) => {
-        const url = `/boards/${detail_board_id}/comments${comment_id}`;
+        const url = `/boards/${detail_board_id}/comments/${comment_id}`;
         const body = {
             // parent_id,      //부모 댓글 id
             content: comment,         //댓글 내용
@@ -263,13 +263,17 @@ export default ({history}) => {
     }
     //댓글 삭제
     const Comment_delete = (detail_board_id, comment_id) => {
-        const url = `/boards/${detail_board_id}/comments${comment_id}`;
+        console.log("comment_delete");
+        const url = `/boards/${detail_board_id}/comments/${comment_id}`;
         
         Axios.delete(url).then( res => {
             console.log(res);
+            setDetail_comments(res.data.comments);
+
         });    
-        
     }
+
+
     useEffect( () => {
         if(location.pathname.split("/")[2] == "write"){
             // console.log("write");
