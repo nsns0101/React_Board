@@ -52,9 +52,9 @@ export default () => {
                         {detail_board.user.name}({detail_board.user.email})
                     </span>
                     <span className="detail_option_span">
-                        <span style={{marginRight:"10px"}}>조회 수 184</span>
+                        <span style={{marginRight:"10px"}}>조회 수 {detail_board.views}</span>
                         <span style={{marginRight:"10px"}}>추천 수 12</span>
-                        <span style={{marginRight:"10px"}}>댓글 수 0</span>
+                        <span style={{marginRight:"10px"}}>댓글 수 {detail_comments.length}</span>
                     </span>
                 </div>
 
@@ -126,7 +126,12 @@ export default () => {
                                     <div>
                                         <p className="comment_name">{detail_comments[index].user.name}</p>
                                         <p className="comment_value">{detail_comments[index].content}</p>
-                                        <p className="comment_date">{moment(detail_comments[index].created_at).format("YYYY-MM-DD")}</p>
+                                        <div className="row">
+                                            <p className="comment_date">{moment(detail_comments[index].created_at).format("YYYY-MM-DD")}</p>
+                                            <button className="button_comment_update">댓글 수정</button>
+                                            <button className="button_comment_delete">댓글 삭제</button>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 {/* 대댓글 */}

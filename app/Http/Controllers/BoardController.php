@@ -46,6 +46,7 @@ class BoardController extends Controller
             $query = new \App\Board;
             \Log::info($query->where('title','like', '%'.$choice_category.'%')->orderBy('id','desc')->paginate(10));
             $boards = $query->where('title','like', '%'.$choice_category.'%')->orderBy('id','desc')->paginate(10);
+            
             // if($choice_category != "공지"){
             //     $notice = [];   //카테고리 검색시 공지사항은 안보이게
             // }
@@ -128,11 +129,15 @@ class BoardController extends Controller
 
     public function store(Request $request)
     {
-        \Log::info($request->user());
+        \Log::info($request["secret"]);
         // \Log::info($_FILES);
         // \Log::info($request->hasFile('files'));
         // \Log::info($request->hasFile('file'));
         // \Log::info($request->file());
+
+        // \Log::info(gettype( json_decode($request["secret"])));    // string
+        
+        
         $category_id = \App\Category::whereCategory($request["category"])->first()->id;
         
         $board = \App\Board::create([
@@ -140,7 +145,7 @@ class BoardController extends Controller
             'category_id' => $category_id,
             'title' => $request["title"],
             'content' => $request["content"],
-            'secret' => $request["secret"]
+            'secret' => json_decode($request["secret"])
         ]);
         
        //request안에 files가 있나?(유저가 게시글 생성시 파일을 등록했나?)
@@ -173,7 +178,7 @@ class BoardController extends Controller
         }
         \Log::info($board);
         return response()->json([
-            'status' => true,
+            // 'status' => true,
             'board' => $board
         ]);
     }
@@ -194,7 +199,7 @@ class BoardController extends Controller
     public function board_detail(\App\Board $board){
         \Log::info($board);
 
-        if( !($board->views()->whereUserId(\Auth::user()->id)->exists()) ){
+        if( \Auth::user() and !($board->views()->whereUserId(\Auth::user()->id)->exists()) ){
             \Log::info("create");
             $board->views()->create([
                 'user_id' => \Auth::user()->id,
@@ -246,11 +251,48 @@ class BoardController extends Controller
 
     public function update(Request $request, $id)
     {
-        // \App\Board::whereId($id)->first();
+        \Log::info($request->all());
+        $board = \App\Board::whereId($id)->first();
 
-        // return response()->json([
-            
-        // ]);
+        // \Log::info( gettype($request->secret));
+        // $request->secret = json_decode($request->secret);
+        // \Log::info( gettype($request->secret));
+        // $board->update($request->all());
+
+        $category_id = \App\Category::whereCategory($request["category"])->first()->id;
+        $board->update([
+            'category_id' => $category_id,
+            'title' => $request["title"],
+            'content' => $request["content"],
+            'secret' => json_decode($request["secret"])    
+        ]);
+        if ($request->file()) {
+            //files라는 file을 files라는 변수에 담음
+            $files = $request->file();
+            foreach($files as $file) {
+                $filename = \Str::random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+                //생성
+                $attachment = \App\Attachment::whereBoard_id($board->id)->first();
+                if($attachment){
+                    $attachment->update([
+                        'filename' => $filename,
+                        'bytes' => $file->getSize(),             //사이즈
+                        'mime' => $file->getClientMimeType()     //형식 ex) image/png
+                    ]);
+                }else{
+                    \App\Attachment::create([
+                        'board_id' => $board->id,
+                        'filename' => $filename,
+                        'bytes' => $file->getSize(),             //사이즈
+                        'mime' => $file->getClientMimeType()     //형식 ex) image/png
+                    ]);
+                }
+                move_uploaded_file($file, public_path('files'. DIRECTORY_SEPARATOR . 'board'. DIRECTORY_SEPARATOR . $filename));
+            }
+        }
+        return response()->json([
+            'status' => true
+        ]);
         \Log::info($id);
     }
 

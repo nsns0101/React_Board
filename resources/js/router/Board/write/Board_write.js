@@ -32,7 +32,7 @@ export default () => {
             </div>
 
             <div className="col-md-8 text-center">
-                <p className="write_main_title">글 작성</p>
+                <p className="write_main_title">{action == "write" ? "글 작성" : "글 수정"}</p>
             </div>
 
             <div className="col-xl-8 col-lg-8 col-md-8" style={{borderRadius:"20px",boxShadow:"6px 6px 6px 6px rgba(0, 0, 0, .2)", marginBottom:"60px"}}>
@@ -61,13 +61,15 @@ export default () => {
                                 type="checkbox" 
                                 className="option-input"
                                 style={{border:0, outline: 0}}
-                                value={secret ? secret : ""}
-                                onClick ={()=> setSecret(!secret)}
+                                // value={secret ? true : false}
+                                checked = {
+                                    secret
+                                }
+                                onChange ={()=> setSecret(!secret)}
                             />
                             <p style={{margin:"12px 5px", fontSize: "20px", fontWeight: "bold"}}>비밀 글 여부</p>
                         </label>
                     </div>
-                    
                     {/* 카테고리 선택 */}
                     <div className="col-md-12 category_dropdown">
                         <span className="write_main_p" style={{color:"black"}}>카테고리</span>

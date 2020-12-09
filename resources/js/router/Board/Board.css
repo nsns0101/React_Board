@@ -356,7 +356,6 @@
   background-color: #DC3545;
   color: white;
   border: 0;
-
 }
 
 .button_board_image {
@@ -400,8 +399,24 @@
 .comment_date {
   font-size: 14px;
   color: gray;
+  margin-right: 20px;
 }
-
+/* 댓글 수정 */
+.button_comment_update {
+  /* margin-left: 20px; */
+  border-radius: 10px;
+  background-color: blue;
+  color: white;
+  border: 0;
+}
+/* 댓글 삭제 */
+.button_comment_delete {
+  margin-left: 5px;
+  border-radius: 10px;
+  background-color: #DC3545;
+  color: white;
+  border: 0;
+}
 .arrow_reply_image {
   width: 60px;
   margin: 0 20px;

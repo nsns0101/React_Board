@@ -7260,7 +7260,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".board {\r\n  margin-bottom: 50px;  \r\n}\r\n\r\n/* 메인 이미지 */\r\n.board_image {\r\n    width: 100%;\r\n    height: 25vh;\r\n    background: url(\"/img/board_main.jpg\") center center no-repeat;\r\n    text-align: center;\r\n    /* background: linear-gradient(45deg, #002ef0 0%, rgba(116, 15, 214, 0.9) 100%), url(/images/hero-bg.jpg) center center no-repeat; */\r\n    background-size: cover;\r\n    /* filter: blur(1px); */\r\n  /* -webkit-filter: blur(8px) */\r\n    margin-bottom : 50px;\r\n\r\n}\r\n\r\n.board_image_p {\r\n  color: white; \r\n  text-shadow: black 12px 0px 3px;\r\n  font-size: 80px; \r\n  padding-top: 120px; \r\n  font-weight: bold;\r\n}\r\n\r\n/* 메인 이미지에 들어갈 텍스트 */\r\n.board_total_p {\r\n  font-size: 30px;\r\n}\r\n\r\n/* 카테고리 박스 */\r\n.board_category {\r\n  margin: 10px 0 30px 0;\r\n  border-radius: 10px;\r\n  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .2);\r\n}\r\n\r\n/* 카테고리 전부 보기 */\r\n.home_icon {\r\n  width: 30px;\r\n  padding: 10px 0;\r\n  cursor: pointer;\r\n}\r\n/* 각각의 카테고리를 담은 박스 */\r\n.menu_box {\r\n  margin-top: 4px;\r\n  text-align: right;\r\n}\r\n\r\n/* 1번째 게시글 유형 */\r\n.menu_icon_1 {\r\n  border : 1px solid black;\r\n  /* border-right : 1px solid white; */\r\n  border-radius: 5px 0px 0px 5px;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n/* 2번째 게시글 유형 */\r\n.menu_icon_2 {\r\n  border : 1px solid black;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n/* 3번째 게시글 유형 */\r\n.menu_icon_3 {\r\n  border : 1px solid black;\r\n  border-radius: 0px 5px 5px 0px;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n\r\n.category_p {\r\n  text-align: center;\r\n  padding-top: 13px;\r\n  font-size: 18px;\r\n  cursor: pointer;\r\n}\r\n\r\n.board_thead {\r\n  text-align: center;\r\n  border-top : 3px solid #d1d1d1;\r\n  border-bottom : 3px solid #d1d1d1;\r\n}\r\n\r\n.board_thead tr td {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n.board_tbody tr td {\r\n  font-size: 18px;\r\n}\r\n\r\n\r\n.write_button {\r\n  padding: 5px;\r\n  background-color: #6b6b6b;\r\n  float: right;\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n/* .write_button_p {\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n.write_button_icon {\r\n  width: 10%;\r\n} */\r\n\r\n.write_button a {\r\n  color: white;\r\n}\r\n\r\n.search_input {\r\n  width: 20%;\r\n  padding: 4px 10px;\r\n  font-size: 16px;\r\n}\r\n.search_button {\r\n  margin-left: 10px;\r\n  padding: 5px;\r\n  font-size: 18px;\r\n  background-color: #2D8CFF;\r\n  color: white;\r\n  /* border: 0px; */\r\n}\r\n\r\n.page_btn {\r\n  color: white;\r\n  background-color: gray;\r\n}\r\n.page_btn.active {\r\n  background-color:black;\r\n}\r\n.arrow_icon {\r\n  width: 10px;\r\n}\r\n\r\n.new {\r\n    font-size : 18px;\r\n    -webkit-animation-name: blink;\r\n            animation-name: blink;\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n    -webkit-animation-timing-function: ease;\r\n            animation-timing-function: ease;\r\n    -webkit-animation-iteration-count: infinite;\r\n            animation-iteration-count: infinite;\r\n    /* 위 속성들을 한 줄로 표기하기 */\r\n    /* -webkit-animation: blink 1.5s ease infinite; */\r\n  }\r\n\r\n  @-webkit-keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n  @keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n.write_main_title {\r\n  color: black;\r\n  font-size: 30px;\r\n  /* font-weight: bold; */\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.write_main_p {\r\n  padding: .75rem 1.25rem;\r\n  font-size: 24px;\r\n  font-weight: bold;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.title_input {\r\n  font-size: 18px;\r\n  width: 100%;\r\n  padding: .75rem 1.25rem;\r\n  margin-bottom: 30px;\r\n  background-color: rgba(0,0,0,.03);\r\n  border: 0px;\r\n  border-bottom: 1px solid rgba(0,0,0,.125);\r\n}\r\n\r\n.all_agree input[type=\"checkbox\"] {\r\n  display: none;\r\n}\r\n.all_agree input[type=\"checkbox\"] + label { \r\n  width: 17px; \r\n  height: 17px; \r\n  background: #fa3062; \r\n  cursor: pointer; \r\n  border-radius: 3px;\r\n  float: right;\r\n}\r\n/* checkbox가 체크될 경우 라벨도 체크 */\r\n@-webkit-keyframes click-wave {\r\n  0% {\r\n    height: 40px;\r\n    width: 40px;\r\n    opacity: 1;\r\n    position: relative;\r\n    border-radius: 50%;\r\n  }\r\n  100% {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin-left: -80px;\r\n    margin-top: -80px;\r\n    opacity: 0;\r\n    border-radius: 50%;\r\n  }\r\n}\r\n@keyframes click-wave {\r\n  0% {\r\n    height: 40px;\r\n    width: 40px;\r\n    opacity: 1;\r\n    position: relative;\r\n    border-radius: 50%;\r\n  }\r\n  100% {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin-left: -80px;\r\n    margin-top: -80px;\r\n    opacity: 0;\r\n    border-radius: 50%;\r\n  }\r\n}\r\n\r\n.option-input {\r\n  border-radius: 50%;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  -ms-appearance: none;\r\n  -o-appearance: none;\r\n  appearance: none;\r\n  position: relative;\r\n  /* top: 13.33333px; */\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height: 40px;\r\n  width: 40px;\r\n  transition: all 0.15s ease-out 0s;\r\n  background: #cbd1d8;\r\n  border: none;\r\n  color: #fff;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  margin-left: 0.5rem;\r\n  margin-right: 0.5rem;\r\n  outline: none;\r\n  position: relative;\r\n  z-index: 1000;\r\n}\r\n.option-input:checked {\r\n  background: #40e0d0;\r\n}\r\n.option-input:checked::before {\r\n  height: 40px;\r\n  width: 40px;\r\n  position: absolute;\r\n  content: '\\2714';\r\n  display: inline-block;\r\n  font-size: 26.66667px;\r\n  text-align: center;\r\n  line-height: 40px;\r\n}\r\n.option-input:checked::after {\r\n  -webkit-animation: click-wave 0.65s;\r\n  animation: click-wave 0.65s;\r\n  background: #40e0d0;\r\n  content: '';\r\n  display: block;\r\n  position: relative;\r\n  z-index: 100;\r\n}\r\n\r\n.write_textarea {\r\n  width: 100%;\r\n  height: 300px;\r\n  font-size: 16px;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.category_dropdown {\r\n  color : black;\r\n  font-size : 18px;\r\n  font-weight: 600; \r\n  margin-bottom: 30px; \r\n}\r\n\r\n.detail_header {\r\n  width: 100%;\r\n  padding: .75rem 1.25rem;\r\n  margin-bottom: 0;\r\n  background-color: rgba(0,0,0,.03);\r\n  border-top: 1px solid rgba(0,0,0,.125);\r\n  border-bottom: 1px solid rgba(0,0,0,.125);\r\n}\r\n\r\n.detail_header_2 {\r\n  width: 100%;\r\n}\r\n\r\n.detail_title_span {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n  color: black;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.detail_date_span {\r\n  font-size: 15px;\r\n  padding: 0;\r\n  margin: 0;\r\n  float: right;\r\n}\r\n\r\n\r\n.detail_name_span {\r\n  margin-left: 10px;\r\n  font-size: 15px;\r\n  font-weight: bold;\r\n}\r\n\r\n.detail_option_span {\r\n  font-size: 15px;\r\n  padding: 0;\r\n  margin: 0;\r\n  float: right;\r\n}\r\n\r\n.detail_content {\r\n  margin: 30px 5%;\r\n  min-height: 30vh;\r\n}\r\n\r\n.button_board_group {\r\n  text-align: center;\r\n  margin-bottom: 30px;\r\n\r\n}\r\n\r\n.button_board_group button {\r\n  font-size: 16px;\r\n  font-weight: 600;\r\n  border-radius: 10%;\r\n  padding: 6px 12px;\r\n}\r\n.button_board_list {\r\n  margin-left: 20px;\r\n  background-color: white;\r\n  color: black;\r\n}\r\n\r\n.button_board_update {\r\n  margin-left: 20px;\r\n  background-color: blue;\r\n  color: white;\r\n  border: 0;\r\n}\r\n\r\n.button_board_delete {\r\n  margin-left: 20px;\r\n  background-color: #DC3545;\r\n  color: white;\r\n  border: 0;\r\n\r\n}\r\n\r\n.button_board_image {\r\n  width: 20px;\r\n  margin: 5px;\r\n}\r\n\r\n\r\n.comment_textarea {\r\n  padding: 5px 10px;\r\n  width: 95%;\r\n  min-height: 10vh;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  \r\n}\r\n\r\n.comment_button {\r\n  width: 5%;\r\n  background-color: black;\r\n  color: white;\r\n  border: 0;\r\n}\r\n\r\n.detail_comment  {\r\n  margin: 20px 0px;\r\n}\r\n\r\n.comment_image {\r\n  width: 90px;\r\n  margin-right: 10px;\r\n}\r\n\r\n.comment_name {\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n.comment_value {\r\n  font-size: 16px;\r\n}\r\n.comment_date {\r\n  font-size: 14px;\r\n  color: gray;\r\n}\r\n\r\n.arrow_reply_image {\r\n  width: 60px;\r\n  margin: 0 20px;\r\n}\r\n\r\n.detail_comment_reply {\r\n\r\n}\r\n\r\n.write_file {\r\n  margin: 10px 15px;\r\n}", ""]);
+exports.push([module.i, ".board {\r\n  margin-bottom: 50px;  \r\n}\r\n\r\n/* 메인 이미지 */\r\n.board_image {\r\n    width: 100%;\r\n    height: 25vh;\r\n    background: url(\"/img/board_main.jpg\") center center no-repeat;\r\n    text-align: center;\r\n    /* background: linear-gradient(45deg, #002ef0 0%, rgba(116, 15, 214, 0.9) 100%), url(/images/hero-bg.jpg) center center no-repeat; */\r\n    background-size: cover;\r\n    /* filter: blur(1px); */\r\n  /* -webkit-filter: blur(8px) */\r\n    margin-bottom : 50px;\r\n\r\n}\r\n\r\n.board_image_p {\r\n  color: white; \r\n  text-shadow: black 12px 0px 3px;\r\n  font-size: 80px; \r\n  padding-top: 120px; \r\n  font-weight: bold;\r\n}\r\n\r\n/* 메인 이미지에 들어갈 텍스트 */\r\n.board_total_p {\r\n  font-size: 30px;\r\n}\r\n\r\n/* 카테고리 박스 */\r\n.board_category {\r\n  margin: 10px 0 30px 0;\r\n  border-radius: 10px;\r\n  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .2);\r\n}\r\n\r\n/* 카테고리 전부 보기 */\r\n.home_icon {\r\n  width: 30px;\r\n  padding: 10px 0;\r\n  cursor: pointer;\r\n}\r\n/* 각각의 카테고리를 담은 박스 */\r\n.menu_box {\r\n  margin-top: 4px;\r\n  text-align: right;\r\n}\r\n\r\n/* 1번째 게시글 유형 */\r\n.menu_icon_1 {\r\n  border : 1px solid black;\r\n  /* border-right : 1px solid white; */\r\n  border-radius: 5px 0px 0px 5px;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n/* 2번째 게시글 유형 */\r\n.menu_icon_2 {\r\n  border : 1px solid black;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n/* 3번째 게시글 유형 */\r\n.menu_icon_3 {\r\n  border : 1px solid black;\r\n  border-radius: 0px 5px 5px 0px;\r\n  width: 40px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n\r\n.category_p {\r\n  text-align: center;\r\n  padding-top: 13px;\r\n  font-size: 18px;\r\n  cursor: pointer;\r\n}\r\n\r\n.board_thead {\r\n  text-align: center;\r\n  border-top : 3px solid #d1d1d1;\r\n  border-bottom : 3px solid #d1d1d1;\r\n}\r\n\r\n.board_thead tr td {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n.board_tbody tr td {\r\n  font-size: 18px;\r\n}\r\n\r\n\r\n.write_button {\r\n  padding: 5px;\r\n  background-color: #6b6b6b;\r\n  float: right;\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n/* .write_button_p {\r\n  font-size: 20px;\r\n  color: white;\r\n}\r\n.write_button_icon {\r\n  width: 10%;\r\n} */\r\n\r\n.write_button a {\r\n  color: white;\r\n}\r\n\r\n.search_input {\r\n  width: 20%;\r\n  padding: 4px 10px;\r\n  font-size: 16px;\r\n}\r\n.search_button {\r\n  margin-left: 10px;\r\n  padding: 5px;\r\n  font-size: 18px;\r\n  background-color: #2D8CFF;\r\n  color: white;\r\n  /* border: 0px; */\r\n}\r\n\r\n.page_btn {\r\n  color: white;\r\n  background-color: gray;\r\n}\r\n.page_btn.active {\r\n  background-color:black;\r\n}\r\n.arrow_icon {\r\n  width: 10px;\r\n}\r\n\r\n.new {\r\n    font-size : 18px;\r\n    -webkit-animation-name: blink;\r\n            animation-name: blink;\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n    -webkit-animation-timing-function: ease;\r\n            animation-timing-function: ease;\r\n    -webkit-animation-iteration-count: infinite;\r\n            animation-iteration-count: infinite;\r\n    /* 위 속성들을 한 줄로 표기하기 */\r\n    /* -webkit-animation: blink 1.5s ease infinite; */\r\n  }\r\n\r\n  @-webkit-keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n  @keyframes blink {\r\n    from {color: white;}\r\n    30% {color: orange;}\r\n    to {color: red; font-weight: bold;}\r\n    /* 0% {color:white;}\r\n    30% {color: yellow;}\r\n    100% {color:red; font-weight: bold;} */\r\n  }\r\n\r\n.write_main_title {\r\n  color: black;\r\n  font-size: 30px;\r\n  /* font-weight: bold; */\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.write_main_p {\r\n  padding: .75rem 1.25rem;\r\n  font-size: 24px;\r\n  font-weight: bold;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.title_input {\r\n  font-size: 18px;\r\n  width: 100%;\r\n  padding: .75rem 1.25rem;\r\n  margin-bottom: 30px;\r\n  background-color: rgba(0,0,0,.03);\r\n  border: 0px;\r\n  border-bottom: 1px solid rgba(0,0,0,.125);\r\n}\r\n\r\n.all_agree input[type=\"checkbox\"] {\r\n  display: none;\r\n}\r\n.all_agree input[type=\"checkbox\"] + label { \r\n  width: 17px; \r\n  height: 17px; \r\n  background: #fa3062; \r\n  cursor: pointer; \r\n  border-radius: 3px;\r\n  float: right;\r\n}\r\n/* checkbox가 체크될 경우 라벨도 체크 */\r\n@-webkit-keyframes click-wave {\r\n  0% {\r\n    height: 40px;\r\n    width: 40px;\r\n    opacity: 1;\r\n    position: relative;\r\n    border-radius: 50%;\r\n  }\r\n  100% {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin-left: -80px;\r\n    margin-top: -80px;\r\n    opacity: 0;\r\n    border-radius: 50%;\r\n  }\r\n}\r\n@keyframes click-wave {\r\n  0% {\r\n    height: 40px;\r\n    width: 40px;\r\n    opacity: 1;\r\n    position: relative;\r\n    border-radius: 50%;\r\n  }\r\n  100% {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin-left: -80px;\r\n    margin-top: -80px;\r\n    opacity: 0;\r\n    border-radius: 50%;\r\n  }\r\n}\r\n\r\n.option-input {\r\n  border-radius: 50%;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  -ms-appearance: none;\r\n  -o-appearance: none;\r\n  appearance: none;\r\n  position: relative;\r\n  /* top: 13.33333px; */\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height: 40px;\r\n  width: 40px;\r\n  transition: all 0.15s ease-out 0s;\r\n  background: #cbd1d8;\r\n  border: none;\r\n  color: #fff;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  margin-left: 0.5rem;\r\n  margin-right: 0.5rem;\r\n  outline: none;\r\n  position: relative;\r\n  z-index: 1000;\r\n}\r\n.option-input:checked {\r\n  background: #40e0d0;\r\n}\r\n.option-input:checked::before {\r\n  height: 40px;\r\n  width: 40px;\r\n  position: absolute;\r\n  content: '\\2714';\r\n  display: inline-block;\r\n  font-size: 26.66667px;\r\n  text-align: center;\r\n  line-height: 40px;\r\n}\r\n.option-input:checked::after {\r\n  -webkit-animation: click-wave 0.65s;\r\n  animation: click-wave 0.65s;\r\n  background: #40e0d0;\r\n  content: '';\r\n  display: block;\r\n  position: relative;\r\n  z-index: 100;\r\n}\r\n\r\n.write_textarea {\r\n  width: 100%;\r\n  height: 300px;\r\n  font-size: 16px;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.category_dropdown {\r\n  color : black;\r\n  font-size : 18px;\r\n  font-weight: 600; \r\n  margin-bottom: 30px; \r\n}\r\n\r\n.detail_header {\r\n  width: 100%;\r\n  padding: .75rem 1.25rem;\r\n  margin-bottom: 0;\r\n  background-color: rgba(0,0,0,.03);\r\n  border-top: 1px solid rgba(0,0,0,.125);\r\n  border-bottom: 1px solid rgba(0,0,0,.125);\r\n}\r\n\r\n.detail_header_2 {\r\n  width: 100%;\r\n}\r\n\r\n.detail_title_span {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n  color: black;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.detail_date_span {\r\n  font-size: 15px;\r\n  padding: 0;\r\n  margin: 0;\r\n  float: right;\r\n}\r\n\r\n\r\n.detail_name_span {\r\n  margin-left: 10px;\r\n  font-size: 15px;\r\n  font-weight: bold;\r\n}\r\n\r\n.detail_option_span {\r\n  font-size: 15px;\r\n  padding: 0;\r\n  margin: 0;\r\n  float: right;\r\n}\r\n\r\n.detail_content {\r\n  margin: 30px 5%;\r\n  min-height: 30vh;\r\n}\r\n\r\n.button_board_group {\r\n  text-align: center;\r\n  margin-bottom: 30px;\r\n\r\n}\r\n\r\n.button_board_group button {\r\n  font-size: 16px;\r\n  font-weight: 600;\r\n  border-radius: 10%;\r\n  padding: 6px 12px;\r\n}\r\n.button_board_list {\r\n  margin-left: 20px;\r\n  background-color: white;\r\n  color: black;\r\n}\r\n\r\n.button_board_update {\r\n  margin-left: 20px;\r\n  background-color: blue;\r\n  color: white;\r\n  border: 0;\r\n}\r\n\r\n.button_board_delete {\r\n  margin-left: 20px;\r\n  background-color: #DC3545;\r\n  color: white;\r\n  border: 0;\r\n}\r\n\r\n.button_board_image {\r\n  width: 20px;\r\n  margin: 5px;\r\n}\r\n\r\n\r\n.comment_textarea {\r\n  padding: 5px 10px;\r\n  width: 95%;\r\n  min-height: 10vh;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  \r\n}\r\n\r\n.comment_button {\r\n  width: 5%;\r\n  background-color: black;\r\n  color: white;\r\n  border: 0;\r\n}\r\n\r\n.detail_comment  {\r\n  margin: 20px 0px;\r\n}\r\n\r\n.comment_image {\r\n  width: 90px;\r\n  margin-right: 10px;\r\n}\r\n\r\n.comment_name {\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n.comment_value {\r\n  font-size: 16px;\r\n}\r\n.comment_date {\r\n  font-size: 14px;\r\n  color: gray;\r\n  margin-right: 20px;\r\n}\r\n/* 댓글 수정 */\r\n.button_comment_update {\r\n  /* margin-left: 20px; */\r\n  border-radius: 10px;\r\n  background-color: blue;\r\n  color: white;\r\n  border: 0;\r\n}\r\n/* 댓글 삭제 */\r\n.button_comment_delete {\r\n  margin-left: 5px;\r\n  border-radius: 10px;\r\n  background-color: #DC3545;\r\n  color: white;\r\n  border: 0;\r\n}\r\n.arrow_reply_image {\r\n  width: 60px;\r\n  margin: 0 20px;\r\n}\r\n\r\n.detail_comment_reply {\r\n\r\n}\r\n\r\n.write_file {\r\n  margin: 10px 15px;\r\n}", ""]);
 
 // exports
 
@@ -96776,20 +96776,6 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       setPageCount(array_page_count);
       setFirst_current_end_page([res.data.boards.current_page, 1, res.data.boards.last_page]);
     });
-  }; //글 작성페이지
-
-
-  var board_write = function board_write() {
-    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/board/create").then(function (res) {
-      console.log(res); // 공지사항을 쓸 수 있게
-
-      if (user.id == 1) {
-        setCategories(res.data.categories);
-      } // 공지사항을 못 쓰게
-      else {
-          setCategories(res.data.categories.splice(1, res.data.categories.length - 1));
-        }
-    });
   }; // 글 디테일페이지
 
 
@@ -96804,57 +96790,28 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       setDetail_board(board_obj);
       setDetail_comments(res.data.detail_comments);
     });
-  }; //bool = True면 업데이트 요청
-  //bool = False면 write폼에 edit 데이터 요청
+  }; //글 작성페이지에서 Admin유저가 아니면 카테고리에서 "공지사항"을 제거
 
 
-  var Board_update = function Board_update(id, bool) {
-    // 업데이트
-    if (bool) {
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.put("/board/".concat(id)).then(function (res) {
-        console.log(res); // let set
-      });
-    } // Write폼 데이터 요청
-    else {
-        axios__WEBPACK_IMPORTED_MODULE_3___default.a.put("/board/edit_data/".concat(id)).then(function (res) {
-          console.log(res); // const [title, setTitle] = useState(false);              //제목
-          // const [category, setCategory] = useState(false);        //카테고리
-          // const [content, setContent] = useState(false);          //내용
-          // const [secret, setSecret] = useState(false);            //비밀 글 여부
-          // const [attachment, setAttachment] = useState(false);    //첨부파일
+  var board_write = function board_write() {
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/board/create").then(function (res) {
+      console.log(res); // 공지사항을 쓸 수 있게
 
-          setTitle(res.data.board.title);
-          setCategory(res.data.category);
-          setContent(res.data.board.content);
-          setSecret(res.data.board.secret);
-          setAttachment(res.data.board.attachment);
-        });
-      }
-  };
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (location.pathname.split("/")[2] == "write") {
-      // console.log("write");
-      setAction("write"); //글 작성
-
-      board_write();
-    } //업데이트
-    else if (location.pathname.split("/")[3] == "edit") {
-        setAction("update");
-        Board_update(location.pathname.split("/")[2], false);
-      } //Number형으로 바꿔도 옳은 값이면 => 게시글 detail
-      else if (location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])) {
-          setAction("detail");
-          board_detail(location.pathname.split("/")[2]);
-        } else {
-          // console.log("home");
-          setAction("home"); //홈
-
-          board_get("board_get");
+      if (user.id == 1) {
+        setCategories(res.data.categories);
+      } // 공지사항을 못 쓰게
+      else {
+          setCategories(res.data.categories.splice(1, res.data.categories.length - 1));
         }
-  }, [location.pathname]); //게시글 생성
+    });
+  }; //게시글 생성
+
 
   var Board_create = function Board_create(form) {
+    console.log(secret);
+    console.log(secret);
+    console.log(secret);
+
     if (form == "write") {
       var formdata = new FormData();
       formdata.append('title', title);
@@ -96881,10 +96838,66 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
         console.log(res.data.board);
 
         if (res.data.status) {
+          setTitle("");
+          setCategory("");
+          setContent("");
+          setSecret("");
+          setAttachment("");
           history.push("/board");
         }
       });
     }
+  }; //게시글 업데이트 
+  //bool = True면 업데이트 요청, bool = False면 write폼에 edit 데이터 요청
+
+
+  var Board_update = function Board_update(id, bool) {
+    // 업데이트
+    if (bool) {
+      var formdata = new FormData();
+      formdata.append('title', title);
+      formdata.append('category', category);
+      formdata.append('content', content);
+      formdata.append('secret', secret);
+      formdata.append('_method', "patch"); //post를 put, patch로
+
+      if (attachment) {
+        for (var i = 0; i <= attachment.length - 1; i++) {
+          formdata.append("file".concat(i), attachment[i]);
+        }
+      }
+
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data' //   'Accept' : "application/json",
+          //   'type': "formData"
+
+        }
+      };
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/board/".concat(id), formdata, config).then(function (res) {
+        console.log(res);
+
+        if (res.data.status) {
+          history.push("/board/".concat(id));
+        } // let set
+
+      });
+    } // Write폼 데이터 요청
+    else {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.put("/board/edit_data/".concat(id)).then(function (res) {
+          console.log(res); // const [title, setTitle] = useState(false);              //제목
+          // const [category, setCategory] = useState(false);        //카테고리
+          // const [content, setContent] = useState(false);          //내용
+          // const [secret, setSecret] = useState(false);            //비밀 글 여부
+          // const [attachment, setAttachment] = useState(false);    //첨부파일
+
+          setTitle(res.data.board.title);
+          setCategory(res.data.category);
+          setContent(res.data.board.content);
+          setSecret(res.data.board.secret);
+          setAttachment(res.data.board.attachment);
+        });
+      }
   }; //게시글 삭제
 
 
@@ -96917,9 +96930,59 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       // console.log(res);
       setDetail_comments(res.data.comments);
     });
-  }; //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
-  //categories.length는 write 페이지에만 제공하는 것(write페이지에서 새로고침시 total_boards가 없으니까)
+  }; //댓글 수정
 
+
+  var Comment_update = function Comment_update(detail_board_id, comment_id) {
+    var url = "/boards/".concat(detail_board_id, "/comments").concat(comment_id);
+    var body = {
+      // parent_id,      //부모 댓글 id
+      content: comment,
+      //댓글 내용
+      commentable_id: board_id,
+      _method: 'patch'
+    };
+    var config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(url, body, config).then(function (res) {
+      // console.log(res);
+      setDetail_comments(res.data.comments);
+    });
+  }; //댓글 삭제
+
+
+  var Comment_delete = function Comment_delete(detail_board_id, comment_id) {
+    var url = "/boards/".concat(detail_board_id, "/comments").concat(comment_id);
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"](url).then(function (res) {
+      console.log(res);
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (location.pathname.split("/")[2] == "write") {
+      // console.log("write");
+      setAction("write"); //글 작성
+
+      board_write();
+    } //업데이트
+    else if (location.pathname.split("/")[3] == "edit") {
+        setAction("update");
+        Board_update(location.pathname.split("/")[2], false);
+      } //Number형으로 바꿔도 옳은 값이면 => 게시글 detail
+      else if (location.pathname.split("/")[2] && Number(location.pathname.split("/")[2])) {
+          setAction("detail");
+          board_detail(location.pathname.split("/")[2]);
+        } else {
+          // console.log("home");
+          setAction("home"); //홈
+
+          board_get("board_get");
+        }
+  }, [location.pathname]); //board_users의 렌더링이 늦어서 갯수가 달라지면 오류가 뜨기때문에 에러처리
+  //categories.length는 write 페이지에만 제공하는 것(write페이지에서 새로고침시 total_boards가 없으니까)
 
   return action || total_boards && boards.length == total_boards.board_users.length || categories.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BoardContext.Provider, {
     value: {
@@ -96955,12 +97018,14 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
       Board_create: Board_create,
       Board_update: Board_update,
       Board_delete: Board_delete,
+      Comment_create: Comment_create,
+      Comment_update: Comment_update,
+      Comment_delete: Comment_delete,
       // user,
       detail_board: detail_board,
       setDetail_board: setDetail_board,
       detail_comments: detail_comments,
       setDetail_comments: setDetail_comments,
-      Comment_create: Comment_create,
       comment: comment,
       setComment: setComment // views
 
@@ -97075,7 +97140,7 @@ __webpack_require__.r(__webpack_exports__);
     style: {
       marginRight: "10px"
     }
-  }, "\uC870\uD68C \uC218 184"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "\uC870\uD68C \uC218 ", detail_board.views), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     style: {
       marginRight: "10px"
     }
@@ -97083,7 +97148,7 @@ __webpack_require__.r(__webpack_exports__);
     style: {
       marginRight: "10px"
     }
-  }, "\uB313\uAE00 \uC218 0"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "\uB313\uAE00 \uC218 ", detail_comments.length))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row detail_content"
   }, detail_board.attachments && detail_board.attachments.map(function (value, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -97157,9 +97222,15 @@ __webpack_require__.r(__webpack_exports__);
       className: "comment_name"
     }, detail_comments[index].user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "comment_value"
-    }, detail_comments[index].content), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    }, detail_comments[index].content), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "row"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "comment_date"
-    }, moment__WEBPACK_IMPORTED_MODULE_4___default()(detail_comments[index].created_at).format("YYYY-MM-DD")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+    }, moment__WEBPACK_IMPORTED_MODULE_4___default()(detail_comments[index].created_at).format("YYYY-MM-DD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "button_comment_update"
+    }, "\uB313\uAE00 \uC218\uC815"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "button_comment_delete"
+    }, "\uB313\uAE00 \uC0AD\uC81C")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
   }) : null))) : null;
 });
 
@@ -97530,7 +97601,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     className: "col-md-8 text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "write_main_title"
-  }, "\uAE00 \uC791\uC131")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, action == "write" ? "글 작성" : "글 수정")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-8 col-lg-8 col-md-8",
     style: {
       borderRadius: "20px",
@@ -97571,9 +97642,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     style: {
       border: 0,
       outline: 0
-    },
-    value: secret ? secret : "",
-    onClick: function onClick() {
+    } // value={secret ? true : false}
+    ,
+    checked: secret,
+    onChange: function onChange() {
       return setSecret(!secret);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {

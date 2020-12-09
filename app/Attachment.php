@@ -12,6 +12,7 @@ class Attachment extends Model
      * @var array
      */
     protected $fillable = [
+        'board_id',
         'filename',
         'bytes',
         'mime',
@@ -22,7 +23,7 @@ class Attachment extends Model
      * @var array
      */
     protected $hidden = [
-        'article_id',
+        'board_id',
         'created_at',
         'updated_at',
     ];
