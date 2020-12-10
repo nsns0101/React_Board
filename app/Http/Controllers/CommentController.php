@@ -96,9 +96,21 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, \App\Board $board, \App\Comment $comment)
     {
-        //
+        \Log::info($comment);
+        \Log::info($request);
+
+        //댓글 수정
+        $comment->update($request->all());
+        //댓글 데이터 다시 뿌리기
+        $comments = $board->comments()->with('replies')->whereNull('parent_id')->latest()->get();
+
+
+        return response()->json([
+            'status' => true,
+            'comments' => $comments,
+        ]);
     }
 
     /**

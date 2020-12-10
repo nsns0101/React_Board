@@ -36,6 +36,9 @@ export default ({history}) => {
     const [detail_comments, setDetail_comments] = useState(false);
 
     const [comment, setComment] = useState("");
+
+    const [comment_update_form, setComment_update_form] = useState(false);
+    const [comment_update_content, setComment_update_content] = useState(false);
     //view_count,
     //comment_count,
     //vote  //좋아요, 싫어요 배열
@@ -244,11 +247,12 @@ export default ({history}) => {
     }
     //댓글 수정
     const Comment_update = (detail_board_id, comment_id) => {
+        console.log("comment update");
         const url = `/boards/${detail_board_id}/comments/${comment_id}`;
         const body = {
             // parent_id,      //부모 댓글 id
-            content: comment,         //댓글 내용
-            commentable_id: board_id,
+            content: comment_update_content,         //댓글 내용
+            commentable_id: detail_board_id,
             _method : 'patch'                  
         };
         const config = {
@@ -257,7 +261,7 @@ export default ({history}) => {
             }
         }
         Axios.post(url, body, config).then( res => {
-            // console.log(res);
+            setComment_update_form(false);
             setDetail_comments(res.data.comments);
         });
     }
@@ -346,6 +350,10 @@ export default ({history}) => {
             comment,
             setComment,
             // views
+            comment_update_form,
+            setComment_update_form,
+            comment_update_content, 
+            setComment_update_content
         }}>
             <BoardView/>
         </BoardContext.Provider>
