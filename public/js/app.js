@@ -97170,18 +97170,22 @@ __webpack_require__.r(__webpack_exports__);
     style: {
       marginRight: "10px"
     }
-  }, "\uCD94\uCC9C \uC218 12"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "\uCD94\uCC9C \uC218 0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     style: {
       marginRight: "10px"
     }
   }, "\uB313\uAE00 \uC218 ", detail_comments.length))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row detail_content"
+    className: "detail_content"
   }, detail_board.attachments && detail_board.attachments.map(function (value, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       key: index,
       src: "/files/board/".concat(detail_board.attachments[index].filename)
     });
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, detail_board.content)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    style: {
+      fontSize: "18px"
+    }
+  }, detail_board.content)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "button_board_group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "button_board_list",
@@ -97216,7 +97220,10 @@ __webpack_require__.r(__webpack_exports__);
       opacity: 0.3
     }
   }), user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row detail_comment_input"
+    className: "row detail_comment_input",
+    style: {
+      marginBottom: "20px"
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
     className: "comment_textarea",
     name: "comment",

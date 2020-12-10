@@ -59,19 +59,19 @@ export default () => {
                     </span>
                     <span className="detail_option_span">
                         <span style={{marginRight:"10px"}}>조회 수 {detail_board.views}</span>
-                        <span style={{marginRight:"10px"}}>추천 수 12</span>
+                        <span style={{marginRight:"10px"}}>추천 수 0</span>
                         <span style={{marginRight:"10px"}}>댓글 수 {detail_comments.length}</span>
                     </span>
                 </div>
 
                 {/* 내용 */}
-                <div className="row detail_content">
+                <div className="detail_content">
                     {detail_board.attachments && detail_board.attachments.map( (value, index) => {
                         return (
                             <img key={index} src={`/files/board/${detail_board.attachments[index].filename}`}/>
                         )
                     })}
-                    <p>{detail_board.content}</p>
+                    <p style={{fontSize: "18px"}}>{detail_board.content}</p>
                 </div>
 
                 {/* 버튼 그룹 */}
@@ -104,7 +104,7 @@ export default () => {
                 
                 {/* 댓글 입력 칸 */}
                 {user ? (
-                    <div className="row detail_comment_input">
+                    <div className="row detail_comment_input" style={{marginBottom: "20px"}}>
                         <textarea 
                             className="comment_textarea"
                             name="comment"
@@ -123,7 +123,7 @@ export default () => {
                         </button>
                     </div>
                     ) : (
-                    <p className="text-center" style={{color:"red"}}>로그인을 하시면 댓글을 입력할 수 있습니다.!</p>
+                        <p className="text-center" style={{color:"red"}}>로그인을 하시면 댓글을 입력할 수 있습니다.!</p>
                     )
                 }
                 
