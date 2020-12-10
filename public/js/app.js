@@ -96440,7 +96440,7 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "birth",
-    placeholder: "생년월일",
+    placeholder: "생년월일(0000-00-00형식으로 입력해 주세요)",
     style: input_form,
     onChange: function onChange(e) {
       var value = e.target.value;
@@ -96459,7 +96459,7 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "phone",
-    placeholder: "휴대폰 번호",
+    placeholder: "휴대폰 번호('-'와 함께 입력해 주세요.)",
     style: input_form,
     onChange: function onChange(e) {
       var value = e.target.value;
@@ -96895,11 +96895,14 @@ var BoardContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["creat
     } // Write폼 데이터 요청
     else {
         axios__WEBPACK_IMPORTED_MODULE_3___default.a.put("/board/edit_data/".concat(id)).then(function (res) {
-          console.log(res); // const [title, setTitle] = useState(false);              //제목
-          // const [category, setCategory] = useState(false);        //카테고리
-          // const [content, setContent] = useState(false);          //내용
-          // const [secret, setSecret] = useState(false);            //비밀 글 여부
-          // const [attachment, setAttachment] = useState(false);    //첨부파일
+          console.log(res); // Admin 계정만 공지사항 쓸 수 있게
+
+          if (user.id == 1) {
+            setCategories(res.data.categories);
+          } // 공지사항을 못 쓰게
+          else {
+              setCategories(res.data.categories.splice(1, res.data.categories.length - 1));
+            }
 
           setTitle(res.data.board.title);
           setCategory(res.data.category);
@@ -97212,7 +97215,7 @@ __webpack_require__.r(__webpack_exports__);
       backgroundColor: "black",
       opacity: 0.3
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row detail_comment_input"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
     className: "comment_textarea",
@@ -97231,7 +97234,12 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "button_board_image",
     src: "/icon/board_update.png"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-center",
+    style: {
+      color: "red"
+    }
+  }, "\uB85C\uADF8\uC778\uC744 \uD558\uC2DC\uBA74 \uB313\uAE00\uC744 \uC785\uB825\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail_comment_view"
   }, detail_comments ? detail_comments.map(function (value, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -97255,7 +97263,7 @@ __webpack_require__.r(__webpack_exports__);
         setComment_update_form(detail_comments[index].id);
         setComment_update_content(detail_comments[index].content);
       }
-    }, "\uB313\uAE00 \uC218\uC815"), ")", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, "\uB313\uAE00 \uC218\uC815"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "button_comment_delete",
       onClick: function onClick() {
         return Comment_delete(detail_board.id, detail_comments[index].id);

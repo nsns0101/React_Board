@@ -307,7 +307,7 @@ export default ({
             <div className="form-group">
               <input 
                 name ="birth" 
-                placeholder={"생년월일"}
+                placeholder={"생년월일(0000-00-00형식으로 입력해 주세요)"}
                 style={input_form}
                 onChange={ e => {
                   const {
@@ -331,7 +331,7 @@ export default ({
             <div className="form-group">
               <input 
                 name ="phone" 
-                placeholder={"휴대폰 번호"}
+                placeholder={"휴대폰 번호('-'와 함께 입력해 주세요.)"}
                 style={input_form}
                 onChange={ e => {
                   const {

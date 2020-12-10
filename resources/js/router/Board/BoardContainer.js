@@ -198,11 +198,15 @@ export default ({history}) => {
         else{
             Axios.put(`/board/edit_data/${id}`).then(res => {
                 console.log(res);
-                // const [title, setTitle] = useState(false);              //제목
-                // const [category, setCategory] = useState(false);        //카테고리
-                // const [content, setContent] = useState(false);          //내용
-                // const [secret, setSecret] = useState(false);            //비밀 글 여부
-                // const [attachment, setAttachment] = useState(false);    //첨부파일
+                
+                // Admin 계정만 공지사항 쓸 수 있게
+                if(user.id == 1){
+                    setCategories(res.data.categories);
+                }
+                // 공지사항을 못 쓰게
+                else {
+                    setCategories(res.data.categories.splice(1, res.data.categories.length - 1));
+                }
                 setTitle(res.data.board.title);
                 setCategory(res.data.category);
                 setContent(res.data.board.content);

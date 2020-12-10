@@ -178,7 +178,7 @@ class BoardController extends Controller
         }
         \Log::info($board);
         return response()->json([
-            // 'status' => true,
+            'status' => true,
             'board' => $board
         ]);
     }
@@ -242,10 +242,17 @@ class BoardController extends Controller
         $board = \App\Board::whereId($id)->first();
         $category = \App\Category::whereId($board->category_id)->first()->category;
         \Log::info($board);
+       
+        //존재하는 카테고리
+        $categories = array();
+        for($i = 0; $i < count(\App\Category::get()); $i++){
+            array_push($categories, \App\Category::get()[$i]->category);
+        }
         return response()->json([
             'status'=> true,
             'board'=> $board,
             'category'=> $category,
+            'categories' => $categories,              //존재하는 카테고리 전부
         ]);
     }
 

@@ -103,24 +103,30 @@ export default () => {
                 <hr style={{margin: "30px 0px", padding: 0, backgroundColor: "black", opacity: 0.3 }}/>
                 
                 {/* 댓글 입력 칸 */}
-                <div className="row detail_comment_input">
-                    <textarea 
-                        className="comment_textarea"
-                        name="comment"
-                        placeholder="한마디를 남겨보세요!"
-                        onChange={ e => {
-                            setComment(e.target.value);
-                        }}
-                        value={comment}
-                    />
-                    <button className="comment_button" onClick={() => {
-                        Comment_create(detail_board.id);
-                        setComment("");
-                    }}>
-                        <img className="button_board_image" src="/icon/board_update.png"/>
-                        {/* <span></span> */}
-                    </button>
-                </div>
+                {user ? (
+                    <div className="row detail_comment_input">
+                        <textarea 
+                            className="comment_textarea"
+                            name="comment"
+                            placeholder="한마디를 남겨보세요!"
+                            onChange={ e => {
+                                setComment(e.target.value);
+                            }}
+                            value={comment}
+                        />
+                        <button className="comment_button" onClick={() => {
+                            Comment_create(detail_board.id);
+                            setComment("");
+                        }}>
+                            <img className="button_board_image" src="/icon/board_update.png"/>
+                            {/* <span></span> */}
+                        </button>
+                    </div>
+                    ) : (
+                    <p className="text-center" style={{color:"red"}}>로그인을 하시면 댓글을 입력할 수 있습니다.!</p>
+                    )
+                }
+                
                 
                 {/* 댓글 뷰 */}
                 <div className="detail_comment_view">
@@ -141,7 +147,7 @@ export default () => {
                                                         setComment_update_content(detail_comments[index].content);
                                                     }}>
                                                         댓글 수정
-                                                    </button>)
+                                                    </button>
                                                     <button className="button_comment_delete" onClick={()=>Comment_delete(detail_board.id, detail_comments[index].id)}>
                                                         댓글 삭제
                                                     </button>
